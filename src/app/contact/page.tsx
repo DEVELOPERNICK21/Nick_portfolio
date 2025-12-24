@@ -34,12 +34,12 @@ export default function ContactPage() {
           <ScrollReveal direction='left' delay={100}>
             <div>
               <h2 className='text-2xl font-serif mb-6 glow-text'>
-                Let's Work Together
+                Lets Work Together
               </h2>
               <p className='text-gray-300 mb-8 leading-relaxed'>
-                I'm always excited to collaborate on new projects. Whether
-                you're a photographer, brand, or agency, I'd love to hear about
-                your vision and how we can create something amazing together.
+                Im always excited to collaborate on new projects. Whether youre
+                a photographer, brand, or agency, Id love to hear about your
+                vision and how we can create something amazing together.
               </p>
 
               <div className='space-y-6 mb-10'>

@@ -46,7 +46,7 @@ export default function AboutPage() {
               <h2 className='text-3xl font-serif mb-4 glow-text'>My Journey</h2>
               <p className='text-gray-300 leading-relaxed'>
                 I began my modeling career driven by a passion for fashion and
-                creative expression. Over the years, I've had the privilege of
+                creative expression. Over the years, Ive had the privilege of
                 working with renowned brands, talented photographers, and
                 visionary creative directors through my representation with
                 CastYou Agency.
@@ -59,10 +59,10 @@ export default function AboutPage() {
                 about telling a story.
               </p>
               <p className='text-gray-300 leading-relaxed'>
-                When I'm not on set, I dedicate time to fitness, studying
-                fashion trends, and continuously developing my craft. I'm
-                passionate about sustainability in fashion and love
-                collaborating with brands that share these values.
+                When Im not on set, I dedicate time to fitness, studying fashion
+                trends, and continuously developing my craft. Im passionate
+                about sustainability in fashion and love collaborating with
+                brands that share these values.
               </p>
               <a
                 href='https://castyou.in/nikhil-kubde/'

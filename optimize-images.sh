@@ -1,105 +1,93 @@
 #!/bin/bash
 
-# Image Optimization Script for Nikhil Kubde Portfolio
-# This script optimizes all images in the public folder
+# Image Optimization Script
+# Optimizes all JPG images in the public folder for web use
 
-echo "🎨 Image Optimization Script"
-echo "============================"
+echo "🖼️  Starting image optimization..."
 echo ""
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+PUBLIC_DIR="public"
+TEMP_DIR="temp_optimized"
 
-# Check if ImageMagick is installed
-if ! command -v convert &> /dev/null; then
-    echo -e "${RED}❌ ImageMagick is not installed${NC}"
-    echo ""
-    echo "Install it with:"
-    echo -e "${YELLOW}brew install imagemagick${NC}"
-    echo ""
-    echo "Or use online tools:"
-    echo "  - https://tinypng.com (easiest)"
-    echo "  - https://squoosh.app (best quality)"
-    exit 1
-fi
+# Create temp directory
+mkdir -p "$TEMP_DIR"
 
-# Backup original images
-echo -e "${YELLOW}📦 Creating backup...${NC}"
-mkdir -p originals
-cp public/*.jpg originals/ 2>/dev/null || true
-cp public/*.png originals/ 2>/dev/null || true
-echo -e "${GREEN}✓ Backup created in ./originals/${NC}"
+# Function to optimize image using sips (macOS built-in)
+optimize_with_sips() {
+    local input_file=$1
+    local output_file=$2
+    local filename=$(basename "$input_file")
+    
+    echo "Optimizing: $filename"
+    
+    # Get original size
+    original_size=$(stat -f%z "$input_file" 2>/dev/null || stat -c%s "$input_file" 2>/dev/null)
+    
+    # Use sips to optimize (macOS)
+    if command -v sips &> /dev/null; then
+        # Copy to temp
+        cp "$input_file" "$output_file"
+        
+        # Resize if larger than 1920px width (maintains aspect ratio)
+        sips -Z 1920 "$output_file" > /dev/null 2>&1
+        
+        # Set quality to 85% (good balance between quality and size)
+        sips -s format jpeg -s formatOptions 85 "$output_file" > /dev/null 2>&1
+        
+        # Get new size
+        new_size=$(stat -f%z "$output_file" 2>/dev/null || stat -c%s "$output_file" 2>/dev/null)
+        
+        # Calculate reduction
+        if [ "$original_size" -gt 0 ]; then
+            reduction=$((100 - (new_size * 100 / original_size)))
+            echo "  ✓ Reduced by ~${reduction}% (${original_size} → ${new_size} bytes)"
+        fi
+    else
+        echo "  ⚠ sips not available, skipping optimization"
+        cp "$input_file" "$output_file"
+    fi
+}
+
+# Count images
+total_images=$(find "$PUBLIC_DIR" -maxdepth 1 -name "*.jpg" -o -name "*.JPG" | wc -l | tr -d ' ')
+echo "Found $total_images images to optimize"
 echo ""
 
-# Optimize images
-echo -e "${YELLOW}⚡ Optimizing images...${NC}"
-echo ""
-
+# Optimize each image
 count=0
-total_before=0
-total_after=0
-
-for img in public/*.jpg public/*.png; do
+for img in "$PUBLIC_DIR"/*.jpg "$PUBLIC_DIR"/*.JPG; do
     if [ -f "$img" ]; then
-        # Get file size before
-        size_before=$(stat -f%z "$img" 2>/dev/null || stat -c%s "$img" 2>/dev/null)
-        size_before_mb=$(echo "scale=2; $size_before / 1048576" | bc)
-        
-        # Create temp file
-        temp_file="${img}.temp"
-        
-        # Optimize based on file type
-        if [[ $img == *.jpg ]]; then
-            # JPG: Resize and compress
-            convert "$img" -resize '1920x1920>' -quality 85 -strip "$temp_file"
-        else
-            # PNG: Just compress
-            convert "$img" -quality 85 -strip "$temp_file"
-        fi
-        
-        # Replace original if optimization successful
-        if [ -f "$temp_file" ]; then
-            mv "$temp_file" "$img"
-            
-            # Get file size after
-            size_after=$(stat -f%z "$img" 2>/dev/null || stat -c%s "$img" 2>/dev/null)
-            size_after_mb=$(echo "scale=2; $size_after / 1048576" | bc)
-            
-            # Calculate savings
-            savings=$(echo "scale=1; 100 - ($size_after * 100 / $size_before)" | bc)
-            
-            # Update totals
-            total_before=$((total_before + size_before))
-            total_after=$((total_after + size_after))
-            count=$((count + 1))
-            
-            # Print result
-            filename=$(basename "$img")
-            echo -e "  ${GREEN}✓${NC} $filename: ${size_before_mb}MB → ${size_after_mb}MB (${savings}% smaller)"
-        fi
+        filename=$(basename "$img")
+        optimize_with_sips "$img" "$TEMP_DIR/$filename"
+        count=$((count + 1))
+        echo ""
     fi
 done
 
-echo ""
-echo -e "${GREEN}========================================${NC}"
-echo -e "${GREEN}✓ Optimization Complete!${NC}"
-echo -e "${GREEN}========================================${NC}"
-echo ""
-echo "📊 Results:"
-echo "  - Images optimized: $count"
-echo "  - Total before: $(echo "scale=2; $total_before / 1048576" | bc)MB"
-echo "  - Total after: $(echo "scale=2; $total_after / 1048576" | bc)MB"
-echo "  - Total saved: $(echo "scale=1; 100 - ($total_after * 100 / $total_before)" | bc)%"
-echo ""
-echo "🎉 Your website will now load much faster!"
-echo ""
-echo "Next steps:"
-echo "  1. Restart your dev server: npm run dev"
-echo "  2. Test your site: http://localhost:3000"
-echo "  3. Check loading speed - it should be fast now!"
-echo ""
-echo "📦 Original images backed up in: ./originals/"
+# Backup originals and replace with optimized
+if [ "$count" -gt 0 ]; then
+    echo "📦 Creating backup of originals..."
+    mkdir -p "${PUBLIC_DIR}_backup_$(date +%Y%m%d_%H%M%S)"
+    backup_dir="${PUBLIC_DIR}_backup_$(date +%Y%m%d_%H%M%S)"
+    
+    echo "📝 Replacing with optimized versions..."
+    for img in "$TEMP_DIR"/*.jpg "$TEMP_DIR"/*.JPG; do
+        if [ -f "$img" ]; then
+            filename=$(basename "$img")
+            # Backup original
+            cp "$PUBLIC_DIR/$filename" "$backup_dir/$filename" 2>/dev/null || true
+            # Replace with optimized
+            cp "$img" "$PUBLIC_DIR/$filename"
+        fi
+    done
+    
+    echo ""
+    echo "✅ Optimization complete!"
+    echo "📁 Originals backed up to: $backup_dir"
+    echo "🚀 Images are now optimized for faster loading!"
+else
+    echo "❌ No images found to optimize"
+fi
 
+# Cleanup
+rm -rf "$TEMP_DIR"

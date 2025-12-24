@@ -5,10 +5,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-dark text-lightGray antialiased;
+    overflow-x: hidden;
   }
 
   h1,
@@ -23,6 +25,12 @@
   /* Dark theme selection */
   ::selection {
     @apply bg-accent text-dark;
+  }
+
+  /* Smooth scrolling for all browsers */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -68,10 +76,10 @@
     text-wrap: balance;
   }
 
-  /* Scroll Reveal Animations */
+  /* Scroll Reveal Animations - Reference Site Style */
   .reveal {
     opacity: 0;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .reveal-up {
@@ -99,15 +107,24 @@
     transform: translateY(0) translateX(0) scale(1);
   }
 
-  /* Animations */
+  /* Smooth Fade In Up Animation */
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 
@@ -127,12 +144,25 @@
       transform: translateY(0px);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
     }
   }
 
   .animate-fade-in-up {
     animation: fadeInUp 1s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
   }
 
   .animate-glow {
@@ -177,5 +207,139 @@
     top: 40%;
     left: 50%;
     animation-delay: 4s;
+  }
+
+  /* Pinterest-style Masonry Grid */
+  @media (min-width: 640px) {
+    .sm\:columns-2 {
+      column-count: 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lg\:columns-3 {
+      column-count: 3;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .xl\:columns-4 {
+      column-count: 4;
+    }
+  }
+
+  .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Smooth Scroll Behavior */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Optimized Image Loading */
+  .image-loading {
+    background: linear-gradient(
+      90deg,
+      rgba(26, 26, 26, 0.8) 0%,
+      rgba(26, 26, 26, 0.9) 50%,
+      rgba(26, 26, 26, 0.8) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s infinite linear;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 212, 255, 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 1000px 100%;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Advanced Scroll Animations */
+  @keyframes fadeInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes rotateFloat {
+    0%, 100% {
+      transform: rotate(0deg) translateY(0px);
+    }
+    50% {
+      transform: rotate(5deg) translateY(-20px);
+    }
+  }
+
+  .animate-fade-in-left {
+    animation: fadeInFromLeft 1s ease-out forwards;
+  }
+
+  .animate-fade-in-right {
+    animation: fadeInFromRight 1s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.8s ease-out forwards;
+  }
+
+  .animate-rotate-float {
+    animation: rotateFloat 8s ease-in-out infinite;
+  }
+
+  /* Smooth parallax effect */
+  .parallax-element {
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+
+  /* Enhanced hover effects */
+  .image-hover-glow {
+    transition: all 0.3s ease;
+  }
+
+  .image-hover-glow:hover {
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3),
+                0 0 40px rgba(0, 212, 255, 0.1);
+    transform: translateY(-5px) scale(1.02);
   }
 }

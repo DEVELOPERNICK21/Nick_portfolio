@@ -1,13 +1,24 @@
-import Image from "next/image";
-import Link from "next/link";
 import ParallaxHero from "@/components/ParallaxHero";
-import Gallery from "@/components/Gallery";
+import HomeGallery from "@/components/HomeGallery";
+import FloatingImageGallery from "@/components/FloatingImageGallery";
+import ParallaxImageSection from "@/components/ParallaxImageSection";
+import LifestyleGallery from "@/components/LifestyleGallery";
 import Stats from "@/components/Stats";
 import CTA from "@/components/CTA";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
+  // Featured images for parallax section
+  const featuredImages = [
+    "/gallery-1.jpg",
+    "/gallery-2.jpg",
+    "/gallery-3.jpg",
+    "/portfolio-1.jpg",
+    "/portfolio-2.jpg",
+    "/portfolio-3.jpg",
+  ];
+
   return (
     <>
       {/* JSON-LD Structured Data for SEO */}
@@ -40,17 +51,35 @@ export default function Home() {
       />
 
       <ScrollProgress />
+
+      {/* Hero Section - Full Screen */}
       <ParallaxHero />
 
-      <ScrollReveal direction='fade'>
+      {/* Portfolio Gallery Section */}
+      <ScrollReveal direction='up' delay={100}>
+        <HomeGallery />
+      </ScrollReveal>
+
+      {/* Floating Interactive Gallery - New Creative Section */}
+      <FloatingImageGallery />
+
+      {/* Parallax Featured Section - Scroll Interactive */}
+      <ParallaxImageSection
+        images={featuredImages}
+        title='FEATURED'
+        subtitle='Immersive scroll experience with parallax effects'
+      />
+
+      {/* Lifestyle Gallery Section */}
+      <LifestyleGallery />
+
+      {/* Stats Section */}
+      <ScrollReveal direction='fade' delay={200}>
         <Stats />
       </ScrollReveal>
 
-      <ScrollReveal direction='up' delay={100}>
-        <Gallery />
-      </ScrollReveal>
-
-      <ScrollReveal direction='fade' delay={200}>
+      {/* Call to Action */}
+      <ScrollReveal direction='fade' delay={300}>
         <CTA />
       </ScrollReveal>
     </>
