@@ -31,7 +31,7 @@ export default function ImageLightbox({
   }, [currentIndex]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || typeof window === 'undefined') return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();

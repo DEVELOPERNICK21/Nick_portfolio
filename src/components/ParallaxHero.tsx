@@ -10,6 +10,8 @@ export default function ParallaxHero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -31,6 +33,8 @@ export default function ParallaxHero() {
   }, []);
 
   const scrollToGallery = () => {
+    if (typeof window === 'undefined') return;
+    
     const gallery = document.querySelector("#gallery-section");
     if (gallery) {
       gallery.scrollIntoView({ behavior: "smooth" });

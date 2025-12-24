@@ -15,9 +15,12 @@ export default function ParallaxImageSection({
   subtitle,
 }: ParallaxImageSectionProps) {
   const [scrollY, setScrollY] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
@@ -25,14 +28,25 @@ export default function ParallaxImageSection({
       }
     };
 
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight);
+    };
+
+    setWindowHeight(window.innerHeight);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize, { passive: true });
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const getParallaxOffset = (index: number) => {
     const speed = 0.3 + index * 0.1;
     const sectionTop = sectionRef.current?.offsetTop || 0;
-    const scrollProgress = (scrollY - sectionTop + window.innerHeight) / window.innerHeight;
+    const innerHeight = windowHeight || (typeof window !== 'undefined' ? window.innerHeight : 800);
+    const scrollProgress = (scrollY - sectionTop + innerHeight) / innerHeight;
     return scrollProgress * 100 * speed;
   };
 

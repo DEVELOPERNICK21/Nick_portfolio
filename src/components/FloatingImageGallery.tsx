@@ -20,6 +20,7 @@ export default function FloatingImageGallery() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
 
   // Generate random floating images from available gallery
   useEffect(() => {
@@ -50,12 +51,24 @@ export default function FloatingImageGallery() {
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight);
+    };
+
+    setWindowHeight(window.innerHeight);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize, { passive: true });
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const getSizeClasses = (size: string) => {
@@ -99,7 +112,8 @@ export default function FloatingImageGallery() {
           <div className='relative min-h-[800px] md:min-h-[1000px]'>
             {images.map((image, index) => {
               const sectionTop = containerRef.current?.offsetTop || 0;
-              const scrollProgress = Math.max(0, (scrollY - sectionTop + window.innerHeight * 0.5) / window.innerHeight);
+              const innerHeight = windowHeight || (typeof window !== 'undefined' ? window.innerHeight : 800);
+              const scrollProgress = Math.max(0, (scrollY - sectionTop + innerHeight * 0.5) / innerHeight);
               const parallaxY = scrollProgress * 200 * image.parallaxSpeed;
               const floatOffset = Math.sin((scrollY * 0.01) + image.delay) * 15;
               const rotation = Math.sin((scrollY * 0.008) + image.delay) * 3;

@@ -49,6 +49,8 @@ export default function ScrollImageReveal({
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -58,6 +60,8 @@ export default function ScrollImageReveal({
   }, []);
 
   const getTransform = () => {
+    if (typeof window === 'undefined') return 'translateY(0px)';
+    
     const baseTransform = isVisible ? 0 : getInitialOffset();
     const parallaxOffset = ref.current
       ? (window.scrollY - (ref.current.offsetTop - window.innerHeight)) *

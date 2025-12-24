@@ -6,6 +6,8 @@ export default function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const updateScrollProgress = () => {
       const scrollPx = document.documentElement.scrollTop;
       const winHeightPx =
