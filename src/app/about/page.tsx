@@ -85,7 +85,7 @@ export default function AboutPage() {
             <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-8'>
               <div className='text-center'>
                 <h3 className='font-semibold text-accent mb-2'>Height</h3>
-                <p className='text-lg text-gray-300'>5'9" / 175 cm</p>
+                <p className='text-lg text-gray-300'>5&apos;9&quot; / 175 cm</p>
               </div>
               <div className='text-center'>
                 <h3 className='font-semibold text-accent mb-2'>
