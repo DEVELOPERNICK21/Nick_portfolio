@@ -19,7 +19,7 @@ export default function Footer() {
               href='https://castyou.in/nikhil-kubde/'
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center gap-2 text-accent hover:text-accentGold transition-colors text-sm'
+              className='inline-flex items-center gap-2 text-white hover:text-accentGold transition-colors text-sm'
             >
               View Agency Profile →
             </a>
@@ -32,7 +32,7 @@ export default function Footer() {
               <li>
                 <Link
                   href='/about'
-                  className='text-gray-400 hover:text-accent transition-colors text-sm'
+                  className='text-gray-400 hover:text-white transition-colors text-sm'
                 >
                   About
                 </Link>
@@ -40,7 +40,7 @@ export default function Footer() {
               <li>
                 <Link
                   href='/portfolio'
-                  className='text-gray-400 hover:text-accent transition-colors text-sm'
+                  className='text-gray-400 hover:text-white transition-colors text-sm'
                 >
                   Portfolio
                 </Link>
@@ -48,7 +48,7 @@ export default function Footer() {
               <li>
                 <Link
                   href='/contact'
-                  className='text-gray-400 hover:text-accent transition-colors text-sm'
+                  className='text-gray-400 hover:text-white transition-colors text-sm'
                 >
                   Contact
                 </Link>
@@ -58,7 +58,7 @@ export default function Footer() {
                   href='https://castyou.in/nikhil-kubde/'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='text-gray-400 hover:text-accent transition-colors text-sm'
+                  className='text-gray-400 hover:text-white transition-colors text-sm'
                 >
                   CastYou Profile
                 </a>
@@ -74,7 +74,7 @@ export default function Footer() {
                 href='https://instagram.com/yourhandle'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors'
+                className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-dark transition-colors'
                 aria-label='Instagram'
               >
                 <FaInstagram size={18} />
@@ -83,7 +83,7 @@ export default function Footer() {
                 href='https://twitter.com/yourhandle'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors'
+                className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-dark transition-colors'
                 aria-label='Twitter'
               >
                 <FaTwitter size={18} />
@@ -92,7 +92,7 @@ export default function Footer() {
                 href='https://linkedin.com/in/yourprofile'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors'
+                className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-dark transition-colors'
                 aria-label='LinkedIn'
               >
                 <FaLinkedin size={18} />
@@ -105,7 +105,7 @@ export default function Footer() {
         <div className='border-t border-accent/10 pt-8 text-center text-sm text-gray-400'>
           <p className='flex items-center justify-center gap-2'>
             © {currentYear} Nikhil Kubde. Made with{" "}
-            <FaHeart className='text-accent' /> for the craft
+            <FaHeart className='text-white' /> for the craft
           </p>
         </div>
       </div>

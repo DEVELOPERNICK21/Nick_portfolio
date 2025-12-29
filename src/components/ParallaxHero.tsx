@@ -59,7 +59,7 @@ export default function ParallaxHero() {
           src='/hero-image.jpg'
           alt='Nikhil Kubde - Professional modeling photo'
           fill
-          className='object-cover scale-110'
+          className='object-cover md:object-top object-center scale-110'
           priority
           quality={90}
           sizes='100vw'
@@ -79,7 +79,7 @@ export default function ParallaxHero() {
         }}
       >
         <div className='mb-6'>
-          <span className='text-xs uppercase tracking-widest text-accent/80 font-semibold px-4 py-2 border border-accent/30 bg-accent/10 backdrop-blur-sm inline-block'>
+          <span className='text-xs uppercase tracking-widest text-white/90 font-semibold px-4 py-2 border border-white/30 bg-white/10 backdrop-blur-sm inline-block'>
             Professional Model
           </span>
         </div>
@@ -100,7 +100,7 @@ export default function ParallaxHero() {
             href='https://castyou.in/nikhil-kubde/'
             target='_blank'
             rel='noopener noreferrer'
-            className='text-accent hover:text-accentGold transition-colors underline underline-offset-4'
+            className='text-white hover:text-accentGold transition-colors underline underline-offset-4'
           >
             CastYou Agency
           </a>
@@ -136,11 +136,11 @@ export default function ParallaxHero() {
         }}
       >
         <div className='flex flex-col items-center gap-2 animate-bounce'>
-          <span className='text-xs text-white/80 uppercase tracking-widest group-hover:text-accent transition-colors'>
+          <span className='text-xs text-white/80 uppercase tracking-widest group-hover:text-white transition-colors'>
             Scroll
           </span>
           <div className='w-6 h-10 border-2 border-white/80 rounded-full flex justify-center p-2 group-hover:border-accent transition-colors'>
-            <FaChevronDown className='w-3 h-3 text-white/80 group-hover:text-accent animate-pulse' />
+            <FaChevronDown className='w-3 h-3 text-white/80 group-hover:text-white animate-pulse' />
           </div>
         </div>
       </div>

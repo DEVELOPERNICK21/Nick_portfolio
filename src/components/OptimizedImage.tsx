@@ -26,37 +26,56 @@ export default function OptimizedImage({
   onLoad,
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   const handleLoad = () => {
     setIsLoading(false);
     if (onLoad) onLoad();
   };
 
+  const handleError = () => {
+    setIsLoading(false);
+    setHasError(true);
+    console.error(`Failed to load image: ${src}`);
+  };
+
   return (
     <div className='relative w-full h-full'>
       {/* Minimal Loading Placeholder - Lightweight */}
-      {isLoading && (
+      {isLoading && !hasError && (
         <div className='absolute inset-0 bg-secondary animate-pulse flex items-center justify-center'>
-          <div className='w-8 h-8 border-2 border-accent/20 border-t-accent/60 rounded-full animate-spin' />
+          <div className='w-8 h-8 border-2 border-white/20 border-t-white/60 rounded-full animate-spin' />
+        </div>
+      )}
+
+      {/* Error Fallback */}
+      {hasError && (
+        <div className='absolute inset-0 bg-secondary flex items-center justify-center'>
+          <div className='text-gray-500 text-sm text-center p-4'>
+            <p>Image unavailable</p>
+          </div>
         </div>
       )}
 
       {/* Optimized Image with Next.js built-in optimization */}
-      <Image
-        src={src}
-        alt={alt}
-        fill={fill}
-        className={`${className} transition-opacity duration-300 ${
-          isLoading ? "opacity-0" : "opacity-100"
-        }`}
-        sizes={sizes || "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
-        priority={priority}
-        quality={85}
-        onLoad={handleLoad}
-        placeholder='blur'
-        blurDataURL={blurDataURL}
-        loading={priority ? undefined : "lazy"}
-      />
+      {!hasError && (
+        <Image
+          src={src}
+          alt={alt}
+          fill={fill}
+          className={`${className} transition-opacity duration-300 ${
+            isLoading ? "opacity-0" : "opacity-100"
+          }`}
+          sizes={sizes || "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
+          priority={priority}
+          quality={85}
+          onLoad={handleLoad}
+          onError={handleError}
+          placeholder='blur'
+          blurDataURL={blurDataURL}
+          loading={priority ? undefined : "lazy"}
+        />
+      )}
     </div>
   );
 }

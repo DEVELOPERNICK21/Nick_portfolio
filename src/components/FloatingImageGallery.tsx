@@ -134,7 +134,7 @@ export default function FloatingImageGallery() {
                   <div
                     className={`${getSizeClasses(
                       image.size
-                    )} relative overflow-hidden rounded-lg shadow-2xl border border-white/10 hover:border-accent/50 transition-all duration-500 hover:scale-110 hover:shadow-[0_20px_60px_rgba(0,212,255,0.3)] hover:z-50`}
+                    )} relative overflow-hidden rounded-lg shadow-2xl border border-white/10 hover:border-white/50 transition-all duration-500 hover:scale-110 hover:shadow-[0_20px_60px_rgba(255,255,255,0.2)] hover:z-50`}
                   >
                     <OptimizedImage
                       src={image.src}

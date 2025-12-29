@@ -29,10 +29,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className='text-lightGray hover:text-accent transition-colors duration-200 font-medium relative group'
+                className='text-lightGray hover:text-white transition-colors duration-200 font-medium relative group'
               >
                 {link.label}
-                <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-accentGold transition-all duration-300 group-hover:w-full'></span>
+                <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-accentGold transition-all duration-300 group-hover:w-full'></span>
               </Link>
             ))}
           </div>
@@ -56,7 +56,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className='text-lightGray hover:text-accent transition-colors duration-200 font-medium py-2'
+                  className='text-lightGray hover:text-white transition-colors duration-200 font-medium py-2'
                 >
                   {link.label}
                 </Link>

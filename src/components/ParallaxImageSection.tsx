@@ -78,7 +78,7 @@ export default function ParallaxImageSection({
             return (
               <div
                 key={index}
-                className='relative aspect-[3/4] overflow-hidden rounded-lg group cursor-pointer border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,212,255,0.25)]'
+                className='relative aspect-[3/4] overflow-hidden rounded-lg group cursor-pointer border border-white/10 hover:border-white/50 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(255,255,255,0.15)]'
                 style={{
                   transform: `translateY(${isEven ? offset : -offset * 0.7}px)`,
                   transition: "transform 0.3s ease-out",
@@ -94,7 +94,7 @@ export default function ParallaxImageSection({
                 {/* Hover Overlay */}
                 <div className='absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6'>
                   <div className='transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500'>
-                    <span className='text-accent text-lg font-semibold block mb-2'>
+                    <span className='text-white text-lg font-semibold block mb-2'>
                       View Details
                     </span>
                     <div className='h-0.5 w-0 group-hover:w-24 bg-gradient-to-r from-accent to-accentGold transition-all duration-500'></div>

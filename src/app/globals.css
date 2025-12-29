@@ -24,7 +24,7 @@
 
   /* Dark theme selection */
   ::selection {
-    @apply bg-accent text-dark;
+    @apply bg-white text-dark;
   }
 
   /* Smooth scrolling for all browsers */
@@ -40,19 +40,18 @@
   }
 
   .btn-primary {
-    @apply bg-gradient-to-r from-accent to-accentGold text-dark px-8 py-3 rounded-md font-bold 
-           hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all duration-300 
+    @apply bg-gradient-to-r from-white to-accentGold text-dark px-8 py-3 rounded-md font-bold 
+           hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 
            transform hover:scale-105 active:scale-95;
   }
 
   .btn-secondary {
-    @apply border-2 border-accent text-accent px-8 py-3 rounded-md font-medium 
-           hover:bg-accent hover:text-dark transition-all duration-300;
+    @apply border-2 border-white text-white px-8 py-3 rounded-md font-medium 
+           hover:bg-white hover:text-dark transition-all duration-300;
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-serif mb-8 text-center
-           bg-gradient-to-r from-accent to-accentGold bg-clip-text text-transparent;
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif mb-8 text-center text-white;
   }
 
   .image-overlay {
@@ -61,13 +60,13 @@
   }
 
   .glow-text {
-    @apply text-accent drop-shadow-[0_0_10px_rgba(0,212,255,0.5)];
+    @apply text-white;
   }
 
   .card-dark {
-    @apply bg-secondary border border-accent/20 rounded-lg p-6
-           hover:border-accent/50 transition-all duration-300
-           hover:shadow-[0_0_30px_rgba(0,212,255,0.2)];
+    @apply bg-secondary border border-white/20 rounded-lg p-6
+           hover:border-white/50 transition-all duration-300
+           hover:shadow-[0_0_30px_rgba(255,255,255,0.1)];
   }
 }
 

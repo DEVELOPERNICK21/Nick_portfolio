@@ -29,7 +29,7 @@ export default function AboutPage() {
         {/* Main Content */}
         <div className='grid md:grid-cols-2 gap-12 items-center mb-20'>
           <ScrollReveal direction='left'>
-            <div className='relative h-[600px] rounded-lg overflow-hidden border border-accent/20 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,212,255,0.3)]'>
+            <div className='relative h-[600px] rounded-lg overflow-hidden border border-white/20 hover:border-white/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]'>
               <Image
                 src='/about-image.jpg'
                 alt='Nikhil Kubde - Professional modeling photo'
@@ -68,7 +68,7 @@ export default function AboutPage() {
                 href='https://castyou.in/nikhil-kubde/'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='inline-block mt-4 text-accent hover:text-accentGold transition-colors font-medium'
+                className='inline-block mt-4 text-white hover:text-accentGold transition-colors font-medium'
               >
                 View Full CastYou Profile →
               </a>
@@ -84,21 +84,21 @@ export default function AboutPage() {
             </h2>
             <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-8'>
               <div className='text-center'>
-                <h3 className='font-semibold text-accent mb-2'>Height</h3>
+                <h3 className='font-semibold text-white mb-2'>Height</h3>
                 <p className='text-lg text-gray-300'>5&apos;9&quot; / 175 cm</p>
               </div>
               <div className='text-center'>
-                <h3 className='font-semibold text-accent mb-2'>
+                <h3 className='font-semibold text-white mb-2'>
                   Chest-Waist-Hips
                 </h3>
                 <p className='text-lg text-gray-300'>38-30-36</p>
               </div>
               <div className='text-center'>
-                <h3 className='font-semibold text-accent mb-2'>Shirt Size</h3>
+                <h3 className='font-semibold text-white mb-2'>Shirt Size</h3>
                 <p className='text-lg text-gray-300'>M / 38</p>
               </div>
               <div className='text-center'>
-                <h3 className='font-semibold text-accent mb-2'>Shoe Size</h3>
+                <h3 className='font-semibold text-white mb-2'>Shoe Size</h3>
                 <p className='text-lg text-gray-300'>US 9 / EU 42</p>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className='px-6 py-3 bg-gradient-to-r from-accent/20 to-accentGold/20 border border-accent/30 text-lightGray rounded-full text-sm font-medium hover:border-accent hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all duration-300'
+                  className='px-6 py-3 bg-gradient-to-r from-white/20 to-accentGold/20 border border-white/30 text-lightGray rounded-full text-sm font-medium hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300'
                 >
                   {skill}
                 </span>

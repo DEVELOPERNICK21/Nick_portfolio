@@ -20,7 +20,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className='relative z-10 text-center text-white px-4'>
-        <h1 className='text-5xl md:text-7xl lg:text-8xl font-serif mb-6 animate-fade-in bg-gradient-to-r from-accent via-lightGray to-accentGold bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(0,212,255,0.3)]'>
+        <h1 className='text-5xl md:text-7xl lg:text-8xl font-serif mb-6 animate-fade-in text-white drop-shadow-2xl'>
           Nikhil Kubde
         </h1>
         <p className='text-xl md:text-2xl lg:text-3xl mb-4 font-light tracking-wide'>
@@ -30,7 +30,7 @@ export default function Hero() {
           href='https://castyou.in/nikhil-kubde/'
           target='_blank'
           rel='noopener noreferrer'
-          className='inline-block text-accent hover:text-accentGold transition-colors mb-8'
+          className='inline-block text-white hover:text-accentGold transition-colors mb-8'
         >
           <span className='text-sm uppercase tracking-wider'>
             Represented by CastYou Agency

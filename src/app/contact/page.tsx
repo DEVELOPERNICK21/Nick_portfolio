@@ -45,12 +45,12 @@ export default function ContactPage() {
               <div className='space-y-6 mb-10'>
                 <div>
                   <h3 className='font-semibold mb-2 flex items-center gap-2 text-lightGray'>
-                    <FaEnvelope className='text-accent' />
+                    <FaEnvelope className='text-white' />
                     Email
                   </h3>
                   <a
                     href='mailto:nikhilkubde21@gmail.com'
-                    className='text-gray-400 hover:text-accent transition-colors'
+                    className='text-gray-400 hover:text-white transition-colors'
                   >
                     nikhilkubde21@gmail.com
                   </a>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                     href='https://castyou.in/nikhil-kubde/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='text-sm text-accent hover:text-accentGold transition-colors'
+                    className='text-sm text-white hover:text-accentGold transition-colors'
                   >
                     View Profile on CastYou →
                   </a>
@@ -90,7 +90,7 @@ export default function ContactPage() {
                     href='https://instagram.com/yourhandle'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='w-12 h-12 bg-secondary border border-accent/30 text-accent rounded-full flex items-center justify-center hover:bg-accent hover:text-dark hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all duration-300'
+                    className='w-12 h-12 bg-secondary border border-white/30 text-white rounded-full flex items-center justify-center hover:bg-white hover:text-dark hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300'
                     aria-label='Instagram'
                   >
                     <FaInstagram size={20} />
@@ -99,7 +99,7 @@ export default function ContactPage() {
                     href='https://twitter.com/yourhandle'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='w-12 h-12 bg-secondary border border-accent/30 text-accent rounded-full flex items-center justify-center hover:bg-accent hover:text-dark hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all duration-300'
+                    className='w-12 h-12 bg-secondary border border-white/30 text-white rounded-full flex items-center justify-center hover:bg-white hover:text-dark hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300'
                     aria-label='Twitter'
                   >
                     <FaTwitter size={20} />
@@ -108,7 +108,7 @@ export default function ContactPage() {
                     href='https://linkedin.com/in/yourprofile'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='w-12 h-12 bg-secondary border border-accent/30 text-accent rounded-full flex items-center justify-center hover:bg-accent hover:text-dark hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all duration-300'
+                    className='w-12 h-12 bg-secondary border border-white/30 text-white rounded-full flex items-center justify-center hover:bg-white hover:text-dark hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300'
                     aria-label='LinkedIn'
                   >
                     <FaLinkedin size={20} />

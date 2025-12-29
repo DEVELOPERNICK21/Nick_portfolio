@@ -20,7 +20,7 @@ export default function Stats() {
                 animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
               }}
             >
-              <div className='text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-3 group-hover:text-accent transition-colors duration-300'>
+              <div className='text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-3 group-hover:text-accentGold transition-colors duration-300'>
                 {stat.number}
               </div>
               <div className='text-gray-400 text-sm md:text-base font-medium uppercase tracking-wider'>

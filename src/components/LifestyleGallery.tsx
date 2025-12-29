@@ -16,26 +16,131 @@ export default function LifestyleGallery() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [visibleItems, setVisibleItems] = useState(9); // Start with fewer items
+  const [visibleItems, setVisibleItems] = useState(20); // Show all items initially
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   const lifestyleItems: LifestyleItem[] = [
-    { src: "/nikhil-kubde-extra-01.jpg", alt: "Lifestyle photography - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-02.jpg", alt: "Casual lifestyle shoot - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-03.jpg", alt: "Lifestyle editorial - Nikhil Kubde", category: "Lifestyle", height: "short" },
-    { src: "/nikhil-kubde-extra-04.jpg", alt: "Everyday lifestyle photography - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-05.jpg", alt: "Lifestyle fashion - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-06.jpg", alt: "Lifestyle portrait - Nikhil Kubde", category: "Lifestyle", height: "short" },
-    { src: "/nikhil-kubde-extra-07.jpg", alt: "Lifestyle editorial shoot - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-08.jpg", alt: "Casual lifestyle photography - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-09.jpg", alt: "Lifestyle brand photography - Nikhil Kubde", category: "Lifestyle", height: "short" },
-    { src: "/nikhil-kubde-extra-10.jpg", alt: "Lifestyle fashion editorial - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-11.jpg", alt: "Everyday lifestyle shoot - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-12.jpg", alt: "Lifestyle portrait photography - Nikhil Kubde", category: "Lifestyle", height: "short" },
-    { src: "/nikhil-kubde-extra-13.jpg", alt: "Lifestyle editorial - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-14.jpg", alt: "Casual lifestyle photography - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-15.jpg", alt: "Lifestyle brand shoot - Nikhil Kubde", category: "Lifestyle", height: "short" },
+    {
+      src: "/nikhil-kubde-extra-01.jpg",
+      alt: "Lifestyle photography - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "tall",
+    },
+    {
+      src: "/nikhil-kubde-extra-02.jpg",
+      alt: "Casual lifestyle shoot - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "medium",
+    },
+    {
+      src: "/nikhil-kubde-extra-03.jpg",
+      alt: "Lifestyle editorial - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "short",
+    },
+    {
+      src: "/nikhil-kubde-extra-04.jpg",
+      alt: "Everyday lifestyle photography - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "tall",
+    },
+    {
+      src: "/nikhil-kubde-extra-05.jpg",
+      alt: "Lifestyle fashion - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "medium",
+    },
+    {
+      src: "/nikhil-kubde-extra-06.jpg",
+      alt: "Lifestyle portrait - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "short",
+    },
+    {
+      src: "/nikhil-kubde-extra-07.jpg",
+      alt: "Lifestyle editorial shoot - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "tall",
+    },
+    {
+      src: "/nikhil-kubde-extra-08.jpg",
+      alt: "Casual lifestyle photography - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "medium",
+    },
+    {
+      src: "/nikhil-kubde-extra-09.jpg",
+      alt: "Lifestyle brand photography - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "short",
+    },
+    {
+      src: "/nikhil-kubde-extra-10.jpg",
+      alt: "Lifestyle fashion editorial - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "tall",
+    },
+    {
+      src: "/nikhil-kubde-extra-11.jpg",
+      alt: "Everyday lifestyle shoot - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "medium",
+    },
+    {
+      src: "/nikhil-kubde-extra-12.jpg",
+      alt: "Lifestyle portrait photography - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "short",
+    },
+    {
+      src: "/nikhil-kubde-extra-13.jpg",
+      alt: "Lifestyle editorial - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "tall",
+    },
+    {
+      src: "/nikhil-kubde-extra-14.jpg",
+      alt: "Casual lifestyle photography - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "medium",
+    },
+    {
+      src: "/nikhil-kubde-extra-15.jpg",
+      alt: "Lifestyle brand shoot - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "short",
+    },
+    {
+      src: "/nikhil-kubde-extra-16.jpg",
+      alt: "Portrait photography - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "medium",
+    },
+    {
+      src: "/nikhil-kubde-extra-17.jpg",
+      alt: "Golden hour portrait - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "tall",
+    },
+    {
+      src: "/nikhil-kubde-extra-18.jpg",
+      alt: "Landscape lifestyle photography - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "tall",
+    },
+    {
+      src: "/nikhil-kubde-extra-19.jpg",
+      alt: "Adventure lifestyle photography - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "medium",
+    },
+    {
+      src: "/nikhil-kubde-extra-20.jpg",
+      alt: "Lifestyle portrait - Nikhil Kubde",
+      category: "Lifestyle",
+      height: "short",
+    },
   ];
 
   const displayedItems = lifestyleItems.slice(0, visibleItems);
@@ -75,7 +180,9 @@ export default function LifestyleGallery() {
   };
 
   const handlePrevious = () => {
-    setLightboxIndex((prev) => (prev - 1 + displayedItems.length) % displayedItems.length);
+    setLightboxIndex(
+      (prev) => (prev - 1 + displayedItems.length) % displayedItems.length
+    );
   };
 
   const handleGoTo = (index: number) => {
@@ -124,7 +231,7 @@ export default function LifestyleGallery() {
             }`}
           >
             <div className='inline-block mb-6'>
-              <span className='text-xs uppercase tracking-widest text-accent font-semibold px-4 py-2 border border-accent/30 bg-accent/10 backdrop-blur-sm'>
+              <span className='text-xs uppercase tracking-widest text-white font-semibold px-4 py-2 border border-white/30 bg-white/10 backdrop-blur-sm'>
                 Lifestyle
               </span>
             </div>
@@ -133,7 +240,8 @@ export default function LifestyleGallery() {
             </h2>
             <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-6'></div>
             <p className='text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light'>
-              Capturing moments beyond the studio - everyday style and authentic moments
+              Capturing moments beyond the studio - everyday style and authentic
+              moments
             </p>
           </div>
 
@@ -157,9 +265,13 @@ export default function LifestyleGallery() {
                     : "none",
                 }}
               >
-                <div className='relative overflow-hidden bg-secondary/30 transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,212,255,0.15)] transform hover:-translate-y-1'>
+                <div className='relative overflow-hidden bg-secondary/30 transition-all duration-300 hover:shadow-[0_20px_60px_rgba(255,255,255,0.1)] transform hover:-translate-y-1'>
                   {/* Optimized Image - Only first 3 with priority */}
-                  <div className={`relative w-full aspect-[3/4] ${getHeightClass(item.height)}`}>
+                  <div
+                    className={`relative w-full aspect-[3/4] ${getHeightClass(
+                      item.height
+                    )}`}
+                  >
                     <OptimizedImage
                       src={item.src}
                       alt={item.alt}
