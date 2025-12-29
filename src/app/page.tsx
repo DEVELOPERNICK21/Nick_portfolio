@@ -5,18 +5,16 @@ import ScrollProgress from "@/components/ScrollProgress";
 import ScrollReveal from "@/components/ScrollReveal";
 
 // Lazy load heavy components that aren't immediately visible
+// Using simpler loading states to avoid build issues
 const FloatingImageGallery = dynamic(() => import("@/components/FloatingImageGallery"), {
-  loading: () => <div className="min-h-[800px]" />,
   ssr: true,
 });
 
 const ParallaxImageSection = dynamic(() => import("@/components/ParallaxImageSection"), {
-  loading: () => <div className="min-h-[600px]" />,
   ssr: true,
 });
 
 const LifestyleGallery = dynamic(() => import("@/components/LifestyleGallery"), {
-  loading: () => <div className="min-h-[800px]" />,
   ssr: true,
 });
 

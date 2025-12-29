@@ -34,10 +34,6 @@ const nextConfig = {
   optimizeFonts: true,
   // Performance optimizations
   poweredByHeader: false,
-  // Enable experimental features for better performance
-  experimental: {
-    optimizeCss: true,
-  },
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
