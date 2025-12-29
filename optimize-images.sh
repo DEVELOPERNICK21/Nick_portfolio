@@ -29,10 +29,15 @@ optimize_with_sips() {
         cp "$input_file" "$output_file"
         
         # Resize if larger than 1920px width (maintains aspect ratio)
+        # This prevents oversized images from being served
         sips -Z 1920 "$output_file" > /dev/null 2>&1
         
-        # Set quality to 85% (good balance between quality and size)
-        sips -s format jpeg -s formatOptions 85 "$output_file" > /dev/null 2>&1
+        # Set quality to 75% (optimal balance: great quality, much smaller files)
+        # For web use, 75% is perfect - almost no visible difference from 100%
+        sips -s format jpeg -s formatOptions 75 "$output_file" > /dev/null 2>&1
+        
+        # Additional optimization: strip metadata to reduce file size
+        sips --deleteColorManagementProperties "$output_file" > /dev/null 2>&1
         
         # Get new size
         new_size=$(stat -f%z "$output_file" 2>/dev/null || stat -c%s "$output_file" 2>/dev/null)

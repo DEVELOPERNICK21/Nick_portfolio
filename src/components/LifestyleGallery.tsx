@@ -19,6 +19,7 @@ export default function LifestyleGallery() {
   const [visibleItems, setVisibleItems] = useState(6); // Start with fewer items for faster initial load
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const lifestyleItems: LifestyleItem[] = [
     {
@@ -127,17 +128,25 @@ export default function LifestyleGallery() {
 
   const displayedItems = lifestyleItems.slice(0, visibleItems);
 
-  // Intersection Observer for scroll animations
+  // Intersection Observer for smooth scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
+            setIsInitialLoad(false);
+            // Unobserve after first trigger for better performance
+            if (entry.target) {
+              observer.unobserve(entry.target);
+            }
           }
         });
       },
-      { threshold: 0.1, rootMargin: "100px" }
+      {
+        threshold: 0.05, // Trigger earlier for smoother appearance
+        rootMargin: "50px", // Reduced from 100px for more accurate triggering
+      }
     );
 
     const currentRef = sectionRef.current;
@@ -188,7 +197,24 @@ export default function LifestyleGallery() {
   };
 
   const loadMore = () => {
-    setVisibleItems((prev) => Math.min(prev + 6, lifestyleItems.length));
+    // Smoothly load more items
+    setVisibleItems((prev) => {
+      const next = Math.min(prev + 6, lifestyleItems.length);
+      // Scroll to maintain position after loading
+      setTimeout(() => {
+        if (sectionRef.current) {
+          const rect = sectionRef.current.getBoundingClientRect();
+          const scrollY = window.scrollY;
+          if (rect.top < window.innerHeight * 0.5) {
+            window.scrollTo({
+              top: scrollY + rect.top - window.innerHeight * 0.3,
+              behavior: "smooth",
+            });
+          }
+        }
+      }, 100);
+      return next;
+    });
   };
 
   return (
@@ -206,10 +232,10 @@ export default function LifestyleGallery() {
         <div className='container-custom relative z-10'>
           {/* Section Header */}
           <div
-            className={`text-center mb-16 md:mb-20 transition-all duration-1000 ease-out ${
+            className={`text-center mb-16 md:mb-20 transition-all duration-700 ease-out ${
               isVisible
                 ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
+                : "opacity-0 translate-y-8"
             }`}
           >
             <div className='inline-block mb-6'>
@@ -229,10 +255,14 @@ export default function LifestyleGallery() {
 
           {/* Masonry Grid - Optimized Loading */}
           <div
-            className={`columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 md:gap-6 transition-opacity duration-1000 ${
+            className={`columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 md:gap-6 transition-opacity duration-500 ${
               isVisible ? "opacity-100" : "opacity-0"
             }`}
-            style={{ columnGap: "1.5rem" }}
+            style={{
+              columnGap: "1.5rem",
+              willChange: isInitialLoad ? "opacity" : "auto",
+              minHeight: isInitialLoad ? "600px" : "auto",
+            }}
           >
             {displayedItems.map((item, index) => (
               <div
@@ -242,12 +272,18 @@ export default function LifestyleGallery() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{
-                  animation: isVisible
-                    ? `fadeInUp 0.8s ease-out ${index * 0.08}s both`
-                    : "none",
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                  transition: `opacity 0.6s ease-out ${
+                    index * 0.05
+                  }s, transform 0.6s ease-out ${index * 0.05}s`,
+                  willChange: isVisible ? "auto" : "opacity, transform",
                 }}
               >
-                <div className='relative overflow-hidden bg-secondary/30 transition-all duration-300 hover:shadow-[0_20px_60px_rgba(255,255,255,0.1)] transform hover:-translate-y-1'>
+                <div
+                  className='relative overflow-hidden bg-secondary/30 transition-all duration-300 hover:shadow-[0_20px_60px_rgba(255,255,255,0.1)] transform hover:-translate-y-1'
+                  style={{ willChange: "transform" }}
+                >
                   {/* Optimized Image - Only first 3 with priority */}
                   <div
                     className={`relative w-full aspect-[3/4] ${getHeightClass(
@@ -257,7 +293,7 @@ export default function LifestyleGallery() {
                     <OptimizedImage
                       src={item.src}
                       alt={item.alt}
-                      className={`object-cover transition-all duration-500 ${
+                      className={`object-cover transition-all duration-300 ${
                         hoveredIndex === index
                           ? "scale-105 brightness-110"
                           : "scale-100 brightness-100"
@@ -308,10 +344,10 @@ export default function LifestyleGallery() {
           {/* Load More Button */}
           {visibleItems < lifestyleItems.length && (
             <div
-              className={`text-center mt-12 transition-all duration-1000 delay-500 ${
+              className={`text-center mt-12 transition-all duration-500 delay-300 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
+                  : "opacity-0 translate-y-8"
               }`}
             >
               <button

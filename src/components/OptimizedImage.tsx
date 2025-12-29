@@ -29,6 +29,11 @@ export default function OptimizedImage({
   const [hasError, setHasError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
   const [imageSrc, setImageSrc] = useState(src);
+  
+  // Adaptive quality: higher for priority images, lower for lazy-loaded
+  // Priority images (hero, above fold): 80% quality
+  // Lazy images: 70% quality (smaller file size, still great quality)
+  const imageQuality = priority ? 80 : 70;
 
   // Reset error state when src changes
   useEffect(() => {
@@ -90,9 +95,9 @@ export default function OptimizedImage({
           className={`${className} transition-opacity duration-300 ${
             isLoading ? "opacity-0" : "opacity-100"
           }`}
-          sizes={sizes || "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
+          sizes={sizes || "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"}
           priority={priority}
-          quality={75}
+          quality={imageQuality}
           onLoad={handleLoad}
           onError={handleError}
           placeholder='blur'
