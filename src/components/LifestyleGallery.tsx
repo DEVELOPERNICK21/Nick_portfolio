@@ -16,7 +16,7 @@ export default function LifestyleGallery() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [visibleItems, setVisibleItems] = useState(20); // Show all items initially
+  const [visibleItems, setVisibleItems] = useState(6); // Start with fewer items for faster initial load
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -84,24 +84,6 @@ export default function LifestyleGallery() {
     {
       src: "/nikhil-kubde-extra-11.jpg",
       alt: "Everyday lifestyle shoot - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "medium",
-    },
-    {
-      src: "/nikhil-kubde-extra-12.jpg",
-      alt: "Lifestyle portrait photography - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "short",
-    },
-    {
-      src: "/nikhil-kubde-extra-13.jpg",
-      alt: "Lifestyle editorial - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "tall",
-    },
-    {
-      src: "/nikhil-kubde-extra-14.jpg",
-      alt: "Casual lifestyle photography - Nikhil Kubde",
       category: "Lifestyle",
       height: "medium",
     },

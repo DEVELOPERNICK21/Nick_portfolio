@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface OptimizedImageProps {
   src: string;
@@ -27,16 +27,40 @@ export default function OptimizedImage({
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const [imageSrc, setImageSrc] = useState(src);
+
+  // Reset error state when src changes
+  useEffect(() => {
+    setImageSrc(src);
+    setHasError(false);
+    setIsLoading(true);
+    setRetryCount(0);
+  }, [src]);
 
   const handleLoad = () => {
     setIsLoading(false);
+    setHasError(false);
     if (onLoad) onLoad();
   };
 
   const handleError = () => {
-    setIsLoading(false);
-    setHasError(true);
-    console.error(`Failed to load image: ${src}`);
+    // Retry once quickly (reduced delay for faster loading)
+    if (retryCount < 1) {
+      setTimeout(() => {
+        setRetryCount(prev => prev + 1);
+        setImageSrc(`${src}?retry=${retryCount + 1}&t=${Date.now()}`);
+        setIsLoading(true);
+        setHasError(false);
+      }, 300); // Reduced from 1000ms to 300ms
+    } else {
+      setIsLoading(false);
+      setHasError(true);
+      // Only log in development
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Failed to load image after ${retryCount + 1} attempts: ${src}`);
+      }
+    }
   };
 
   return (
@@ -48,11 +72,11 @@ export default function OptimizedImage({
         </div>
       )}
 
-      {/* Error Fallback */}
-      {hasError && (
-        <div className='absolute inset-0 bg-secondary flex items-center justify-center'>
-          <div className='text-gray-500 text-sm text-center p-4'>
-            <p>Image unavailable</p>
+      {/* Error Fallback - Only show after all retries failed */}
+      {hasError && retryCount >= 1 && (
+        <div className='absolute inset-0 bg-secondary/50 flex items-center justify-center'>
+          <div className='text-gray-400 text-xs text-center p-2'>
+            <p className='opacity-50'>Loading...</p>
           </div>
         </div>
       )}
@@ -60,7 +84,7 @@ export default function OptimizedImage({
       {/* Optimized Image with Next.js built-in optimization */}
       {!hasError && (
         <Image
-          src={src}
+          src={imageSrc}
           alt={alt}
           fill={fill}
           className={`${className} transition-opacity duration-300 ${
@@ -68,12 +92,13 @@ export default function OptimizedImage({
           }`}
           sizes={sizes || "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
           priority={priority}
-          quality={85}
+          quality={75}
           onLoad={handleLoad}
           onError={handleError}
           placeholder='blur'
           blurDataURL={blurDataURL}
           loading={priority ? undefined : "lazy"}
+          unoptimized={false}
         />
       )}
     </div>

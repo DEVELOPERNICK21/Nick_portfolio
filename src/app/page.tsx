@@ -1,12 +1,32 @@
+import dynamic from "next/dynamic";
 import ParallaxHero from "@/components/ParallaxHero";
 import HomeGallery from "@/components/HomeGallery";
-import FloatingImageGallery from "@/components/FloatingImageGallery";
-import ParallaxImageSection from "@/components/ParallaxImageSection";
-import LifestyleGallery from "@/components/LifestyleGallery";
-import Stats from "@/components/Stats";
-import CTA from "@/components/CTA";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollReveal from "@/components/ScrollReveal";
+
+// Lazy load heavy components that aren't immediately visible
+const FloatingImageGallery = dynamic(() => import("@/components/FloatingImageGallery"), {
+  loading: () => <div className="min-h-[800px]" />,
+  ssr: true,
+});
+
+const ParallaxImageSection = dynamic(() => import("@/components/ParallaxImageSection"), {
+  loading: () => <div className="min-h-[600px]" />,
+  ssr: true,
+});
+
+const LifestyleGallery = dynamic(() => import("@/components/LifestyleGallery"), {
+  loading: () => <div className="min-h-[800px]" />,
+  ssr: true,
+});
+
+const Stats = dynamic(() => import("@/components/Stats"), {
+  ssr: true,
+});
+
+const CTA = dynamic(() => import("@/components/CTA"), {
+  ssr: true,
+});
 
 export default function Home() {
   // Featured images for parallax section
