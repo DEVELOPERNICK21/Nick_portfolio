@@ -91,19 +91,19 @@ export default function FloatingImageGallery() {
     <>
       <section
         ref={containerRef}
-        className='relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-secondary/30 via-dark to-dark'
+        className='relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-secondary/30 dark:via-dark dark:to-dark transition-colors duration-300'
       >
         {/* Background Gradient */}
-        <div className='absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent' />
+        <div className='absolute inset-0 bg-gradient-to-b from-transparent via-gray-100/30 dark:via-accent/5 to-transparent transition-colors' />
 
         <div className='container-custom relative z-10'>
           {/* Section Title */}
           <div className='text-center mb-20'>
-            <h2 className='text-5xl md:text-7xl font-serif mb-4 text-white tracking-tight'>
+            <h2 className='text-5xl md:text-7xl font-serif mb-4 text-gray-900 dark:text-white tracking-tight transition-colors'>
               MOMENTS
             </h2>
-            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-6'></div>
-            <p className='text-lg text-gray-400 max-w-2xl mx-auto font-light'>
+            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 dark:via-accent to-transparent mx-auto mb-6 transition-colors'></div>
+            <p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light transition-colors'>
               Scroll to explore interactive gallery
             </p>
           </div>
@@ -134,7 +134,7 @@ export default function FloatingImageGallery() {
                   <div
                     className={`${getSizeClasses(
                       image.size
-                    )} relative overflow-hidden rounded-lg shadow-2xl border border-white/10 hover:border-white/50 transition-all duration-500 hover:scale-110 hover:shadow-[0_20px_60px_rgba(255,255,255,0.2)] hover:z-50`}
+                    )} relative overflow-hidden rounded-lg shadow-2xl border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/50 transition-all duration-500 hover:scale-110 hover:shadow-xl dark:hover:shadow-[0_20px_60px_rgba(255,255,255,0.2)] hover:z-50`}
                   >
                     <OptimizedImage
                       src={image.src}
@@ -144,7 +144,7 @@ export default function FloatingImageGallery() {
                     />
 
                     {/* Hover Overlay */}
-                    <div className='absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4'>
+                    <div className='absolute inset-0 bg-gradient-to-t from-gray-900/90 dark:from-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4'>
                       <div className='transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>
                         <span className='text-white text-xs font-semibold uppercase tracking-wider'>
                           View

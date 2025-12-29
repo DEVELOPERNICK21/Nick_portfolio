@@ -102,7 +102,7 @@ export default function HomeGallery() {
       <section
         ref={sectionRef}
         id='gallery-section'
-        className='bg-dark py-12 md:py-20'
+        className='bg-white dark:bg-dark py-12 md:py-20 transition-colors duration-300'
       >
         <div className='container-custom'>
           {/* Section Header */}
@@ -113,11 +113,11 @@ export default function HomeGallery() {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <h2 className='text-5xl md:text-7xl font-serif mb-4 text-white tracking-tight'>
+            <h2 className='text-5xl md:text-7xl font-serif mb-4 text-gray-900 dark:text-white tracking-tight transition-colors'>
               PORTFOLIO
             </h2>
-            <div className='w-24 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-6'></div>
-            <p className='text-lg text-gray-400 max-w-2xl mx-auto font-light'>
+            <div className='w-24 h-0.5 bg-gradient-to-r from-transparent via-gray-400 dark:via-accent to-transparent mx-auto mb-6 transition-colors'></div>
+            <p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light transition-colors'>
               Explore a selection of my latest work
             </p>
           </div>

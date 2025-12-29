@@ -172,7 +172,7 @@ export default function PortfolioGrid() {
     <>
       <div className='w-full'>
         {/* Clean Filter Buttons - Minimal Style */}
-        <div className='flex flex-wrap justify-center gap-2 md:gap-3 mb-16 pb-8 border-b border-white/10'>
+        <div className='flex flex-wrap justify-center gap-2 md:gap-3 mb-16 pb-8 border-b border-gray-200 dark:border-white/10 transition-colors'>
           {categories.map((category) => (
             <button
               key={category}
@@ -185,8 +185,8 @@ export default function PortfolioGrid() {
               }}
               className={`px-6 py-2 text-sm md:text-base font-medium transition-all duration-300 ${
                 activeFilter === category
-                  ? "text-white border-b-2 border-white"
-                  : "text-gray-500 hover:text-gray-300 border-b-2 border-transparent hover:border-gray-600"
+                  ? "text-gray-900 dark:text-white border-b-2 border-gray-900 dark:border-white"
+                  : "text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 border-b-2 border-transparent hover:border-gray-400 dark:hover:border-gray-600"
               }`}
             >
               {category}
@@ -210,12 +210,12 @@ export default function PortfolioGrid() {
         >
           {filteredItems.length === 0 ? (
             <div className='col-span-full text-center py-20'>
-              <p className='text-gray-400 text-lg mb-4'>
+              <p className='text-gray-600 dark:text-gray-400 text-lg mb-4 transition-colors'>
                 No images found in this category
               </p>
               <button
                 onClick={() => setActiveFilter("All")}
-                className='px-6 py-2 border border-white/20 text-white hover:bg-white/10 transition-colors'
+                className='px-6 py-2 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors'
               >
                 View All Images
               </button>
@@ -231,11 +231,11 @@ export default function PortfolioGrid() {
                 }}
               >
                 {/* Clean Card */}
-                <div className='relative overflow-hidden bg-secondary/30 transition-all duration-500 hover:opacity-90'>
+                <div className='relative overflow-hidden bg-gray-100 dark:bg-secondary/30 transition-all duration-500 hover:opacity-90 border border-gray-200 dark:border-transparent rounded-lg'>
                   {/* Loading Placeholder */}
                   {!loadedImages.has(index) && (
-                    <div className='absolute inset-0 bg-gradient-to-br from-secondary to-dark flex items-center justify-center z-10'>
-                      <div className='w-12 h-12 border-2 border-white/20 border-t-white/60 rounded-full animate-spin' />
+                    <div className='absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-secondary dark:to-dark flex items-center justify-center z-10 transition-colors'>
+                      <div className='w-12 h-12 border-2 border-gray-400 dark:border-white/20 border-t-gray-600 dark:border-t-white/60 rounded-full animate-spin transition-colors' />
                     </div>
                   )}
 
@@ -270,13 +270,13 @@ export default function PortfolioGrid() {
         {/* Clean Empty State */}
         {filteredItems.length > 0 &&
           filteredItems.length < portfolioItems.length && (
-            <div className='text-center mt-16 py-8 border-t border-white/10'>
-              <p className='text-gray-400 mb-2'>
+            <div className='text-center mt-16 py-8 border-t border-gray-200 dark:border-white/10 transition-colors'>
+              <p className='text-gray-600 dark:text-gray-400 mb-2 transition-colors'>
                 Showing {filteredItems.length} of {portfolioItems.length} images
               </p>
               <button
                 onClick={() => setActiveFilter("All")}
-                className='text-gray-500 hover:text-white transition-colors text-sm underline underline-offset-4'
+                className='text-gray-700 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors text-sm underline underline-offset-4'
               >
                 View All Images
               </button>

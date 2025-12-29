@@ -221,12 +221,12 @@ export default function LifestyleGallery() {
     <>
       <section
         ref={sectionRef}
-        className='bg-gradient-to-b from-dark via-secondary/50 to-dark py-20 md:py-32 relative overflow-hidden'
+        className='bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-dark dark:via-secondary/50 dark:to-dark py-20 md:py-32 relative overflow-hidden transition-colors duration-300'
       >
         {/* Subtle Background Elements */}
         <div className='absolute inset-0 overflow-hidden pointer-events-none'>
-          <div className='absolute top-20 right-20 w-96 h-96 bg-accent/3 rounded-full blur-3xl' />
-          <div className='absolute bottom-20 left-20 w-96 h-96 bg-accentGold/3 rounded-full blur-3xl' />
+          <div className='absolute top-20 right-20 w-96 h-96 bg-gray-200/20 dark:bg-accent/3 rounded-full blur-3xl transition-colors' />
+          <div className='absolute bottom-20 left-20 w-96 h-96 bg-gray-300/20 dark:bg-accentGold/3 rounded-full blur-3xl transition-colors' />
         </div>
 
         <div className='container-custom relative z-10'>
@@ -239,15 +239,15 @@ export default function LifestyleGallery() {
             }`}
           >
             <div className='inline-block mb-6'>
-              <span className='text-xs uppercase tracking-widest text-white font-semibold px-4 py-2 border border-white/30 bg-white/10 backdrop-blur-sm'>
+              <span className='text-xs uppercase tracking-widest text-gray-700 dark:text-white font-semibold px-4 py-2 border border-gray-300 dark:border-white/30 bg-white dark:bg-white/10 backdrop-blur-sm shadow-sm dark:shadow-none transition-colors'>
                 Lifestyle
               </span>
             </div>
-            <h2 className='text-5xl md:text-7xl lg:text-8xl font-serif mb-6 text-white tracking-tight'>
+            <h2 className='text-5xl md:text-7xl lg:text-8xl font-serif mb-6 text-gray-900 dark:text-white tracking-tight transition-colors'>
               LIFESTYLE
             </h2>
-            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-6'></div>
-            <p className='text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light'>
+            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 dark:via-accent to-transparent mx-auto mb-6 transition-colors'></div>
+            <p className='text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light transition-colors'>
               Capturing moments beyond the studio - everyday style and authentic
               moments
             </p>
@@ -281,7 +281,7 @@ export default function LifestyleGallery() {
                 }}
               >
                 <div
-                  className='relative overflow-hidden bg-secondary/30 transition-all duration-300 hover:shadow-[0_20px_60px_rgba(255,255,255,0.1)] transform hover:-translate-y-1'
+                  className='relative overflow-hidden bg-gray-100 dark:bg-secondary/30 rounded-xl transition-all duration-300 hover:shadow-xl dark:hover:shadow-[0_20px_60px_rgba(255,255,255,0.1)] transform hover:-translate-y-1 border border-gray-200 dark:border-transparent'
                   style={{ willChange: "transform" }}
                 >
                   {/* Optimized Image - Only first 3 with priority */}
@@ -305,7 +305,7 @@ export default function LifestyleGallery() {
 
                     {/* Minimal Hover Overlay */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-300 ${
+                      className={`absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent dark:from-dark/90 dark:via-dark/50 transition-all duration-300 ${
                         hoveredIndex === index ? "opacity-100" : "opacity-0"
                       }`}
                     />
@@ -319,13 +319,13 @@ export default function LifestyleGallery() {
                       }`}
                     >
                       <div className='flex justify-start'>
-                        <span className='px-4 py-2 bg-white/90 backdrop-blur-md text-dark text-xs font-bold uppercase tracking-wider'>
+                        <span className='px-4 py-2 bg-white/95 dark:bg-white/90 backdrop-blur-md text-gray-900 dark:text-dark text-xs font-bold uppercase tracking-wider shadow-lg transition-colors'>
                           {item.category}
                         </span>
                       </div>
                       <div className='space-y-2'>
                         <div
-                          className='h-0.5 bg-gradient-to-r from-accent to-accentGold transition-all duration-300 delay-100'
+                          className='h-0.5 bg-gradient-to-r from-gray-400 to-accentGold dark:from-accent dark:to-accentGold transition-all duration-300 delay-100'
                           style={{
                             width: hoveredIndex === index ? "100%" : "0%",
                           }}
@@ -352,7 +352,7 @@ export default function LifestyleGallery() {
             >
               <button
                 onClick={loadMore}
-                className='group relative px-8 py-4 border-2 border-white text-white font-semibold hover:bg-white hover:text-dark transition-all duration-300 transform hover:scale-105 active:scale-95'
+                className='group relative px-8 py-4 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-semibold hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-dark transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl'
               >
                 <span className='relative z-10 flex items-center gap-2'>
                   Load More ({lifestyleItems.length - visibleItems} remaining)

@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className='py-20 bg-dark min-h-screen'>
+    <div className='py-20 bg-white dark:bg-dark min-h-screen transition-colors duration-300'>
       <div className='container-custom'>
         {/* Header */}
         <div className='text-center mb-16'>
           <h1 className='section-title'>About Me</h1>
-          <p className='text-xl text-gray-400 max-w-2xl mx-auto'>
+          <p className='text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors'>
             Passionate about fashion, storytelling, and bringing creative
             visions to life
           </p>
@@ -29,7 +29,7 @@ export default function AboutPage() {
         {/* Main Content */}
         <div className='grid md:grid-cols-2 gap-12 items-center mb-20'>
           <ScrollReveal direction='left'>
-            <div className='relative h-[600px] rounded-lg overflow-hidden border border-white/20 hover:border-white/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]'>
+            <div className='relative h-[600px] rounded-lg overflow-hidden border border-gray-200 dark:border-white/20 hover:border-gray-400 dark:hover:border-white/50 transition-all duration-500 hover:shadow-xl dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]'>
               <Image
                 src='/about-image.jpg'
                 alt='Nikhil Kubde - Professional modeling photo'
@@ -44,21 +44,21 @@ export default function AboutPage() {
           <ScrollReveal direction='right' delay={200}>
             <div className='space-y-6'>
               <h2 className='text-3xl font-serif mb-4 glow-text'>My Journey</h2>
-              <p className='text-gray-300 leading-relaxed'>
+              <p className='text-gray-700 dark:text-gray-300 leading-relaxed transition-colors'>
                 I began my modeling career driven by a passion for fashion and
                 creative expression. Over the years, Ive had the privilege of
                 working with renowned brands, talented photographers, and
                 visionary creative directors through my representation with
                 CastYou Agency.
               </p>
-              <p className='text-gray-300 leading-relaxed'>
+              <p className='text-gray-700 dark:text-gray-300 leading-relaxed transition-colors'>
                 My versatility allows me to excel in various modeling genres -
                 from high fashion editorial to commercial campaigns. I believe
                 in bringing authenticity and professionalism to every project,
                 understanding that modeling is not just about the pose, but
                 about telling a story.
               </p>
-              <p className='text-gray-300 leading-relaxed'>
+              <p className='text-gray-700 dark:text-gray-300 leading-relaxed transition-colors'>
                 When Im not on set, I dedicate time to fitness, studying fashion
                 trends, and continuously developing my craft. Im passionate
                 about sustainability in fashion and love collaborating with
@@ -68,7 +68,7 @@ export default function AboutPage() {
                 href='https://castyou.in/nikhil-kubde/'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='inline-block mt-4 text-white hover:text-accentGold transition-colors font-medium'
+                className='inline-block mt-4 text-gray-900 dark:text-white hover:text-accentGold transition-colors font-medium'
               >
                 View Full CastYou Profile →
               </a>
@@ -84,22 +84,36 @@ export default function AboutPage() {
             </h2>
             <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-8'>
               <div className='text-center'>
-                <h3 className='font-semibold text-white mb-2'>Height</h3>
-                <p className='text-lg text-gray-300'>5&apos;9&quot; / 175 cm</p>
+                <h3 className='font-semibold text-gray-900 dark:text-white mb-2 transition-colors'>
+                  Height
+                </h3>
+                <p className='text-lg text-gray-700 dark:text-gray-300 transition-colors'>
+                  5&apos;9&quot; / 175 cm
+                </p>
               </div>
               <div className='text-center'>
-                <h3 className='font-semibold text-white mb-2'>
+                <h3 className='font-semibold text-gray-900 dark:text-white mb-2 transition-colors'>
                   Chest-Waist-Hips
                 </h3>
-                <p className='text-lg text-gray-300'>38-30-36</p>
+                <p className='text-lg text-gray-700 dark:text-gray-300 transition-colors'>
+                  38-30-36
+                </p>
               </div>
               <div className='text-center'>
-                <h3 className='font-semibold text-white mb-2'>Shirt Size</h3>
-                <p className='text-lg text-gray-300'>M / 38</p>
+                <h3 className='font-semibold text-gray-900 dark:text-white mb-2 transition-colors'>
+                  Shirt Size
+                </h3>
+                <p className='text-lg text-gray-700 dark:text-gray-300 transition-colors'>
+                  M / 38
+                </p>
               </div>
               <div className='text-center'>
-                <h3 className='font-semibold text-white mb-2'>Shoe Size</h3>
-                <p className='text-lg text-gray-300'>US 9 / EU 42</p>
+                <h3 className='font-semibold text-gray-900 dark:text-white mb-2 transition-colors'>
+                  Shoe Size
+                </h3>
+                <p className='text-lg text-gray-700 dark:text-gray-300 transition-colors'>
+                  US 9 / EU 42
+                </p>
               </div>
             </div>
           </div>
@@ -112,38 +126,38 @@ export default function AboutPage() {
               Experience Highlights
             </h2>
             <div className='grid md:grid-cols-2 gap-8'>
-              <div className='border-l-4 border-accent pl-6'>
-                <h3 className='text-xl font-semibold mb-2 text-lightGray'>
+              <div className='border-l-4 border-gray-400 dark:border-accent pl-6 transition-colors'>
+                <h3 className='text-xl font-semibold mb-2 text-gray-900 dark:text-lightGray transition-colors'>
                   Fashion Weeks
                 </h3>
-                <p className='text-gray-400'>
+                <p className='text-gray-600 dark:text-gray-400 transition-colors'>
                   Walked for multiple designers at New York, Paris, and Milan
                   Fashion Weeks
                 </p>
               </div>
-              <div className='border-l-4 border-accent pl-6'>
-                <h3 className='text-xl font-semibold mb-2 text-lightGray'>
+              <div className='border-l-4 border-gray-400 dark:border-accent pl-6 transition-colors'>
+                <h3 className='text-xl font-semibold mb-2 text-gray-900 dark:text-lightGray transition-colors'>
                   Editorial Features
                 </h3>
-                <p className='text-gray-400'>
+                <p className='text-gray-600 dark:text-gray-400 transition-colors'>
                   Featured in various fashion editorials and publications,
                   bringing unique style and presence to every shoot
                 </p>
               </div>
-              <div className='border-l-4 border-accent pl-6'>
-                <h3 className='text-xl font-semibold mb-2 text-lightGray'>
+              <div className='border-l-4 border-gray-400 dark:border-accent pl-6 transition-colors'>
+                <h3 className='text-xl font-semibold mb-2 text-gray-900 dark:text-lightGray transition-colors'>
                   Brand Campaigns
                 </h3>
-                <p className='text-gray-400'>
+                <p className='text-gray-600 dark:text-gray-400 transition-colors'>
                   Collaborated with leading fashion and lifestyle brands on
                   commercial and digital campaigns
                 </p>
               </div>
-              <div className='border-l-4 border-accent pl-6'>
-                <h3 className='text-xl font-semibold mb-2 text-lightGray'>
+              <div className='border-l-4 border-gray-400 dark:border-accent pl-6 transition-colors'>
+                <h3 className='text-xl font-semibold mb-2 text-gray-900 dark:text-lightGray transition-colors'>
                   Commercial Work
                 </h3>
-                <p className='text-gray-400'>
+                <p className='text-gray-600 dark:text-gray-400 transition-colors'>
                   Extensive experience in commercial shoots, digital content
                   creation, and brand promotions
                 </p>
@@ -171,7 +185,7 @@ export default function AboutPage() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className='px-6 py-3 bg-gradient-to-r from-white/20 to-accentGold/20 border border-white/30 text-lightGray rounded-full text-sm font-medium hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300'
+                  className='px-6 py-3 bg-gray-100 dark:bg-gradient-to-r dark:from-white/20 dark:to-accentGold/20 border border-gray-300 dark:border-white/30 text-gray-800 dark:text-lightGray rounded-full text-sm font-medium hover:border-gray-500 dark:hover:border-white hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300'
                 >
                   {skill}
                 </span>

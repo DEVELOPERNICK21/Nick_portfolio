@@ -8,8 +8,30 @@
     overflow-x: hidden;
   }
 
-  body {
+  /* Light Theme (Default) */
+  html.light {
+    color-scheme: light;
+  }
+
+  html.light body {
+    @apply bg-white text-gray-900 antialiased;
+    overflow-x: hidden;
+    background-color: #ffffff;
+  }
+
+  /* Dark Theme */
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.dark body {
     @apply bg-dark text-lightGray antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Default to light if no class */
+  body {
+    @apply bg-white text-gray-900 antialiased;
     overflow-x: hidden;
   }
 
@@ -22,8 +44,12 @@
     @apply font-serif;
   }
 
-  /* Dark theme selection */
-  ::selection {
+  /* Theme-aware selection */
+  html.light ::selection {
+    @apply bg-gray-900 text-white;
+  }
+
+  html.dark ::selection {
     @apply bg-white text-dark;
   }
 
@@ -51,7 +77,15 @@
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-serif mb-8 text-center text-white;
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif mb-8 text-center;
+  }
+
+  html.light .section-title {
+    @apply text-gray-900;
+  }
+
+  html.dark .section-title {
+    @apply text-white;
   }
 
   .image-overlay {
@@ -60,13 +94,27 @@
   }
 
   .glow-text {
+    @apply transition-colors;
+  }
+
+  html.light .glow-text {
+    @apply text-gray-900;
+  }
+
+  html.dark .glow-text {
     @apply text-white;
   }
 
   .card-dark {
-    @apply bg-secondary border border-white/20 rounded-lg p-6
-           hover:border-white/50 transition-all duration-300
-           hover:shadow-[0_0_30px_rgba(255,255,255,0.1)];
+    @apply rounded-lg p-6 transition-all duration-300;
+  }
+
+  html.light .card-dark {
+    @apply bg-gray-50 border border-gray-200 hover:border-gray-300 hover:shadow-lg;
+  }
+
+  html.dark .card-dark {
+    @apply bg-secondary border border-white/20 hover:border-white/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)];
   }
 }
 

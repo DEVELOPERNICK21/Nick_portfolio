@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
-import { FaInstagram, FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaEnvelope } from "react-icons/fa";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
@@ -16,13 +16,13 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className='py-20 bg-dark min-h-screen'>
+    <div className='py-20 bg-white dark:bg-dark min-h-screen transition-colors duration-300'>
       <div className='container-custom'>
         {/* Header */}
         <ScrollReveal direction='fade'>
           <div className='text-center mb-16'>
             <h1 className='section-title'>Get In Touch</h1>
-            <p className='text-xl text-gray-400 max-w-2xl mx-auto'>
+            <p className='text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors'>
               Available for bookings, collaborations, and creative projects
               worldwide
             </p>
@@ -36,7 +36,7 @@ export default function ContactPage() {
               <h2 className='text-2xl font-serif mb-6 glow-text'>
                 Lets Work Together
               </h2>
-              <p className='text-gray-300 mb-8 leading-relaxed'>
+              <p className='text-gray-700 dark:text-gray-300 mb-8 leading-relaxed transition-colors'>
                 Im always excited to collaborate on new projects. Whether youre
                 a photographer, brand, or agency, Id love to hear about your
                 vision and how we can create something amazing together.
@@ -44,38 +44,38 @@ export default function ContactPage() {
 
               <div className='space-y-6 mb-10'>
                 <div>
-                  <h3 className='font-semibold mb-2 flex items-center gap-2 text-lightGray'>
+                  <h3 className='font-semibold mb-2 flex items-center gap-2 text-gray-700 dark:text-lightGray transition-colors'>
                     <FaEnvelope className='text-white' />
                     Email
                   </h3>
                   <a
                     href='mailto:nikhilkubde21@gmail.com'
-                    className='text-gray-400 hover:text-white transition-colors'
+                    className='text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors'
                   >
                     nikhilkubde21@gmail.com
                   </a>
                 </div>
 
                 <div>
-                  <h3 className='font-semibold mb-2 text-lightGray'>
+                  <h3 className='font-semibold mb-2 text-gray-700 dark:text-lightGray transition-colors'>
                     Based In
                   </h3>
-                  <p className='text-gray-400'>India</p>
-                  <p className='text-sm text-gray-500'>
+                  <p className='text-gray-600 dark:text-gray-400 transition-colors'>India</p>
+                  <p className='text-sm text-gray-500 dark:text-gray-500 transition-colors'>
                     Available for travel worldwide
                   </p>
                 </div>
 
                 <div>
-                  <h3 className='font-semibold mb-2 text-lightGray'>
+                  <h3 className='font-semibold mb-2 text-gray-700 dark:text-lightGray transition-colors'>
                     Agency Representation
                   </h3>
-                  <p className='text-gray-400'>CastYou Agency</p>
+                  <p className='text-gray-600 dark:text-gray-400 transition-colors'>CastYou Agency</p>
                   <a
                     href='https://castyou.in/nikhil-kubde/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='text-sm text-white hover:text-accentGold transition-colors'
+                    className='text-sm text-gray-900 dark:text-white hover:text-accentGold transition-colors'
                   >
                     View Profile on CastYou →
                   </a>
@@ -84,34 +84,16 @@ export default function ContactPage() {
 
               {/* Social Links */}
               <div>
-                <h3 className='font-semibold mb-4 text-lightGray'>Follow Me</h3>
+                <h3 className='font-semibold mb-4 text-gray-700 dark:text-lightGray transition-colors'>Follow Me</h3>
                 <div className='flex gap-4'>
                   <a
-                    href='https://instagram.com/yourhandle'
+                    href='https://www.instagram.com/nikhil___kubde/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='w-12 h-12 bg-secondary border border-white/30 text-white rounded-full flex items-center justify-center hover:bg-white hover:text-dark hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300'
+                    className='w-12 h-12 bg-gray-100 dark:bg-secondary border border-gray-300 dark:border-white/30 text-gray-900 dark:text-white rounded-full flex items-center justify-center hover:bg-gray-200 dark:hover:bg-white hover:text-dark hover:shadow-lg transition-all duration-300'
                     aria-label='Instagram'
                   >
                     <FaInstagram size={20} />
-                  </a>
-                  <a
-                    href='https://twitter.com/yourhandle'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='w-12 h-12 bg-secondary border border-white/30 text-white rounded-full flex items-center justify-center hover:bg-white hover:text-dark hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300'
-                    aria-label='Twitter'
-                  >
-                    <FaTwitter size={20} />
-                  </a>
-                  <a
-                    href='https://linkedin.com/in/yourprofile'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='w-12 h-12 bg-secondary border border-white/30 text-white rounded-full flex items-center justify-center hover:bg-white hover:text-dark hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300'
-                    aria-label='LinkedIn'
-                  >
-                    <FaLinkedin size={20} />
                   </a>
                 </div>
               </div>

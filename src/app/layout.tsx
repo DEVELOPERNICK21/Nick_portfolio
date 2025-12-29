@@ -3,6 +3,9 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import ThemeToggle from "@/components/ThemeToggle";
+import FloatingSocialBar from "@/components/FloatingSocialBar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -85,11 +88,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={`${inter.variable} ${playfair.variable}`}>
+    <html lang='en' className={`${inter.variable} ${playfair.variable} light`}>
       <body className={inter.className}>
-        <Navbar />
-        <main className='min-h-screen'>{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className='min-h-screen'>{children}</main>
+          <Footer />
+          <ThemeToggle />
+          <FloatingSocialBar />
+        </ThemeProvider>
       </body>
     </html>
   );

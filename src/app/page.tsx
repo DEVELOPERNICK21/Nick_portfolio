@@ -54,9 +54,7 @@ export default function Home() {
               "Professional fashion and editorial model available for bookings through CastYou agency",
             sameAs: [
               "https://castyou.in/nikhil-kubde/",
-              "https://instagram.com/yourhandle",
-              "https://twitter.com/yourhandle",
-              "https://linkedin.com/in/yourprofile",
+              "https://www.instagram.com/nikhil___kubde/",
             ],
             knowsAbout: [
               "Fashion Modeling",
