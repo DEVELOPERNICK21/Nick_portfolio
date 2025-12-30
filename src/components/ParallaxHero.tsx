@@ -64,11 +64,11 @@ export default function ParallaxHero() {
           quality={90}
           sizes='100vw'
         />
-        <div className='absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/60 to-dark/40' />
+        <div className='absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/10' />
       </div>
 
       {/* Animated Gradient Overlay */}
-      <div className='absolute inset-0 z-[1] bg-gradient-to-t from-dark via-transparent to-transparent opacity-50' />
+      <div className='absolute inset-0 z-[1] bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-50' />
 
       {/* Content with fade effect */}
       <div

@@ -56,7 +56,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor='name'
-          className='block text-sm font-medium mb-2 text-lightGray'
+          className='block text-sm font-medium mb-2 text-gray-700'
         >
           Name *
         </label>
@@ -67,7 +67,7 @@ export default function ContactForm() {
           required
           value={formData.name}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-dark border border-accent/30 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-lightGray placeholder-gray-600'
+          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-900 placeholder-gray-500'
           placeholder='Your name'
         />
       </div>
@@ -75,7 +75,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor='email'
-          className='block text-sm font-medium mb-2 text-lightGray'
+          className='block text-sm font-medium mb-2 text-gray-700'
         >
           Email *
         </label>
@@ -86,7 +86,7 @@ export default function ContactForm() {
           required
           value={formData.email}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-dark border border-accent/30 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-lightGray placeholder-gray-600'
+          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-900 placeholder-gray-500'
           placeholder='your@email.com'
         />
       </div>
@@ -94,7 +94,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor='phone'
-          className='block text-sm font-medium mb-2 text-lightGray'
+          className='block text-sm font-medium mb-2 text-gray-700'
         >
           Phone
         </label>
@@ -104,7 +104,7 @@ export default function ContactForm() {
           name='phone'
           value={formData.phone}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-dark border border-accent/30 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-lightGray placeholder-gray-600'
+          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-900 placeholder-gray-500'
           placeholder='+1 (555) 000-0000'
         />
       </div>
@@ -112,7 +112,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor='subject'
-          className='block text-sm font-medium mb-2 text-lightGray'
+          className='block text-sm font-medium mb-2 text-gray-700'
         >
           Subject *
         </label>
@@ -122,7 +122,7 @@ export default function ContactForm() {
           required
           value={formData.subject}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-dark border border-accent/30 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-lightGray'
+          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-900'
         >
           <option value=''>Select a subject</option>
           <option value='booking'>Booking Inquiry</option>
@@ -135,7 +135,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor='message'
-          className='block text-sm font-medium mb-2 text-lightGray'
+          className='block text-sm font-medium mb-2 text-gray-700'
         >
           Message *
         </label>
@@ -146,7 +146,7 @@ export default function ContactForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-dark border border-accent/30 rounded-md focus:outline-none focus:ring-2 focus:ring-accent resize-none text-lightGray placeholder-gray-600'
+          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 resize-none text-gray-900 placeholder-gray-500'
           placeholder='Tell me about your project...'
         />
       </div>

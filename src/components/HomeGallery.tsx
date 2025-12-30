@@ -102,7 +102,7 @@ export default function HomeGallery() {
       <section
         ref={sectionRef}
         id='gallery-section'
-        className='bg-white dark:bg-dark py-12 md:py-20 transition-colors duration-300'
+        className='bg-white py-12 md:py-20'
       >
         <div className='container-custom'>
           {/* Section Header */}
@@ -113,11 +113,11 @@ export default function HomeGallery() {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <h2 className='text-5xl md:text-7xl font-serif mb-4 text-gray-900 dark:text-white tracking-tight transition-colors'>
+            <h2 className='text-5xl md:text-7xl font-serif mb-4 text-gray-900 tracking-tight'>
               PORTFOLIO
             </h2>
-            <div className='w-24 h-0.5 bg-gradient-to-r from-transparent via-gray-400 dark:via-accent to-transparent mx-auto mb-6 transition-colors'></div>
-            <p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light transition-colors'>
+            <div className='w-24 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-6'></div>
+            <p className='text-lg text-gray-600 max-w-2xl mx-auto font-light'>
               Explore a selection of my latest work
             </p>
           </div>
@@ -174,7 +174,7 @@ export default function HomeGallery() {
           >
             <Link
               href='/portfolio'
-              className='inline-block text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider underline underline-offset-4'
+              className='inline-block text-gray-600 hover:text-gray-900 transition-colors text-sm uppercase tracking-wider underline underline-offset-4'
             >
               View Full Portfolio →
             </Link>

@@ -7,26 +7,26 @@ export default function FloatingSocialBar() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className='fixed right-6 bottom-6 z-50 flex flex-col items-end gap-3'>
+    <div className='fixed right-4 md:right-6 bottom-4 md:bottom-6 z-50 flex flex-col items-end gap-3'>
       {/* Main Toggle Button */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className='w-14 h-14 bg-white text-dark rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-all duration-300 transform hover:scale-110 active:scale-95 group'
+        className='w-12 h-12 md:w-14 md:h-14 bg-white text-gray-900 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-all duration-300 transform hover:scale-110 active:scale-95 group border-2 border-gray-200 backdrop-blur-sm'
         aria-label='Toggle social links'
       >
-        <div className='relative w-6 h-6'>
+        <div className='relative w-5 h-5 md:w-6 md:h-6'>
           <span
-            className={`absolute top-1/2 left-1/2 w-4 h-0.5 bg-dark transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
+            className={`absolute top-1/2 left-1/2 w-3 md:w-4 h-0.5 bg-gray-900 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
               isExpanded ? "rotate-45 translate-y-0" : "-translate-y-1.5"
             }`}
           />
           <span
-            className={`absolute top-1/2 left-1/2 w-4 h-0.5 bg-dark transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
+            className={`absolute top-1/2 left-1/2 w-3 md:w-4 h-0.5 bg-gray-900 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
               isExpanded ? "opacity-0" : "opacity-100"
             }`}
           />
           <span
-            className={`absolute top-1/2 left-1/2 w-4 h-0.5 bg-dark transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
+            className={`absolute top-1/2 left-1/2 w-3 md:w-4 h-0.5 bg-gray-900 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
               isExpanded ? "-rotate-45 translate-y-0" : "translate-y-1.5"
             }`}
           />
@@ -46,21 +46,21 @@ export default function FloatingSocialBar() {
           href='https://www.instagram.com/nikhil___kubde/'
           target='_blank'
           rel='noopener noreferrer'
-          className='w-14 h-14 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all duration-300 transform hover:shadow-xl group'
+          className='w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all duration-300 transform hover:shadow-xl group'
           aria-label='Instagram'
           onClick={() => setIsExpanded(false)}
         >
-          <FaInstagram size={20} className='group-hover:scale-110 transition-transform' />
+          <FaInstagram size={18} className='md:w-5 md:h-5 group-hover:scale-110 transition-transform' />
         </a>
 
         {/* Email */}
         <a
           href='mailto:nikhilkubde21@gmail.com'
-          className='w-14 h-14 bg-white text-dark rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all duration-300 transform hover:shadow-xl group border-2 border-gray-200'
+          className='w-12 h-12 md:w-14 md:h-14 bg-white text-gray-900 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all duration-300 transform hover:shadow-xl group border-2 border-gray-200'
           aria-label='Email'
           onClick={() => setIsExpanded(false)}
         >
-          <FaEnvelope size={20} className='group-hover:scale-110 transition-transform' />
+          <FaEnvelope size={18} className='md:w-5 md:h-5 group-hover:scale-110 transition-transform' />
         </a>
       </div>
     </div>

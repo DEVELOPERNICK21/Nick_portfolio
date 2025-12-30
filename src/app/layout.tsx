@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import ThemeToggle from "@/components/ThemeToggle";
 import FloatingSocialBar from "@/components/FloatingSocialBar";
 
 const inter = Inter({
@@ -88,13 +87,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={`${inter.variable} ${playfair.variable} light`}>
-      <body className={inter.className}>
+    <html lang='en' className={`${inter.variable} ${playfair.variable} light`} suppressHydrationWarning>
+      <body className={`${inter.className} bg-white`}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                // Force white theme only - runs before React hydration
+                try {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.classList.add('light');
+                  localStorage.setItem('theme', 'light');
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
         <ThemeProvider>
           <Navbar />
-          <main className='min-h-screen'>{children}</main>
+          <main className='min-h-screen bg-white'>{children}</main>
           <Footer />
-          <ThemeToggle />
           <FloatingSocialBar />
         </ThemeProvider>
       </body>

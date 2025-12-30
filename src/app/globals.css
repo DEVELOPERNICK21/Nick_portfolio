@@ -6,33 +6,28 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-  }
-
-  /* Light Theme (Default) */
-  html.light {
     color-scheme: light;
   }
 
-  html.light body {
+  /* White Theme Only - Professional Model Portfolio Style */
+  html,
+  html.light,
+  html:not(.dark) {
+    color-scheme: light;
+  }
+
+  html body,
+  html.light body,
+  html:not(.dark) body {
     @apply bg-white text-gray-900 antialiased;
     overflow-x: hidden;
     background-color: #ffffff;
   }
 
-  /* Dark Theme */
-  html.dark {
-    color-scheme: dark;
-  }
-
-  html.dark body {
-    @apply bg-dark text-lightGray antialiased;
-    overflow-x: hidden;
-  }
-
-  /* Default to light if no class */
   body {
     @apply bg-white text-gray-900 antialiased;
     overflow-x: hidden;
+    background-color: #ffffff;
   }
 
   h1,
@@ -44,13 +39,9 @@
     @apply font-serif;
   }
 
-  /* Theme-aware selection */
-  html.light ::selection {
+  /* Selection styling - white theme only */
+  ::selection {
     @apply bg-gray-900 text-white;
-  }
-
-  html.dark ::selection {
-    @apply bg-white text-dark;
   }
 
   /* Smooth scrolling for all browsers */
@@ -66,26 +57,18 @@
   }
 
   .btn-primary {
-    @apply bg-gradient-to-r from-white to-accentGold text-dark px-8 py-3 rounded-md font-bold 
-           hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 
+    @apply bg-gray-900 text-white px-8 py-3 rounded-md font-semibold 
+           hover:bg-gray-800 hover:shadow-xl transition-all duration-300 
            transform hover:scale-105 active:scale-95;
   }
 
   .btn-secondary {
-    @apply border-2 border-white text-white px-8 py-3 rounded-md font-medium 
-           hover:bg-white hover:text-dark transition-all duration-300;
+    @apply border-2 border-gray-900 text-gray-900 px-8 py-3 rounded-md font-semibold 
+           hover:bg-gray-900 hover:text-white transition-all duration-300;
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-serif mb-8 text-center;
-  }
-
-  html.light .section-title {
-    @apply text-gray-900;
-  }
-
-  html.dark .section-title {
-    @apply text-white;
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif mb-8 text-center text-gray-900;
   }
 
   .image-overlay {
@@ -94,27 +77,11 @@
   }
 
   .glow-text {
-    @apply transition-colors;
-  }
-
-  html.light .glow-text {
-    @apply text-gray-900;
-  }
-
-  html.dark .glow-text {
-    @apply text-white;
+    @apply text-gray-900 transition-colors;
   }
 
   .card-dark {
-    @apply rounded-lg p-6 transition-all duration-300;
-  }
-
-  html.light .card-dark {
-    @apply bg-gray-50 border border-gray-200 hover:border-gray-300 hover:shadow-lg;
-  }
-
-  html.dark .card-dark {
-    @apply bg-secondary border border-white/20 hover:border-white/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)];
+    @apply rounded-lg p-6 bg-gray-50 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300;
   }
 }
 
