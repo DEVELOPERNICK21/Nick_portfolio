@@ -4,13 +4,31 @@ import { FaInstagram, FaEnvelope } from "react-icons/fa";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact - Book Nikhil Kubde for Modeling Projects",
   description:
-    "Get in touch with Nikhil Kubde for bookings, collaborations, or inquiries. Available worldwide for modeling projects.",
+    "Contact Nikhil Kubde for modeling bookings, agency inquiries, brand collaborations, photo shoots, and commercial projects. Available worldwide. Represented by CastYou agency. Perfect for fashion, editorial, commercial, and digital brand campaigns.",
+  keywords: [
+    "book Nikhil Kubde",
+    "model booking contact",
+    "modeling agency contact",
+    "hire model",
+    "model casting contact",
+    "commercial model booking",
+    "fashion model hire",
+    "model representation inquiry",
+    "CastYou agency contact",
+    "modeling services inquiry",
+  ],
   openGraph: {
-    title: "Contact - Nikhil Kubde",
+    title: "Contact - Book Nikhil Kubde for Modeling Projects",
     description:
-      "Get in touch with Nikhil Kubde for bookings, collaborations, or inquiries.",
+      "Contact for modeling bookings, agency inquiries, brand collaborations, and commercial projects. Available worldwide. Represented by CastYou agency.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact - Book Nikhil Kubde for Modeling Projects",
+    description:
+      "Contact for modeling bookings and agency inquiries. Available worldwide for fashion, editorial, and commercial projects.",
   },
 };
 

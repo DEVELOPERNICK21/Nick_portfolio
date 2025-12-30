@@ -3,13 +3,31 @@ import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About - Professional Model Profile | Nikhil Kubde",
   description:
-    "Learn more about Nikhil Kubde's modeling journey as an emerging model and what he brings to every project.",
+    "Professional model Nikhil Kubde - Available for agency bookings. 5+ years tech experience combined with modeling expertise. Specializes in fashion, editorial, and commercial modeling. Represented by CastYou agency. Perfect for digital-first brands and tech companies.",
+  keywords: [
+    "Nikhil Kubde model",
+    "professional model profile",
+    "model for hire",
+    "fashion model portfolio",
+    "commercial model available",
+    "editorial model",
+    "tech-savvy model",
+    "modeling agency talent",
+    "CastYou model",
+    "available model bookings",
+  ],
   openGraph: {
-    title: "About - Nikhil Kubde",
+    title: "About - Professional Model Profile | Nikhil Kubde",
     description:
-      "Learn more about Nikhil Kubde's modeling journey as an emerging model and what he brings to every project.",
+      "Professional model available for agency bookings. 5+ years tech experience. Fashion, editorial, and commercial modeling. Represented by CastYou agency.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About - Professional Model Profile | Nikhil Kubde",
+    description:
+      "Professional model available for agency bookings. 5+ years tech experience. Fashion, editorial, and commercial modeling.",
   },
 };
 
@@ -48,26 +66,32 @@ export default function AboutPage() {
               </h2>
               <p className='text-gray-700 leading-relaxed'>
                 I&apos;m a fresh face in the modeling industry, driven by a
-                passion for fashion and creative expression. I&apos;m excited to
-                be starting my journey and building my portfolio through my
-                representation with CastYou Agency. Every project is an
-                opportunity to learn, grow, and showcase my potential.
+                passion for fashion and creative expression. With over 5 years
+                of experience as a professional mobile app developer, I bring a
+                unique combination of technical expertise and creative vision to
+                every project. This background gives me a distinct advantage in
+                understanding digital content, social media strategy, and the
+                technical aspects of modern brand campaigns.
               </p>
               <p className='text-gray-700 leading-relaxed'>
-                As a new model, I bring fresh energy, enthusiasm, and a
-                willingness to learn to every shoot. I&apos;m eager to work
+                My technical background enhances my modeling career in unique
+                ways - I understand the digital landscape, content creation
+                workflows, and how to effectively communicate with tech-savvy
+                brands. This makes me particularly valuable for tech companies,
+                digital-first brands, and campaigns that require both on-camera
+                presence and technical understanding. I&apos;m eager to work
                 across various modeling genres - from fashion editorial to
-                commercial campaigns. I believe in bringing authenticity and
-                professionalism to every project, understanding that modeling is
-                about more than just the pose - it&apos;s about telling a story
-                and connecting with the audience.
+                commercial campaigns - bringing both authenticity and
+                professionalism to every project.
               </p>
               <p className='text-gray-700 leading-relaxed'>
-                When I&apos;m not on set, I dedicate time to fitness, studying
-                fashion trends, practicing poses, and continuously developing my
-                craft. I&apos;m passionate about building meaningful
-                relationships in the industry and am always open to new
-                opportunities and collaborations.
+                When I&apos;m not on set, I balance my time between fitness,
+                studying fashion trends, practicing poses, and continuing to
+                develop both my modeling craft and technical skills. I&apos;m
+                passionate about building meaningful relationships in the
+                industry and am always open to new opportunities and
+                collaborations that allow me to showcase this unique combination
+                of skills.
               </p>
               <a
                 href='https://castyou.in/nikhil-kubde/'
@@ -176,6 +200,121 @@ export default function AboutPage() {
           </div>
         </ScrollReveal>
 
+        {/* Unique Strength - Tech Background */}
+        <ScrollReveal direction='fade' delay={100}>
+          <div className='mb-20'>
+            <div className='bg-gradient-to-br from-gray-50 to-white rounded-2xl p-10 md:p-12 border border-gray-200 shadow-lg'>
+              <div className='text-center mb-8'>
+                <div className='inline-block mb-4'>
+                  <span className='text-xs uppercase tracking-widest text-gray-500 font-semibold px-4 py-2 border border-gray-300 bg-white'>
+                    Unique Advantage
+                  </span>
+                </div>
+                <h2 className='text-3xl md:text-4xl font-serif mb-4 text-gray-900'>
+                  Technical Expertise Meets Creative Vision
+                </h2>
+                <div className='w-24 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-6'></div>
+              </div>
+
+              <div className='grid md:grid-cols-2 gap-8 items-center'>
+                <div>
+                  <div className='flex items-center gap-3 mb-4'>
+                    <div className='w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center'>
+                      <span className='text-white text-xl font-bold'>5+</span>
+                    </div>
+                    <div>
+                      <h3 className='text-xl font-semibold text-gray-900'>
+                        Years as Mobile App Developer
+                      </h3>
+                      <p className='text-sm text-gray-600'>
+                        Professional software development experience
+                      </p>
+                    </div>
+                  </div>
+                  <p className='text-gray-700 leading-relaxed mb-4'>
+                    My background as a professional mobile app developer with
+                    over 5 years of experience brings a unique advantage to my
+                    modeling career. This technical expertise sets me apart and
+                    makes me particularly valuable for modern brand campaigns.
+                  </p>
+                  <div className='space-y-3'>
+                    <div className='flex items-start gap-3'>
+                      <div className='w-2 h-2 bg-gray-900 rounded-full mt-2'></div>
+                      <p className='text-gray-700'>
+                        <strong>Tech-Savvy:</strong> Deep understanding of
+                        digital content, social media algorithms, and online
+                        presence optimization
+                      </p>
+                    </div>
+                    <div className='flex items-start gap-3'>
+                      <div className='w-2 h-2 bg-gray-900 rounded-full mt-2'></div>
+                      <p className='text-gray-700'>
+                        <strong>Problem-Solving:</strong> Analytical mindset and
+                        attention to detail from years of software development
+                      </p>
+                    </div>
+                    <div className='flex items-start gap-3'>
+                      <div className='w-2 h-2 bg-gray-900 rounded-full mt-2'></div>
+                      <p className='text-gray-700'>
+                        <strong>Professionalism:</strong> Proven track record of
+                        delivering high-quality work under deadlines
+                      </p>
+                    </div>
+                    <div className='flex items-start gap-3'>
+                      <div className='w-2 h-2 bg-gray-900 rounded-full mt-2'></div>
+                      <p className='text-gray-700'>
+                        <strong>Brand Fit:</strong> Perfect for tech companies,
+                        digital-first brands, and innovative campaigns
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='bg-white rounded-xl p-6 border border-gray-200'>
+                  <h4 className='text-lg font-semibold text-gray-900 mb-4'>
+                    Why This Matters for Agencies & Brands:
+                  </h4>
+                  <ul className='space-y-3 text-gray-700'>
+                    <li className='flex items-start gap-2'>
+                      <span className='text-gray-900 font-semibold'>✓</span>
+                      <span>
+                        Understands digital marketing and content strategy
+                      </span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='text-gray-900 font-semibold'>✓</span>
+                      <span>
+                        Can collaborate on tech-related campaigns with deeper
+                        insight
+                      </span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='text-gray-900 font-semibold'>✓</span>
+                      <span>
+                        Professional work ethic and reliability from tech
+                        industry
+                      </span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='text-gray-900 font-semibold'>✓</span>
+                      <span>
+                        Unique positioning for tech and innovation-focused
+                        brands
+                      </span>
+                    </li>
+                    <li className='flex items-start gap-2'>
+                      <span className='text-gray-900 font-semibold'>✓</span>
+                      <span>
+                        Can contribute to content creation beyond just modeling
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
         {/* Experience */}
         <ScrollReveal direction='up' delay={150}>
           <div className='mb-20'>
@@ -183,6 +322,16 @@ export default function AboutPage() {
               Experience Highlights
             </h2>
             <div className='grid md:grid-cols-2 gap-8'>
+              <div className='border-l-4 border-gray-400 pl-6'>
+                <h3 className='text-xl font-semibold mb-2 text-gray-900'>
+                  Professional Developer
+                </h3>
+                <p className='text-gray-600'>
+                  5+ years of experience as a mobile app developer, bringing
+                  technical expertise, problem-solving skills, and professional
+                  work ethic to every modeling project
+                </p>
+              </div>
               <div className='border-l-4 border-gray-400 pl-6'>
                 <h3 className='text-xl font-semibold mb-2 text-gray-900'>
                   Music Video
@@ -211,16 +360,6 @@ export default function AboutPage() {
                   collaborations, and professional photography sessions
                 </p>
               </div>
-              <div className='border-l-4 border-gray-400 pl-6'>
-                <h3 className='text-xl font-semibold mb-2 text-gray-900'>
-                  Video Content
-                </h3>
-                <p className='text-gray-600'>
-                  Gaining experience in video production, learning from each
-                  project and continuously improving my on-screen presence and
-                  versatility
-                </p>
-              </div>
             </div>
           </div>
         </ScrollReveal>
@@ -233,12 +372,14 @@ export default function AboutPage() {
             </h2>
             <div className='flex flex-wrap justify-center gap-4'>
               {[
+                "Mobile App Development",
+                "Technical Expertise",
+                "Digital Content Strategy",
                 "Video Production",
                 "On-Camera Presence",
-                "Portfolio Building",
-                "Photography",
                 "Content Creation",
                 "Social Media",
+                "Problem Solving",
                 "Fitness Modeling",
                 "Editorial Modeling",
               ].map((skill) => (

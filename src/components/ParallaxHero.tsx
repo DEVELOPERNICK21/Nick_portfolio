@@ -93,6 +93,9 @@ export default function ParallaxHero() {
         <p className='text-xl md:text-2xl lg:text-3xl mb-6 font-light tracking-wide text-gray-200'>
           Fashion • Editorial • Commercial
         </p>
+        <p className='text-sm md:text-base text-gray-300 mb-4 tracking-wide'>
+          Model & Mobile App Developer • 5+ Years Tech Experience
+        </p>
 
         <p className='text-sm md:text-base text-gray-400 mb-10 tracking-wider uppercase'>
           Represented by{" "}

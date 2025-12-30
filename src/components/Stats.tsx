@@ -2,9 +2,9 @@
 
 export default function Stats() {
   const stats = [
-    { number: "1+", label: "Year Experience" },
+    { number: "5+", label: "Years Tech Experience" },
+    { number: "1+", label: "Year Modeling" },
     { number: "5+", label: "Video Projects" },
-    { number: "1", label: "Music Video" },
     { number: "Building", label: "Portfolio" },
   ];
 

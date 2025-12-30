@@ -12,8 +12,9 @@ export default function CTA() {
         </h3>
         <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-10'></div>
         <p className='text-lg md:text-xl mb-12 text-gray-600 max-w-2xl mx-auto font-light leading-relaxed'>
-          Available for bookings and collaborations. Let&apos;s bring your
-          creative vision to life.
+          Available for agency bookings, brand collaborations, and modeling projects. 
+          Specializing in fashion, editorial, commercial, and digital brand campaigns. 
+          Let&apos;s bring your creative vision to life.
         </p>
         <div className='flex flex-col sm:flex-row gap-4 justify-center'>
           <Link

@@ -5,20 +5,30 @@ import ScrollReveal from "@/components/ScrollReveal";
 export const metadata: Metadata = {
   title: "Portfolio | Nikhil Kubde - Professional Model",
   description:
-    "Browse Nikhil Kubde's complete modeling portfolio featuring fashion, editorial, commercial, runway, and beauty work. Professional photography showcasing diverse modeling expertise.",
+    "Professional modeling portfolio showcasing fashion, editorial, commercial, runway, and beauty work. Available for agency bookings and brand campaigns. High-quality photography demonstrating versatility and professional modeling expertise.",
   keywords: [
     "Nikhil Kubde portfolio",
+    "model portfolio gallery",
     "fashion model portfolio",
     "editorial photography",
-    "commercial modeling",
-    "runway model",
-    "beauty photography",
+    "commercial modeling portfolio",
+    "model work samples",
+    "modeling agency portfolio",
+    "professional model gallery",
+    "fashion photography",
+    "model comp card",
   ],
   openGraph: {
-    title: "Portfolio - Nikhil Kubde | Professional Model",
+    title: "Portfolio - Model Gallery | Nikhil Kubde",
     description:
-      "Explore Nikhil Kubde's diverse modeling portfolio across fashion, editorial, commercial, runway, and beauty categories.",
+      "Professional modeling portfolio - Fashion, editorial, commercial, runway, and beauty work. Available for agency bookings and brand campaigns.",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio - Model Gallery | Nikhil Kubde",
+    description:
+      "Professional modeling portfolio showcasing diverse work across fashion, editorial, commercial, and beauty categories.",
   },
 };
 
