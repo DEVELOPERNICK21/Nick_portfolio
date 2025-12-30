@@ -2,10 +2,10 @@
 
 export default function Stats() {
   const stats = [
-    { number: "10+", label: "Years Experience" },
-    { number: "500+", label: "Projects Completed" },
-    { number: "50+", label: "Brand Collaborations" },
-    { number: "20+", label: "Fashion Shows" },
+    { number: "1+", label: "Year Experience" },
+    { number: "5+", label: "Video Projects" },
+    { number: "1", label: "Music Video" },
+    { number: "Building", label: "Portfolio" },
   ];
 
   return (

@@ -16,10 +16,14 @@ export default function LifestyleGallery() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [visibleItems, setVisibleItems] = useState(6); // Start with fewer items for faster initial load
+  const [visibleItems, setVisibleItems] = useState(6); // Start with 6 items for faster initial load
   const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [visibleImageIndices, setVisibleImageIndices] = useState<Set<number>>(
+    new Set([0, 1, 2])
+  ); // Only first 3 visible initially
 
   const lifestyleItems: LifestyleItem[] = [
     {
@@ -128,7 +132,7 @@ export default function LifestyleGallery() {
 
   const displayedItems = lifestyleItems.slice(0, visibleItems);
 
-  // Intersection Observer for smooth scroll animations
+  // Intersection Observer for section visibility
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -144,8 +148,8 @@ export default function LifestyleGallery() {
         });
       },
       {
-        threshold: 0.05, // Trigger earlier for smoother appearance
-        rootMargin: "50px", // Reduced from 100px for more accurate triggering
+        threshold: 0.05,
+        rootMargin: "50px",
       }
     );
 
@@ -160,6 +164,48 @@ export default function LifestyleGallery() {
       }
     };
   }, []);
+
+  // Intersection Observer for individual images - lazy loading optimization
+  useEffect(() => {
+    const imageObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(
+              entry.target.getAttribute("data-index") || "0",
+              10
+            );
+            setVisibleImageIndices((prev) => new Set(prev).add(index));
+            // Unobserve after loading to improve performance
+            imageObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "200px", // Start loading 200px before image enters viewport
+      }
+    );
+
+    // Capture current refs to avoid stale closure
+    const currentRefs = imageRefs.current;
+
+    // Observe all image containers
+    currentRefs.forEach((ref) => {
+      if (ref) {
+        imageObserver.observe(ref);
+      }
+    });
+
+    return () => {
+      // Use captured refs in cleanup
+      currentRefs.forEach((ref) => {
+        if (ref) {
+          imageObserver.unobserve(ref);
+        }
+      });
+    };
+  }, [visibleItems]);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -264,81 +310,95 @@ export default function LifestyleGallery() {
               minHeight: isInitialLoad ? "600px" : "auto",
             }}
           >
-            {displayedItems.map((item, index) => (
-              <div
-                key={`${item.src}-${index}`}
-                className='break-inside-avoid mb-6 group relative cursor-pointer'
-                onClick={() => openLightbox(index)}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(20px)",
-                  transition: `opacity 0.6s ease-out ${
-                    index * 0.05
-                  }s, transform 0.6s ease-out ${index * 0.05}s`,
-                  willChange: isVisible ? "auto" : "opacity, transform",
-                }}
-              >
+            {displayedItems.map((item, index) => {
+              const shouldLoad = visibleImageIndices.has(index);
+              const isPriority = index < 3; // First 3 images are priority
+
+              return (
                 <div
-                  className='relative overflow-hidden bg-gray-100 rounded-xl transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 border border-gray-200'
-                  style={{ willChange: "transform" }}
+                  key={`${item.src}-${index}`}
+                  ref={(el) => {
+                    imageRefs.current[index] = el;
+                  }}
+                  data-index={index}
+                  className='break-inside-avoid mb-6 group relative cursor-pointer'
+                  onClick={() => openLightbox(index)}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                    transition: `opacity 0.6s ease-out ${
+                      index * 0.05
+                    }s, transform 0.6s ease-out ${index * 0.05}s`,
+                    willChange: isVisible ? "auto" : "opacity, transform",
+                  }}
                 >
-                  {/* Optimized Image - Only first 3 with priority */}
                   <div
-                    className={`relative w-full aspect-[3/4] ${getHeightClass(
-                      item.height
-                    )}`}
+                    className='relative overflow-hidden bg-gray-100 rounded-xl transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 border border-gray-200'
+                    style={{ willChange: "transform" }}
                   >
-                    <OptimizedImage
-                      src={item.src}
-                      alt={item.alt}
-                      className={`object-cover transition-all duration-300 ${
-                        hoveredIndex === index
-                          ? "scale-105 brightness-110"
-                          : "scale-100 brightness-100"
-                      }`}
-                      sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw'
-                      priority={index < 3}
-                      onLoad={() => handleImageLoad(index)}
-                    />
-
-                    {/* Minimal Hover Overlay */}
+                    {/* Optimized Image - Progressive loading */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent transition-all duration-300 ${
-                        hoveredIndex === index ? "opacity-100" : "opacity-0"
-                      }`}
-                    />
-
-                    {/* Hover Content */}
-                    <div
-                      className={`absolute inset-0 p-6 flex flex-col justify-between transition-all duration-300 ${
-                        hoveredIndex === index
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-4"
-                      }`}
+                      className={`relative w-full aspect-[3/4] ${getHeightClass(
+                        item.height
+                      )}`}
                     >
-                      <div className='flex justify-start'>
-                        <span className='px-4 py-2 bg-white/95 backdrop-blur-md text-gray-900 text-xs font-bold uppercase tracking-wider shadow-lg'>
-                          {item.category}
-                        </span>
-                      </div>
-                      <div className='space-y-2'>
-                        <div
-                          className='h-0.5 bg-gradient-to-r from-gray-400 to-gray-600 transition-all duration-300 delay-100'
-                          style={{
-                            width: hoveredIndex === index ? "100%" : "0%",
-                          }}
-                        ></div>
-                        <p className='text-white text-sm font-medium uppercase tracking-wider'>
-                          Click to View
-                        </p>
+                      {shouldLoad ? (
+                        <OptimizedImage
+                          src={item.src}
+                          alt={item.alt}
+                          className={`object-cover transition-all duration-300 ${
+                            hoveredIndex === index
+                              ? "scale-105 brightness-110"
+                              : "scale-100 brightness-100"
+                          }`}
+                          sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw'
+                          priority={isPriority}
+                          onLoad={() => handleImageLoad(index)}
+                        />
+                      ) : (
+                        // Lightweight placeholder while waiting to load - reduces initial page weight
+                        <div className='absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200' />
+                      )}
+
+                      {/* Minimal Hover Overlay */}
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent transition-all duration-300 ${
+                          hoveredIndex === index ? "opacity-100" : "opacity-0"
+                        }`}
+                      />
+
+                      {/* Hover Content */}
+                      <div
+                        className={`absolute inset-0 p-6 flex flex-col justify-between transition-all duration-300 ${
+                          hoveredIndex === index
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-4"
+                        }`}
+                      >
+                        <div className='flex justify-start'>
+                          <span className='px-4 py-2 bg-white/95 backdrop-blur-md text-gray-900 text-xs font-bold uppercase tracking-wider shadow-lg'>
+                            {item.category}
+                          </span>
+                        </div>
+                        <div className='space-y-2'>
+                          <div
+                            className='h-0.5 bg-gradient-to-r from-gray-400 to-gray-600 transition-all duration-300 delay-100'
+                            style={{
+                              width: hoveredIndex === index ? "100%" : "0%",
+                            }}
+                          ></div>
+                          <p className='text-white text-sm font-medium uppercase tracking-wider'>
+                            Click to View
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Load More Button */}

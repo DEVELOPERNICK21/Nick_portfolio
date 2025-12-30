@@ -6,23 +6,36 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 // Lazy load heavy components that aren't immediately visible
 // Using simpler loading states to avoid build issues
-const FloatingImageGallery = dynamic(() => import("@/components/FloatingImageGallery"), {
-  ssr: true,
-});
+const FloatingImageGallery = dynamic(
+  () => import("@/components/FloatingImageGallery"),
+  {
+    ssr: true,
+  }
+);
 
-const ParallaxImageSection = dynamic(() => import("@/components/ParallaxImageSection"), {
-  ssr: true,
-});
+const ParallaxImageSection = dynamic(
+  () => import("@/components/ParallaxImageSection"),
+  {
+    ssr: true,
+  }
+);
 
-const LifestyleGallery = dynamic(() => import("@/components/LifestyleGallery"), {
-  ssr: true,
-});
+const LifestyleGallery = dynamic(
+  () => import("@/components/LifestyleGallery"),
+  {
+    ssr: true,
+  }
+);
 
 const Stats = dynamic(() => import("@/components/Stats"), {
   ssr: true,
 });
 
 const CTA = dynamic(() => import("@/components/CTA"), {
+  ssr: true,
+});
+
+const InstagramFollow = dynamic(() => import("@/components/InstagramFollow"), {
   ssr: true,
 });
 
@@ -51,7 +64,7 @@ export default function Home() {
             url: "https://yourportfolio.com",
             image: "https://yourportfolio.com/profile.jpg",
             description:
-              "Professional fashion and editorial model available for bookings through CastYou agency",
+              "Emerging fashion and editorial model building portfolio and available for bookings through CastYou agency",
             sameAs: [
               "https://castyou.in/nikhil-kubde/",
               "https://www.instagram.com/nikhil___kubde/",
@@ -92,6 +105,11 @@ export default function Home() {
       {/* Stats Section */}
       <ScrollReveal direction='fade' delay={200}>
         <Stats />
+      </ScrollReveal>
+
+      {/* Instagram Follow Section */}
+      <ScrollReveal direction='fade' delay={250}>
+        <InstagramFollow />
       </ScrollReveal>
 
       {/* Call to Action */}

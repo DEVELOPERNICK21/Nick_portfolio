@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Nikhil Kubde",
   },
   description:
-    "Professional modeling portfolio of Nikhil Kubde showcasing fashion, editorial, and commercial work. Available for bookings worldwide through CastYou agency.",
+    "Emerging model portfolio of Nikhil Kubde showcasing fashion, editorial, and commercial work. Building portfolio and available for bookings through CastYou agency.",
   keywords: [
     "Nikhil Kubde",
     "model",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "Nikhil Kubde - Model Portfolio",
     title: "Nikhil Kubde - Professional Model Portfolio",
     description:
-      "Professional modeling portfolio of Nikhil Kubde showcasing fashion, editorial, and commercial work.",
+      "Emerging model portfolio of Nikhil Kubde showcasing fashion, editorial, and commercial work. Building portfolio and available for bookings.",
     images: [
       {
         url: "/og-image.jpg",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nikhil Kubde - Professional Model Portfolio",
     description:
-      "Professional modeling portfolio of Nikhil Kubde showcasing fashion, editorial, and commercial work.",
+      "Emerging model portfolio of Nikhil Kubde showcasing fashion, editorial, and commercial work. Building portfolio and available for bookings.",
     images: ["/og-image.jpg"],
     creator: "@yourhandle",
   },
