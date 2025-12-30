@@ -21,7 +21,7 @@ I bring something unique to the table - not just modeling skills, but deep under
 - Social media and content creation projects
 
 **My Profile:**
-- Height: 5'9" / 175 cm | Measurements: 38-30-36
+- Height: 5'10" / 175 cm | Measurements: 38-30-36
 - Experience: Music videos, YouTube projects, video content creation
 - Specialties: Fashion, Editorial, Commercial, Digital Brand Campaigns
 - Location: India (available for travel worldwide)
@@ -159,7 +159,7 @@ Nikhil Kubde
 ```
 Hi [Name]! 👋
 
-I'm Nikhil, a model from India with a unique background - I'm also a mobile app developer with 5+ years experience. 
+I'm Nikhil, a model from India with a unique background - I'm also a mobile app developer with 5+ years experience.
 
 I love [mention something specific about their work/brand] and would love to collaborate if you're open to it!
 
@@ -230,18 +230,21 @@ Nikhil Kubde
 ## 🎯 SUBJECT LINE HACKS (Use These!)
 
 ### For Agencies:
+
 - "Tech-Savvy Model Available - Perfect for Digital Brands"
 - "Model + Developer = Unique Talent for Your Agency"
 - "Professional Model with 5+ Years Tech Experience"
 - "Looking for Models Who Understand Digital? I'm Your Guy"
 
 ### For Brands:
+
 - "Tech-Savvy Model for [Brand Name] Digital Campaigns"
 - "Model Who Understands Your Product - Collaboration Opportunity"
 - "Perfect for Tech Brands - Model + Developer Available"
 - "Digital-First Model for [Brand Name]"
 
 ### For Tech Companies:
+
 - "Model Who Speaks Your Language - Tech Background"
 - "Tech-Savvy Model for [Company] Product Launches"
 - "Model + Developer = Authentic Tech Content"
@@ -251,14 +254,15 @@ Nikhil Kubde
 ## 📊 TRACKING TEMPLATE
 
 | Date | Contact | Type | Email Sent | Response | Follow-up Date | Status | Notes |
-|------|---------|------|------------|----------|----------------|--------|-------|
-| | | | | | | | |
+| ---- | ------- | ---- | ---------- | -------- | -------------- | ------ | ----- |
+|      |         |      |            |          |                |        |       |
 
 ---
 
 ## 🚀 QUICK ACTION PLAN
 
 ### Week 1: Setup
+
 - [ ] Customize all email templates with your info
 - [ ] Research 30 agencies (local, national, international)
 - [ ] Research 50 brands (fashion, tech, lifestyle)
@@ -266,6 +270,7 @@ Nikhil Kubde
 - [ ] Set up email templates in Gmail
 
 ### Week 2: First Wave
+
 - [ ] Send 15 agency emails (use Template 1)
 - [ ] Send 20 brand emails (use Template 2)
 - [ ] Send 5 tech company emails (use Template 3)
@@ -273,12 +278,14 @@ Nikhil Kubde
 - [ ] Engage with agency/brand accounts
 
 ### Week 3: Follow-Up
+
 - [ ] Follow up with Week 2 contacts
 - [ ] Send 10 more agency emails
 - [ ] Send 15 more brand emails
 - [ ] Continue Instagram engagement
 
 ### Week 4: Expand
+
 - [ ] Analyze what's working
 - [ ] Adjust messaging based on responses
 - [ ] Continue outreach
@@ -302,6 +309,7 @@ Nikhil Kubde
 ## 📈 SUCCESS METRICS
 
 Track these weekly:
+
 - Emails sent
 - Responses received
 - Positive responses
@@ -310,4 +318,3 @@ Track these weekly:
 - Portfolio views
 
 **Goal:** 5-10% response rate is excellent for cold outreach!
-

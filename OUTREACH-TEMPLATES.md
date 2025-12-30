@@ -12,7 +12,7 @@ I hope this email finds you well. My name is Nikhil Kubde, and I am an emerging 
 I recently came across [Agency Name] and was impressed by your roster and the quality of work you represent. I believe my versatility and fresh perspective could be a valuable addition to your talent pool.
 
 **About Me:**
-- Height: 5'9" / 175 cm
+- Height: 5'10" / 175 cm
 - Measurements: 38-30-36
 - Experience: Music videos, YouTube projects, portfolio building
 - Location: India (available for travel)
@@ -100,7 +100,7 @@ I hope this message finds you well. I came across your work on [Instagram/Websit
 My name is Nikhil Kubde, and I'm an emerging model building my portfolio. I'm reaching out to see if you'd be interested in a TFP (Time for Print) collaboration.
 
 **About Me:**
-- Height: 5'9" / 175 cm
+- Height: 5'10" / 175 cm
 - Experience: Music videos, YouTube projects, portfolio building
 - Style: Versatile - fashion, editorial, commercial
 - Location: [Your City], India
