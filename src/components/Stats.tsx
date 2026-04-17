@@ -2,10 +2,10 @@
 
 export default function Stats() {
   const stats = [
+    { number: "100+", label: "Followers" },
+    { number: "3", label: "Projects Completed" },
+    { number: "3", label: "Brands Worked With" },
     { number: "5+", label: "Years Tech Experience" },
-    { number: "1+", label: "Year Modeling" },
-    { number: "5+", label: "Video Projects" },
-    { number: "Building", label: "Portfolio" },
   ];
 
   return (

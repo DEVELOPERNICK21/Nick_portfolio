@@ -27,9 +27,9 @@ type Stat = {
 };
 
 const stats: Stat[] = [
-  { label: "Instagram Followers", value: 82000, suffix: "+" },
-  { label: "Professional Shoots", value: 170, suffix: "+" },
-  { label: "Brands Worked With", value: 42, suffix: "+" },
+  { label: "Instagram Followers", value: 100, suffix: "+" },
+  { label: "Projects Completed", value: 3, suffix: "" },
+  { label: "Brands Worked With", value: 3, suffix: "" },
 ];
 
 const galleryItems = [
@@ -511,18 +511,7 @@ export default function PremiumExperience() {
 
       <section className='py-16 border-y border-amber-100/10 bg-black/35 overflow-hidden'>
         <div className='marquee-track'>
-          {[
-            "Nike",
-            "Puma",
-            "Levis",
-            "Myntra",
-            "H&M",
-            "Zara",
-            "Nykaa Men",
-            "Ajio",
-            "Adidas",
-            "Lifestyle",
-          ].map(
+          {["Wework", "Laundryto", "Blue Budha Store"].map(
             (brand, idx) => (
               <span key={`${brand}-${idx}`} className='marquee-item'>
                 {brand}
