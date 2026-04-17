@@ -33,19 +33,21 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className='py-20 bg-white min-h-screen'>
+    <div className='premium-shell min-h-screen'>
       <div className='container-custom'>
-        {/* Header */}
-        <div className='text-center mb-16'>
-          <h1 className='section-title'>About Me</h1>
-          <p className='text-xl text-gray-600 max-w-2xl mx-auto'>
-            Passionate about fashion, storytelling, and bringing creative
-            visions to life
-          </p>
-        </div>
+        <section className='premium-section pb-10' data-chapter='Overview'>
+          <div className='text-center premium-surface p-8 md:p-12'>
+            <p className='premium-kicker'>Profile</p>
+            <h1 className='premium-heading mt-4'>About Me</h1>
+            <p className='premium-body mt-4 max-w-3xl mx-auto'>
+              Passionate about fashion, storytelling, and bringing creative
+              visions to life with a disciplined, campaign-ready process.
+            </p>
+          </div>
+        </section>
 
         {/* Main Content */}
-        <div className='grid md:grid-cols-2 gap-12 items-center mb-20'>
+        <div className='grid md:grid-cols-2 gap-12 items-center mb-20' data-chapter='Journey'>
           <ScrollReveal direction='left'>
             <div className='relative h-[600px] rounded-lg overflow-hidden border border-gray-200 hover:border-gray-400 transition-all duration-500 hover:shadow-xl bg-gray-100'>
               <Image
@@ -60,7 +62,7 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal direction='right' delay={200}>
-            <div className='space-y-6'>
+            <div className='space-y-6 premium-surface p-8'>
               <h2 className='text-3xl font-serif mb-4 text-gray-900'>
                 My Journey
               </h2>
@@ -104,6 +106,23 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
         </div>
+
+        <ScrollReveal direction='up' delay={150} variant='stagger'>
+          <section className='premium-section pt-0' data-chapter='Timeline'>
+            <span className='scroll-chapter-label'>Timeline</span>
+            <div className='grid md:grid-cols-3 gap-4 mt-6'>
+              {[
+                "2019-2023: Professional mobile app development across product teams",
+                "2024: Transitioned into visual-first personal brand building",
+                "Now: Fashion, editorial, and commercial modeling for digital-first campaigns",
+              ].map((item) => (
+                <div key={item} className='premium-surface p-6'>
+                  <p className='premium-body'>{item}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </ScrollReveal>
 
         {/* Introduction Video Section - World Class Design */}
         <ScrollReveal direction='fade' delay={300}>

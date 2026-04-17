@@ -101,13 +101,13 @@ export default function InstagramFeed() {
             Stay updated with my latest work and behind-the-scenes moments
           </p>
           <a
-            href='https://www.instagram.com/nikhil___kubde/'
+            href='https://www.instagram.com/nikhil__kubde/'
             target='_blank'
             rel='noopener noreferrer'
             className='inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-semibold rounded-md hover:opacity-90 transition-opacity'
           >
             <FaInstagram />
-            Follow @nikhil___kubde
+            Follow @nikhil__kubde
           </a>
         </div>
 
@@ -149,7 +149,7 @@ export default function InstagramFeed() {
             {[...Array(8)].map((_, index) => (
               <a
                 key={index}
-                href='https://www.instagram.com/nikhil___kubde/'
+                href='https://www.instagram.com/nikhil__kubde/'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='relative aspect-square overflow-hidden rounded-lg group cursor-pointer bg-gray-200 flex items-center justify-center'

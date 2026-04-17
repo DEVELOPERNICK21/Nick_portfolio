@@ -3,6 +3,7 @@ import ParallaxHero from "@/components/ParallaxHero";
 import HomeGallery from "@/components/HomeGallery";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollReveal from "@/components/ScrollReveal";
+import CinematicStorySection from "@/components/CinematicStorySection";
 
 // Lazy load heavy components that aren't immediately visible
 // Using simpler loading states to avoid build issues
@@ -55,7 +56,7 @@ export default function Home() {
   ];
 
   return (
-    <>
+    <div className='premium-shell'>
       {/* JSON-LD Structured Data for SEO - Multiple Schema Types */}
       <script
         type='application/ld+json'
@@ -66,13 +67,13 @@ export default function Home() {
               "@type": "Person",
               name: "Nikhil Kubde",
               jobTitle: ["Professional Model", "Mobile App Developer"],
-              url: "https://yourportfolio.com",
-              image: "https://yourportfolio.com/profile.jpg",
+              url: "https://nick-portfolio-nine.vercel.app",
+              image: "https://nick-portfolio-nine.vercel.app/profile.jpg",
               description:
                 "Professional model available for agency bookings. Fashion, editorial, and commercial modeling with 5+ years tech experience. Represented by CastYou agency.",
               sameAs: [
                 "https://castyou.in/nikhil-kubde/",
-                "https://www.instagram.com/nikhil___kubde/",
+                "https://www.instagram.com/nikhil__kubde/",
               ],
               knowsAbout: [
                 "Fashion Modeling",
@@ -109,7 +110,7 @@ export default function Home() {
               areaServed: "Worldwide",
               availableChannel: {
                 "@type": "ServiceChannel",
-                serviceUrl: "https://yourportfolio.com/contact",
+                serviceUrl: "https://nick-portfolio-nine.vercel.app/contact",
                 serviceType: "Modeling Bookings",
               },
             },
@@ -157,44 +158,82 @@ export default function Home() {
 
       <ScrollProgress />
 
-      {/* Hero Section - Full Screen */}
       <ParallaxHero />
 
-      {/* Portfolio Gallery Section */}
-      <ScrollReveal direction='up' delay={100}>
-        <HomeGallery />
-      </ScrollReveal>
+      <section
+        className='premium-section container-custom'
+        id='gallery-section'
+        data-chapter='Gallery'
+      >
+        <span className='scroll-chapter-label'>Curated Work</span>
+        <ScrollReveal direction='up' delay={100} variant='mask'>
+          <HomeGallery />
+        </ScrollReveal>
+      </section>
 
-      {/* Floating Interactive Gallery - New Creative Section */}
-      <FloatingImageGallery />
+      <section className='premium-section' data-chapter='Story'>
+        <div className='container-custom'>
+          <ScrollReveal direction='fade' variant='stagger'>
+            <div className='premium-surface p-8 md:p-12'>
+              <p className='premium-kicker'>Visual Storytelling</p>
+              <h2 className='premium-heading mt-4'>A cinematic profile built for agencies</h2>
+              <p className='premium-body mt-4 max-w-3xl'>
+                Scroll to discover campaign-ready visuals, technical credibility,
+                and fast booking pathways designed for high-intent brand teams.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-      {/* Parallax Featured Section - Scroll Interactive */}
-      <ParallaxImageSection
-        images={featuredImages}
-        title='FEATURED'
-        subtitle='Immersive scroll experience with parallax effects'
-      />
+      <CinematicStorySection />
 
-      {/* Lifestyle Gallery Section */}
-      <LifestyleGallery />
+      <section className='premium-section' data-chapter='Interactive'>
+        <div className='container-custom'>
+          <span className='scroll-chapter-label'>Interactive Stream</span>
+          <FloatingImageGallery />
+        </div>
+      </section>
 
-      {/* Stats Section */}
-      <ScrollReveal direction='fade' delay={200}>
-        <Stats />
-      </ScrollReveal>
+      <section className='premium-section' data-chapter='Featured'>
+        <div className='container-custom'>
+          <span className='scroll-chapter-label'>Featured Motion</span>
+          <ParallaxImageSection
+            images={featuredImages}
+            title='FEATURED'
+            subtitle='Immersive scroll experience with parallax effects'
+          />
+        </div>
+      </section>
 
-      {/* Tech Advantage Section */}
-      <TechAdvantage />
+      <section className='premium-section' data-chapter='Lifestyle'>
+        <div className='container-custom'>
+          <LifestyleGallery />
+        </div>
+      </section>
 
-      {/* Instagram Follow Section */}
-      <ScrollReveal direction='fade' delay={250}>
-        <InstagramFollow />
-      </ScrollReveal>
+      <section className='premium-section container-custom' data-chapter='Stats'>
+        <ScrollReveal direction='fade' delay={200} variant='scale-lift'>
+          <Stats />
+        </ScrollReveal>
+      </section>
 
-      {/* Call to Action */}
-      <ScrollReveal direction='fade' delay={300}>
-        <CTA />
-      </ScrollReveal>
-    </>
+      <section className='premium-section container-custom' data-chapter='Advantage'>
+        <TechAdvantage />
+      </section>
+
+      <section className='premium-section container-custom' data-chapter='Social'>
+        <ScrollReveal direction='fade' delay={250} variant='mask'>
+          <InstagramFollow />
+        </ScrollReveal>
+      </section>
+
+      <section className='premium-section container-custom pt-6' data-chapter='Book'>
+        <ScrollReveal direction='fade' delay={300} variant='scale-lift'>
+          <CTA />
+        </ScrollReveal>
+      </section>
+
+    </div>
   );
 }

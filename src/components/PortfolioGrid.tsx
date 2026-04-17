@@ -171,8 +171,8 @@ export default function PortfolioGrid() {
   return (
     <>
       <div className='w-full'>
-        {/* Clean Filter Buttons - Minimal Style */}
-        <div className='flex flex-wrap justify-center gap-2 md:gap-3 mb-16 pb-8 border-b border-gray-200'>
+        <div className='sticky top-20 z-20 mb-10 rounded-2xl border border-zinc-700/80 bg-zinc-950/80 px-4 py-4 backdrop-blur'>
+          <div className='flex flex-wrap justify-center gap-2 md:gap-3'>
           {categories.map((category) => (
             <button
               key={category}
@@ -183,10 +183,10 @@ export default function PortfolioGrid() {
                   block: "start",
                 });
               }}
-              className={`px-6 py-2 text-sm md:text-base font-medium transition-all duration-300 ${
+              className={`px-5 py-2 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
                 activeFilter === category
-                  ? "text-gray-900 border-b-2 border-gray-900"
-                  : "text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-400"
+                  ? "text-white bg-neutral-900 shadow-premium-soft"
+                  : "text-gray-600 hover:text-gray-900 border border-transparent hover:border-stone-300"
               }`}
             >
               {category}
@@ -197,9 +197,9 @@ export default function PortfolioGrid() {
               )}
             </button>
           ))}
+          </div>
         </div>
 
-        {/* Clean Pinterest-Style Masonry Grid */}
         <div
           ref={gridRef}
           className='columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 md:gap-6'
@@ -230,11 +230,10 @@ export default function PortfolioGrid() {
                   animation: `fadeInUp 0.6s ease-out ${index * 0.05}s both`,
                 }}
               >
-                {/* Clean Card */}
-                <div className='relative overflow-hidden bg-gray-100 transition-all duration-500 hover:opacity-90 border border-gray-200 rounded-lg'>
+                <div className='relative overflow-hidden bg-zinc-900 transition-all duration-500 hover:-translate-y-1 border border-zinc-700 rounded-2xl hover:shadow-premium-soft'>
                   {/* Loading Placeholder */}
                   {!loadedImages.has(index) && (
-                    <div className='absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center z-10'>
+                    <div className='absolute inset-0 bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center z-10'>
                       <div className='w-12 h-12 border-2 border-gray-400 border-t-gray-600 rounded-full animate-spin' />
                     </div>
                   )}

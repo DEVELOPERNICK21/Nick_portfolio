@@ -4,37 +4,24 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
+import { useElementScrollProgress, useScrollSignals } from "@/hooks/useScrollSignals";
 
 export default function ParallaxHero() {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { y, velocity } = useScrollSignals();
+  const heroProgress = useElementScrollProgress("home-hero");
+  const [shouldReduceMotion, setShouldReduceMotion] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    if (typeof window === "undefined") return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setShouldReduceMotion(motion.matches);
+    update();
+    motion.addEventListener("change", update);
+    return () => motion.removeEventListener("change", update);
   }, []);
 
   const scrollToGallery = () => {
-    if (typeof window === 'undefined') return;
-    
+    if (typeof window === "undefined") return;
     const gallery = document.querySelector("#gallery-section");
     if (gallery) {
       gallery.scrollIntoView({ behavior: "smooth" });
@@ -43,16 +30,24 @@ export default function ParallaxHero() {
     }
   };
 
+  const safeY = shouldReduceMotion ? 0 : y;
+  const bgParallax = safeY * 0.22;
+  const overlayParallax = safeY * 0.12;
+  const headingScale = shouldReduceMotion ? 1 : 1 - heroProgress * 0.08;
+  const headingOpacity = shouldReduceMotion ? 1 : Math.max(0.15, 1 - heroProgress * 1.2);
+  const velocityClass =
+    velocity === "fast" ? "shadow-2xl" : velocity === "medium" ? "shadow-xl" : "shadow-lg";
+
   return (
-    <section className='relative h-screen flex items-center justify-center overflow-hidden'>
-      {/* Background Image with Parallax and Mouse Movement */}
+    <section
+      id='home-hero'
+      className='relative h-screen flex items-center justify-center overflow-hidden'
+    >
       <div
         className='absolute inset-0 z-0'
         style={{
-          transform: `translateY(${scrollY * 0.5}px) translate(${
-            mousePosition.x
-          }px, ${mousePosition.y}px)`,
-          transition: "transform 0.3s ease-out",
+          transform: `translateY(${bgParallax}px) scale(${1.08 + heroProgress * 0.1})`,
+          transition: "transform 120ms linear",
         }}
       >
         <Image
@@ -64,18 +59,19 @@ export default function ParallaxHero() {
           quality={90}
           sizes='100vw'
         />
-        <div className='absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/10' />
+        <div className='absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/15' />
       </div>
 
-      {/* Animated Gradient Overlay */}
-      <div className='absolute inset-0 z-[1] bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-50' />
+      <div
+        className='absolute inset-0 z-[1] bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70'
+        style={{ transform: `translateY(${overlayParallax}px)` }}
+      />
 
-      {/* Content with fade effect */}
       <div
         className='relative z-10 text-center text-white px-4 max-w-6xl mx-auto'
         style={{
-          opacity: Math.max(0, 1 - scrollY / 600),
-          transform: `translateY(${scrollY * 0.3}px)`,
+          opacity: headingOpacity,
+          transform: `translateY(${safeY * 0.18}px) scale(${headingScale})`,
         }}
       >
         <div className='mb-6'>
@@ -84,7 +80,7 @@ export default function ParallaxHero() {
           </span>
         </div>
 
-        <h1 className='text-6xl md:text-8xl lg:text-9xl font-serif mb-6 text-white tracking-tight leading-none drop-shadow-2xl'>
+        <h1 className='text-6xl md:text-8xl lg:text-9xl font-serif mb-6 text-white tracking-tight leading-none drop-shadow-2xl text-balance'>
           NIKHIL KUBDE
         </h1>
 
@@ -112,7 +108,7 @@ export default function ParallaxHero() {
         <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
           <Link
             href='/portfolio'
-            className='group relative px-8 py-4 bg-white text-dark font-bold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden'
+            className={`group relative px-8 py-4 bg-white text-dark font-bold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden ${velocityClass}`}
           >
             <span className='relative z-10 flex items-center gap-2'>
               View Portfolio
@@ -135,7 +131,7 @@ export default function ParallaxHero() {
         className='absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer group'
         onClick={scrollToGallery}
         style={{
-          opacity: Math.max(0, 1 - scrollY / 400),
+          opacity: Math.max(0, 1 - y / 400),
         }}
       >
         <div className='flex flex-col items-center gap-2 animate-bounce'>

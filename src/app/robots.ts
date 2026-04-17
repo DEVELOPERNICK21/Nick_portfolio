@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://yourportfolio.com/sitemap.xml",
+    sitemap: "https://nick-portfolio-nine.vercel.app/sitemap.xml",
   };
 }

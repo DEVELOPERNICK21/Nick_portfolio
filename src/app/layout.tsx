@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import FloatingSocialBar from "@/components/FloatingSocialBar";
+import ScrollChapterNav from "@/components/ScrollChapterNav";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yourportfolio.com"),
+  metadataBase: new URL("https://nick-portfolio-nine.vercel.app"),
   title: {
     default: "Nikhil Kubde - Professional Model Portfolio",
     template: "%s | Nikhil Kubde",
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourportfolio.com",
+    url: "https://nick-portfolio-nine.vercel.app",
     siteName: "Nikhil Kubde - Model Portfolio",
     title: "Nikhil Kubde - Professional Model Portfolio",
     description:
@@ -101,12 +102,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={`${inter.variable} ${playfair.variable} light`} suppressHydrationWarning>
-      <body className={`${inter.className} bg-white`}>
+      <body className={`${inter.className} bg-[#0a0a0b]`}>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                // Force white theme only - runs before React hydration
+                // Keep a single fixed theme class before hydration.
                 try {
                   document.documentElement.classList.remove('dark');
                   document.documentElement.classList.add('light');
@@ -118,7 +119,8 @@ export default function RootLayout({
         />
         <ThemeProvider>
           <Navbar />
-          <main className='min-h-screen bg-white'>{children}</main>
+          <main className='min-h-screen bg-[#0a0a0b]'>{children}</main>
+          <ScrollChapterNav />
           <Footer />
           <FloatingSocialBar />
         </ThemeProvider>

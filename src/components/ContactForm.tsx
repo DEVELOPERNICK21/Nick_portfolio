@@ -67,7 +67,7 @@ export default function ContactForm() {
           required
           value={formData.name}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-900 placeholder-gray-500'
+          className='w-full px-4 py-3 bg-white/90 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-700/40 focus:border-amber-700/40 text-gray-900 placeholder-gray-500 transition-all duration-300'
           placeholder='Your name'
         />
       </div>
@@ -86,7 +86,7 @@ export default function ContactForm() {
           required
           value={formData.email}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-900 placeholder-gray-500'
+          className='w-full px-4 py-3 bg-white/90 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-700/40 focus:border-amber-700/40 text-gray-900 placeholder-gray-500 transition-all duration-300'
           placeholder='your@email.com'
         />
       </div>
@@ -104,7 +104,7 @@ export default function ContactForm() {
           name='phone'
           value={formData.phone}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-900 placeholder-gray-500'
+          className='w-full px-4 py-3 bg-white/90 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-700/40 focus:border-amber-700/40 text-gray-900 placeholder-gray-500 transition-all duration-300'
           placeholder='+1 (555) 000-0000'
         />
       </div>
@@ -122,7 +122,7 @@ export default function ContactForm() {
           required
           value={formData.subject}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-900'
+          className='w-full px-4 py-3 bg-white/90 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-700/40 focus:border-amber-700/40 text-gray-900 transition-all duration-300'
         >
           <option value=''>Select a subject</option>
           <option value='booking'>Booking Inquiry</option>
@@ -146,12 +146,12 @@ export default function ContactForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          className='w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 resize-none text-gray-900 placeholder-gray-500'
+          className='w-full px-4 py-3 bg-white/90 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-700/40 focus:border-amber-700/40 resize-none text-gray-900 placeholder-gray-500 transition-all duration-300'
           placeholder='Tell me about your project...'
         />
       </div>
 
-      <button type='submit' className='w-full btn-primary'>
+      <button type='submit' className='w-full premium-button justify-center'>
         Send Message
       </button>
 

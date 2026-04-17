@@ -12,13 +12,13 @@ export default function InstagramFollow() {
               Follow me on Instagram for daily updates and behind-the-scenes content
             </p>
             <a
-              href='https://www.instagram.com/nikhil___kubde/'
+              href='https://www.instagram.com/nikhil__kubde/'
               target='_blank'
               rel='noopener noreferrer'
               className='inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity shadow-lg hover:shadow-xl transform hover:scale-105'
             >
               <FaInstagram className='text-xl' />
-              Follow @nikhil___kubde
+              Follow @nikhil__kubde
               <FaExternalLinkAlt />
             </a>
           </div>

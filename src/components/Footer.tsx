@@ -5,13 +5,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className='bg-gray-50 border-t border-gray-200 text-gray-700 py-16'>
+    <footer className='bg-[#08080a] border-t border-zinc-800 text-zinc-300 py-16'>
       <div className='container-custom'>
         <div className='grid md:grid-cols-3 gap-8 mb-8'>
           {/* About */}
           <div>
-            <h3 className='text-xl font-serif mb-4 text-gray-900'>Nikhil Kubde</h3>
-            <p className='text-gray-600 text-sm leading-relaxed mb-3'>
+            <h3 className='text-xl font-serif mb-4 text-zinc-100'>Nikhil Kubde</h3>
+            <p className='text-zinc-400 text-sm leading-relaxed mb-3'>
               Professional model available for fashion, editorial, and
               commercial projects worldwide.
             </p>
@@ -19,7 +19,7 @@ export default function Footer() {
               href='https://castyou.in/nikhil-kubde/'
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center gap-2 text-gray-900 hover:text-gray-700 transition-colors text-sm'
+              className='inline-flex items-center gap-2 text-amber-200 hover:text-amber-100 transition-colors text-sm'
             >
               View Agency Profile →
             </a>
@@ -27,12 +27,12 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className='text-xl font-serif mb-4 text-gray-900'>Quick Links</h3>
+            <h3 className='text-xl font-serif mb-4 text-zinc-100'>Quick Links</h3>
             <ul className='space-y-2'>
               <li>
                 <Link
                   href='/about'
-                  className='text-gray-600 hover:text-gray-900 transition-colors text-sm'
+                  className='text-zinc-400 hover:text-zinc-100 transition-colors text-sm'
                 >
                   About
                 </Link>
@@ -40,7 +40,7 @@ export default function Footer() {
               <li>
                 <Link
                   href='/portfolio'
-                  className='text-gray-600 hover:text-gray-900 transition-colors text-sm'
+                  className='text-zinc-400 hover:text-zinc-100 transition-colors text-sm'
                 >
                   Portfolio
                 </Link>
@@ -48,7 +48,7 @@ export default function Footer() {
               <li>
                 <Link
                   href='/contact'
-                  className='text-gray-600 hover:text-gray-900 transition-colors text-sm'
+                  className='text-zinc-400 hover:text-zinc-100 transition-colors text-sm'
                 >
                   Contact
                 </Link>
@@ -58,7 +58,7 @@ export default function Footer() {
                   href='https://castyou.in/nikhil-kubde/'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='text-gray-600 hover:text-gray-900 transition-colors text-sm'
+                  className='text-zinc-400 hover:text-zinc-100 transition-colors text-sm'
                 >
                   CastYou Profile
                 </a>
@@ -68,23 +68,23 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className='text-xl font-serif mb-4 text-gray-900'>Connect</h3>
+            <h3 className='text-xl font-serif mb-4 text-zinc-100'>Connect</h3>
             <div className='flex gap-4'>
               <a
-                href='https://www.instagram.com/nikhil___kubde/'
+                href='https://www.instagram.com/nikhil__kubde/'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors'
+                className='w-10 h-10 bg-zinc-900 border border-zinc-700 rounded-full flex items-center justify-center hover:bg-zinc-800 transition-colors'
                 aria-label='Instagram'
               >
-                <FaInstagram size={18} className='text-gray-700' />
+                <FaInstagram size={18} className='text-zinc-200' />
               </a>
             </div>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className='border-t border-gray-200 pt-8 text-center text-sm text-gray-500'>
+        <div className='border-t border-zinc-800 pt-8 text-center text-sm text-zinc-500'>
           <p className='flex items-center justify-center gap-2'>
             © {currentYear} Nikhil Kubde. Made with{" "}
             <FaHeart className='text-red-500' /> for the craft

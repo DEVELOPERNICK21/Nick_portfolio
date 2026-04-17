@@ -34,23 +34,25 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className='py-20 bg-white min-h-screen'>
+    <div className='premium-shell min-h-screen'>
       <div className='container-custom'>
-        {/* Header */}
-        <ScrollReveal direction='fade'>
-          <div className='text-center mb-16'>
-            <h1 className='section-title'>Get In Touch</h1>
-            <p className='text-xl text-gray-600 max-w-2xl mx-auto'>
+        <ScrollReveal direction='fade' variant='scale-lift'>
+          <div className='text-center premium-section pb-8' data-chapter='Header'>
+            <div className='premium-surface p-8 md:p-12'>
+              <p className='premium-kicker'>Bookings</p>
+              <h1 className='premium-heading mt-4'>Get In Touch</h1>
+              <p className='premium-body max-w-2xl mx-auto mt-4'>
               Available for bookings, collaborations, and creative projects
               worldwide
-            </p>
+              </p>
+            </div>
           </div>
         </ScrollReveal>
 
-        <div className='grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto'>
+        <div className='grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto' data-chapter='ContactForm'>
           {/* Contact Information */}
           <ScrollReveal direction='left' delay={100}>
-            <div>
+            <div className='premium-surface p-8'>
               <h2 className='text-2xl font-serif mb-6 text-gray-900'>
                 Lets Work Together
               </h2>
@@ -105,10 +107,10 @@ export default function ContactPage() {
                 <h3 className='font-semibold mb-4 text-gray-700'>Follow Me</h3>
                 <div className='flex gap-4'>
                   <a
-                    href='https://www.instagram.com/nikhil___kubde/'
+                    href='https://www.instagram.com/nikhil__kubde/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='w-12 h-12 bg-gray-100 border border-gray-300 text-gray-900 rounded-full flex items-center justify-center hover:bg-gray-200 hover:shadow-lg transition-all duration-300'
+                    className='w-12 h-12 bg-gray-100 border border-gray-300 text-gray-900 rounded-full flex items-center justify-center hover:bg-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300'
                     aria-label='Instagram'
                   >
                     <FaInstagram size={20} />
@@ -120,7 +122,7 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <ScrollReveal direction='right' delay={200}>
-            <div className='card-dark p-8'>
+            <div className='premium-surface p-8'>
               <h2 className='text-2xl font-serif mb-6 text-gray-900'>
                 Send a Message
               </h2>

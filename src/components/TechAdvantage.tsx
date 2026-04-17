@@ -33,13 +33,13 @@ export default function TechAdvantage() {
   ];
 
   return (
-    <section 
-      className='py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50'
+    <section
+      className='py-20 bg-transparent'
       aria-label='Technical Expertise and Modeling Services'
     >
       <div className='container-custom'>
-        <ScrollReveal direction='fade' delay={100}>
-          <div className='text-center mb-16'>
+        <ScrollReveal direction='fade' delay={100} variant='scale-lift'>
+          <div className='text-center mb-16 premium-surface p-8 md:p-12'>
             <div className='inline-block mb-6'>
               <span className='text-xs uppercase tracking-widest text-gray-500 font-semibold px-4 py-2 border border-gray-300 bg-white'>
                 Unique Advantage
@@ -55,14 +55,14 @@ export default function TechAdvantage() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal direction='up' delay={200}>
+        <ScrollReveal direction='up' delay={200} variant='stagger'>
           <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12'>
             {advantages.map((advantage, index) => {
               const Icon = advantage.icon;
               return (
                 <div
                   key={index}
-                  className='bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-400 hover:shadow-xl transition-all duration-300 group'
+                  className='bg-white rounded-2xl p-6 border border-stone-300 hover:border-stone-500 hover:shadow-premium-soft transition-all duration-300 group'
                 >
                   <div className='w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-800 transition-colors'>
                     <Icon className='text-white text-xl' />
@@ -79,8 +79,8 @@ export default function TechAdvantage() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal direction='fade' delay={300}>
-          <div className='bg-white rounded-2xl p-8 md:p-10 border border-gray-200 shadow-lg'>
+        <ScrollReveal direction='fade' delay={300} variant='scale-lift'>
+          <div className='bg-white rounded-2xl p-8 md:p-10 border border-stone-300 shadow-premium-soft'>
             <div className='max-w-4xl mx-auto'>
               <h3 className='text-2xl md:text-3xl font-serif text-gray-900 mb-6 text-center'>
                 Why This Matters for Agencies & Brands

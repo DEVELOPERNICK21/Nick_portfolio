@@ -2,9 +2,11 @@ import Link from "next/link";
 
 export default function CTA() {
   return (
-    <section className='py-20 md:py-32 bg-white'>
+    <section className='py-20 md:py-32 bg-transparent'>
       <div className='container-custom text-center'>
-        <h2 className='text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-gray-900 tracking-tight'>
+        <div className='premium-surface p-8 md:p-14'>
+        <p className='premium-kicker'>Bookings</p>
+        <h2 className='text-5xl md:text-6xl lg:text-7xl font-serif mb-6 mt-4 text-gray-900 tracking-tight'>
           LET&apos;S CREATE
         </h2>
         <h3 className='text-5xl md:text-6xl lg:text-7xl font-serif mb-8 text-gray-900 tracking-tight'>
@@ -19,16 +21,17 @@ export default function CTA() {
         <div className='flex flex-col sm:flex-row gap-4 justify-center'>
           <Link
             href='/contact'
-            className='px-8 py-4 bg-gray-900 text-white font-bold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 active:scale-95 inline-block shadow-lg hover:shadow-xl'
+            className='premium-button justify-center'
           >
             Get In Touch
           </Link>
           <Link
             href='/portfolio'
-            className='px-8 py-4 border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-900 hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95 inline-block shadow-lg hover:shadow-xl'
+            className='premium-button-secondary justify-center'
           >
             View Portfolio
           </Link>
+        </div>
         </div>
       </div>
     </section>
