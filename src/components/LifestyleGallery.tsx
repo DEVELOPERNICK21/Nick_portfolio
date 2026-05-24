@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import ImageLightbox from "./ImageLightbox";
 import OptimizedImage from "./OptimizedImage";
+import { MAIN_PHOTOS } from "@/data/media";
 
 interface LifestyleItem {
   src: string;
@@ -16,7 +17,7 @@ export default function LifestyleGallery() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [visibleItems, setVisibleItems] = useState(6); // Start with 6 items for faster initial load
+  const [visibleItems, setVisibleItems] = useState(5);
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -25,110 +26,7 @@ export default function LifestyleGallery() {
     new Set([0, 1, 2])
   ); // Only first 3 visible initially
 
-  const lifestyleItems: LifestyleItem[] = [
-    {
-      src: "/nikhil-kubde-extra-01.jpg",
-      alt: "Lifestyle photography - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "tall",
-    },
-    {
-      src: "/nikhil-kubde-extra-02.jpg",
-      alt: "Casual lifestyle shoot - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "medium",
-    },
-    {
-      src: "/nikhil-kubde-extra-03.jpg",
-      alt: "Lifestyle editorial - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "short",
-    },
-    {
-      src: "/nikhil-kubde-extra-04.jpg",
-      alt: "Everyday lifestyle photography - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "tall",
-    },
-    {
-      src: "/nikhil-kubde-extra-05.jpg",
-      alt: "Lifestyle fashion - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "medium",
-    },
-    {
-      src: "/nikhil-kubde-extra-06.jpg",
-      alt: "Lifestyle portrait - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "short",
-    },
-    {
-      src: "/nikhil-kubde-extra-07.jpg",
-      alt: "Lifestyle editorial shoot - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "tall",
-    },
-    {
-      src: "/nikhil-kubde-extra-08.jpg",
-      alt: "Casual lifestyle photography - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "medium",
-    },
-    {
-      src: "/nikhil-kubde-extra-09.jpg",
-      alt: "Lifestyle brand photography - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "short",
-    },
-    {
-      src: "/nikhil-kubde-extra-10.jpg",
-      alt: "Lifestyle fashion editorial - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "tall",
-    },
-    {
-      src: "/nikhil-kubde-extra-11.jpg",
-      alt: "Everyday lifestyle shoot - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "medium",
-    },
-    {
-      src: "/nikhil-kubde-extra-15.jpg",
-      alt: "Lifestyle brand shoot - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "short",
-    },
-    {
-      src: "/nikhil-kubde-extra-16.jpg",
-      alt: "Portrait photography - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "medium",
-    },
-    {
-      src: "/nikhil-kubde-extra-17.jpg",
-      alt: "Golden hour portrait - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "tall",
-    },
-    {
-      src: "/nikhil-kubde-extra-18.jpg",
-      alt: "Landscape lifestyle photography - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "tall",
-    },
-    {
-      src: "/nikhil-kubde-extra-19.jpg",
-      alt: "Adventure lifestyle photography - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "medium",
-    },
-    {
-      src: "/nikhil-kubde-extra-20.jpg",
-      alt: "Lifestyle portrait - Nikhil Kubde",
-      category: "Lifestyle",
-      height: "short",
-    },
-  ];
+  const lifestyleItems: LifestyleItem[] = MAIN_PHOTOS;
 
   const displayedItems = lifestyleItems.slice(0, visibleItems);
 

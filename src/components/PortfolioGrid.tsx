@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import ImageLightbox from "./ImageLightbox";
+import { MAIN_PHOTOS } from "@/data/media";
 
 interface PortfolioItem {
   src: string;
@@ -22,98 +23,16 @@ export default function PortfolioGrid() {
   const categories = [
     "All",
     "Editorial",
-    "Fashion",
     "Commercial",
-    "Runway",
-    "Beauty",
+    "Lifestyle",
+    "Fashion",
+    "Campaign",
   ];
 
-  const portfolioItems: PortfolioItem[] = [
-    {
-      src: "/portfolio-1.jpg",
-      alt: "Editorial fashion shoot - Nikhil Kubde",
-      category: "Editorial",
-      description: "Professional editorial photography showcasing modern fashion",
-      height: "tall",
-    },
-    {
-      src: "/portfolio-2.jpg",
-      alt: "High fashion campaign - Nikhil Kubde",
-      category: "Fashion",
-      description: "Luxury brand campaign featuring contemporary style",
-      height: "medium",
-    },
-    {
-      src: "/portfolio-3.jpg",
-      alt: "Commercial advertisement - Nikhil Kubde",
-      category: "Commercial",
-      description: "Professional commercial photography for brand marketing",
-      height: "short",
-    },
-    {
-      src: "/portfolio-4.jpg",
-      alt: "Fashion week runway - Nikhil Kubde",
-      category: "Runway",
-      description: "Striking runway presentation at international fashion week",
-      height: "tall",
-    },
-    {
-      src: "/portfolio-5.jpg",
-      alt: "Beauty close-up - Nikhil Kubde",
-      category: "Beauty",
-      description: "Artistic beauty portrait highlighting natural features",
-      height: "medium",
-    },
-    {
-      src: "/portfolio-6.jpg",
-      alt: "Magazine editorial - Nikhil Kubde",
-      category: "Editorial",
-      description: "Featured editorial spread in leading fashion magazine",
-      height: "short",
-    },
-    {
-      src: "/portfolio-7.jpg",
-      alt: "Brand campaign - Nikhil Kubde",
-      category: "Fashion",
-      description: "High-end fashion campaign with creative direction",
-      height: "tall",
-    },
-    {
-      src: "/portfolio-8.jpg",
-      alt: "Product photography - Nikhil Kubde",
-      category: "Commercial",
-      description: "Professional product endorsement photography",
-      height: "medium",
-    },
-    {
-      src: "/portfolio-9.jpg",
-      alt: "Designer runway - Nikhil Kubde",
-      category: "Runway",
-      description: "Exclusive designer showcase on international runway",
-      height: "short",
-    },
-    {
-      src: "/portfolio-10.jpg",
-      alt: "Beauty portrait - Nikhil Kubde",
-      category: "Beauty",
-      description: "Elegant beauty photography with artistic lighting",
-      height: "tall",
-    },
-    {
-      src: "/portfolio-11.jpg",
-      alt: "Fashion editorial - Nikhil Kubde",
-      category: "Editorial",
-      description: "Sophisticated fashion editorial with storytelling",
-      height: "medium",
-    },
-    {
-      src: "/portfolio-12.jpg",
-      alt: "Luxury brand - Nikhil Kubde",
-      category: "Fashion",
-      description: "Premium luxury brand campaign photography",
-      height: "tall",
-    },
-  ];
+  const portfolioItems: PortfolioItem[] = MAIN_PHOTOS.map((photo) => ({
+    ...photo,
+    description: `${photo.category} campaign photography — Nikhil Kubde`,
+  }));
 
   const filteredItems =
     activeFilter === "All"

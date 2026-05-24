@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import { FaInstagram, FaEnvelope } from "react-icons/fa";
 import ScrollReveal from "@/components/ScrollReveal";
+import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
 
 export const metadata: Metadata = {
   title: "Contact - Book Nikhil Kubde for Modeling Projects",
@@ -45,6 +46,13 @@ export default function ContactPage() {
               Available for bookings, collaborations, and creative projects
               worldwide
               </p>
+              <a
+                href={PORTFOLIO_PDF}
+                download={PORTFOLIO_PDF_FILENAME}
+                className='premium-button mt-8 inline-flex'
+              >
+                Download Portfolio PDF (Singles & Polaroids)
+              </a>
             </div>
           </div>
         </ScrollReveal>

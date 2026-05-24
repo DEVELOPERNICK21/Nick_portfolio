@@ -19,6 +19,12 @@ import {
 } from "react-icons/fa";
 import { FiArrowUpRight, FiCheckCircle, FiTrendingUp } from "react-icons/fi";
 import { HiOutlineSparkles } from "react-icons/hi2";
+import {
+  BRAND_COLLABORATIONS,
+  HERO_IMAGE,
+  MAIN_PHOTOS,
+  PORTFOLIO_PDF,
+} from "@/data/media";
 
 type Stat = {
   label: string;
@@ -32,17 +38,11 @@ const stats: Stat[] = [
   { label: "Brands Worked With", value: 3, suffix: "" },
 ];
 
-const galleryItems = [
-  { title: "Fashion Editorial", image: "/portfolio-3.jpg", tag: "Fashion" },
-  { title: "Fitness Campaign", image: "/portfolio-8.jpg", tag: "Fitness" },
-  { title: "Lifestyle Portraits", image: "/gallery-5.jpg", tag: "Lifestyle" },
-  { title: "Street Luxury", image: "/portfolio-11.jpg", tag: "Fashion" },
-  { title: "Athletic Series", image: "/gallery-2.jpg", tag: "Fitness" },
-  { title: "Urban Story", image: "/portfolio-6.jpg", tag: "Lifestyle" },
-  { title: "Monochrome Story", image: "/portfolio-9.jpg", tag: "Fashion" },
-  { title: "Peak Performance", image: "/portfolio-12.jpg", tag: "Fitness" },
-  { title: "Clean Lifestyle", image: "/gallery-4.jpg", tag: "Lifestyle" },
-];
+const galleryItems = MAIN_PHOTOS.map((photo) => ({
+  title: photo.category,
+  image: photo.src,
+  tag: photo.category,
+}));
 
 const linkCards = [
   { label: "Behance", href: "https://www.behance.net/kkubde", icon: <FaBehance /> },
@@ -62,6 +62,11 @@ const linkCards = [
     icon: <FaInstagram />,
   },
   { label: "Email", href: "mailto:nikhilkubde21@gmail.com", icon: <FaEnvelope /> },
+  {
+    label: "Comp Card PDF",
+    href: PORTFOLIO_PDF,
+    icon: <FiArrowUpRight />,
+  },
 ];
 
 const testimonials = [
@@ -277,7 +282,7 @@ export default function PremiumExperience() {
           loop
           playsInline
           className='absolute inset-0 h-full w-full object-cover'
-          poster='/hero-image.jpg'
+          poster={HERO_IMAGE}
         >
           <source src='/intro-video.mp4' type='video/mp4' />
         </motion.video>
@@ -511,7 +516,7 @@ export default function PremiumExperience() {
 
       <section className='py-16 border-y border-amber-100/10 bg-black/35 overflow-hidden'>
         <div className='marquee-track'>
-          {["Wework", "Laundryto", "Blue Budha Store"].map(
+          {BRAND_COLLABORATIONS.map(
             (brand, idx) => (
               <span key={`${brand}-${idx}`} className='marquee-item'>
                 {brand}

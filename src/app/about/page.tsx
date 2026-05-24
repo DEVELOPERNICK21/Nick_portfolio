@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
+import ModelPortfolioDownload from "@/components/ModelPortfolioDownload";
+import { ABOUT_IMAGE } from "@/data/media";
 
 export const metadata: Metadata = {
   title: "About - Professional Model Profile | Nikhil Kubde",
@@ -51,7 +53,7 @@ export default function AboutPage() {
           <ScrollReveal direction='left'>
             <div className='relative h-[600px] rounded-lg overflow-hidden border border-gray-200 hover:border-gray-400 transition-all duration-500 hover:shadow-xl bg-gray-100'>
               <Image
-                src='/about-image.jpg'
+                src={ABOUT_IMAGE}
                 alt='Nikhil Kubde - Professional modeling photo'
                 fill
                 className='object-contain object-center hover:scale-105 transition-transform duration-700'
@@ -157,7 +159,7 @@ export default function AboutPage() {
                     controls
                     playsInline
                     preload='metadata'
-                    poster='/about-image.jpg'
+                    poster={ABOUT_IMAGE}
                   >
                     Your browser does not support the video tag.
                   </video>
@@ -415,6 +417,8 @@ export default function AboutPage() {
           </div>
         </ScrollReveal>
       </div>
+
+      <ModelPortfolioDownload />
     </div>
   );
 }

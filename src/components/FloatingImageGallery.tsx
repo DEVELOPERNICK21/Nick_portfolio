@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import OptimizedImage from "./OptimizedImage";
 import ImageLightbox from "./ImageLightbox";
+import { MAIN_PHOTOS } from "@/data/media";
 
 interface FloatingImage {
   src: string;
@@ -24,20 +25,9 @@ export default function FloatingImageGallery() {
 
   // Generate random floating images from available gallery
   useEffect(() => {
-    const galleryImages = [
-      "/gallery-1.jpg",
-      "/gallery-2.jpg",
-      "/gallery-3.jpg",
-      "/portfolio-1.jpg",
-      "/portfolio-2.jpg",
-      "/portfolio-3.jpg",
-      "/nikhil-kubde-extra-01.jpg",
-      "/nikhil-kubde-extra-02.jpg",
-      "/nikhil-kubde-extra-03.jpg",
-      "/nikhil-kubde-extra-04.jpg",
-    ];
+    const galleryImages = MAIN_PHOTOS.map((photo) => photo.src);
 
-    const floatingImages: FloatingImage[] = galleryImages.slice(0, 6).map((src, index) => ({
+    const floatingImages: FloatingImage[] = galleryImages.map((src, index) => ({
       src,
       alt: `Floating gallery image ${index + 1} - Nikhil Kubde`,
       x: 10 + index * 15 + Math.random() * 10,

@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import ImageLightbox from "./ImageLightbox";
 import OptimizedImage from "./OptimizedImage";
 import { useElementScrollProgress } from "@/hooks/useScrollSignals";
+import { MAIN_PHOTOS } from "@/data/media";
 
 interface GalleryItem {
   src: string;
@@ -22,22 +23,7 @@ export default function HomeGallery() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionProgress = useElementScrollProgress("gallery-section");
 
-  const galleryItems: GalleryItem[] = [
-    // Original gallery images
-    { src: "/gallery-1.jpg", alt: "Fashion editorial shoot - Nikhil Kubde", category: "Editorial", height: "tall" },
-    { src: "/gallery-2.jpg", alt: "Commercial campaign - Nikhil Kubde", category: "Commercial", height: "medium" },
-    { src: "/gallery-3.jpg", alt: "Runway fashion show - Nikhil Kubde", category: "Runway", height: "short" },
-    { src: "/gallery-4.jpg", alt: "Beauty photography - Nikhil Kubde", category: "Beauty", height: "tall" },
-    { src: "/gallery-5.jpg", alt: "Fashion campaign - Nikhil Kubde", category: "Fashion", height: "medium" },
-    { src: "/gallery-6.jpg", alt: "Editorial feature - Nikhil Kubde", category: "Editorial", height: "short" },
-    // Portfolio images
-    { src: "/portfolio-1.jpg", alt: "Editorial fashion shoot - Nikhil Kubde", category: "Editorial", height: "tall" },
-    { src: "/portfolio-2.jpg", alt: "High fashion campaign - Nikhil Kubde", category: "Fashion", height: "medium" },
-    { src: "/portfolio-3.jpg", alt: "Commercial advertisement - Nikhil Kubde", category: "Commercial", height: "short" },
-    { src: "/portfolio-4.jpg", alt: "Fashion week runway - Nikhil Kubde", category: "Runway", height: "tall" },
-    { src: "/portfolio-5.jpg", alt: "Beauty close-up - Nikhil Kubde", category: "Beauty", height: "medium" },
-    { src: "/portfolio-6.jpg", alt: "Magazine editorial - Nikhil Kubde", category: "Editorial", height: "short" },
-  ];
+  const galleryItems: GalleryItem[] = MAIN_PHOTOS;
 
   const displayedItems = galleryItems.slice(0, visibleItems);
 

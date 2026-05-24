@@ -64,7 +64,7 @@ export const metadata: Metadata = {
       "Professional model available for agency bookings. Fashion, editorial, and commercial modeling with unique tech expertise. Perfect for digital-first brands and modern campaigns. Represented by CastYou agency.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/main/hero.jpg",
         width: 1200,
         height: 630,
         alt: "Nikhil Kubde - Model Portfolio",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     title: "Nikhil Kubde - Professional Model Portfolio",
     description:
       "Professional model available for agency bookings. Fashion, editorial, and commercial modeling with unique tech expertise. Perfect for digital-first brands and modern campaigns. Represented by CastYou agency.",
-    images: ["/og-image.jpg"],
+    images: ["/main/hero.jpg"],
     creator: "@yourhandle",
   },
   robots: {

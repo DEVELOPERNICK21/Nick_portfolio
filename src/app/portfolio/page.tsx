@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import ScrollReveal from "@/components/ScrollReveal";
+import ModelPortfolioDownload from "@/components/ModelPortfolioDownload";
+import Link from "next/link";
+import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
 
 export const metadata: Metadata = {
   title: "Portfolio | Nikhil Kubde - Professional Model",
@@ -40,14 +43,22 @@ export default function PortfolioPage() {
           <div className='premium-section pt-24 md:pt-32 pb-10' data-chapter='Intro'>
             <div className='text-center premium-surface p-8 md:p-12 mb-20'>
               <p className='premium-kicker'>Work Archive</p>
-              <h1 className='text-6xl md:text-8xl lg:text-9xl font-serif mb-6 mt-4 text-gray-900 tracking-tight leading-none'>
+              <h1 className='text-6xl md:text-8xl lg:text-9xl font-serif mb-6 mt-4 text-zinc-100 tracking-tight leading-none'>
                 PORTFOLIO
               </h1>
               <div className='w-24 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-8'></div>
               <p className='premium-body max-w-3xl mx-auto'>
-                A curated selection of professional work across fashion,
-                editorial, commercial, runway, and beauty photography
+                Five featured campaign images. Download the full comp card PDF
+                with singles and polaroids for agency review.
               </p>
+              <div className='mt-8 flex flex-wrap justify-center gap-3'>
+                <a href={PORTFOLIO_PDF} download={PORTFOLIO_PDF_FILENAME} className='premium-button'>
+                  Download Comp Card PDF
+                </a>
+                <Link href='/library' className='premium-button-secondary'>
+                  Photo Library
+                </Link>
+              </div>
             </div>
           </div>
         </ScrollReveal>
@@ -59,6 +70,8 @@ export default function PortfolioPage() {
             <PortfolioGrid />
           </div>
         </ScrollReveal>
+
+        <ModelPortfolioDownload />
 
         {/* Clean Contact Section */}
         <ScrollReveal direction='fade' delay={200} variant='scale-lift'>

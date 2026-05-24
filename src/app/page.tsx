@@ -4,6 +4,8 @@ import HomeGallery from "@/components/HomeGallery";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollReveal from "@/components/ScrollReveal";
 import CinematicStorySection from "@/components/CinematicStorySection";
+import ModelPortfolioDownload from "@/components/ModelPortfolioDownload";
+import { HERO_IMAGE, MAIN_PHOTOS } from "@/data/media";
 
 // Lazy load heavy components that aren't immediately visible
 // Using simpler loading states to avoid build issues
@@ -45,15 +47,7 @@ const TechAdvantage = dynamic(() => import("@/components/TechAdvantage"), {
 });
 
 export default function Home() {
-  // Featured images for parallax section
-  const featuredImages = [
-    "/gallery-1.jpg",
-    "/gallery-2.jpg",
-    "/gallery-3.jpg",
-    "/portfolio-1.jpg",
-    "/portfolio-2.jpg",
-    "/portfolio-3.jpg",
-  ];
+  const featuredImages = MAIN_PHOTOS.map((photo) => photo.src);
 
   return (
     <div className='premium-shell'>
@@ -68,7 +62,7 @@ export default function Home() {
               name: "Nikhil Kubde",
               jobTitle: ["Professional Model", "Mobile App Developer"],
               url: "https://nick-portfolio-nine.vercel.app",
-              image: "https://nick-portfolio-nine.vercel.app/profile.jpg",
+              image: `https://nick-portfolio-nine.vercel.app${HERO_IMAGE}`,
               description:
                 "Professional model available for agency bookings. Fashion, editorial, and commercial modeling with 5+ years tech experience. Represented by CastYou agency.",
               sameAs: [
@@ -227,6 +221,8 @@ export default function Home() {
           <InstagramFollow />
         </ScrollReveal>
       </section>
+
+      <ModelPortfolioDownload />
 
       <section className='premium-section container-custom pt-6' data-chapter='Book'>
         <ScrollReveal direction='fade' delay={300} variant='scale-lift'>

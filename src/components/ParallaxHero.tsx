@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
 import { useElementScrollProgress, useScrollSignals } from "@/hooks/useScrollSignals";
+import { HERO_IMAGE } from "@/data/media";
 
 export default function ParallaxHero() {
   const { y, velocity } = useScrollSignals();
@@ -51,7 +52,7 @@ export default function ParallaxHero() {
         }}
       >
         <Image
-          src='/hero-image.jpg'
+          src={HERO_IMAGE}
           alt='Nikhil Kubde - Professional modeling photo'
           fill
           className='object-cover md:object-top object-center scale-110'

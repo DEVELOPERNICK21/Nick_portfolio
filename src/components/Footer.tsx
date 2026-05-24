@@ -47,6 +47,23 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href='/library'
+                  className='text-zinc-400 hover:text-zinc-100 transition-colors text-sm'
+                >
+                  Photo Library
+                </Link>
+              </li>
+              <li>
+                <a
+                  href='/downloads/nikhil-kubde-portfolio.pdf'
+                  download='Nikhil-Kubde-Portfolio.pdf'
+                  className='text-zinc-400 hover:text-zinc-100 transition-colors text-sm'
+                >
+                  Download Comp Card PDF
+                </a>
+              </li>
+              <li>
+                <Link
                   href='/contact'
                   className='text-zinc-400 hover:text-zinc-100 transition-colors text-sm'
                 >

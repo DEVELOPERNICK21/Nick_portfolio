@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HERO_IMAGE } from "@/data/media";
 
 export default function Hero() {
   return (
@@ -7,7 +8,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className='absolute inset-0 z-0'>
         <Image
-          src='/hero-image.jpg'
+          src={HERO_IMAGE}
           alt='Professional modeling photo'
           fill
           className='object-cover'
