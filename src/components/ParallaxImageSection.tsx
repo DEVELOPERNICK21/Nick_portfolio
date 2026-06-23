@@ -53,17 +53,17 @@ export default function ParallaxImageSection({
   return (
     <section
       ref={sectionRef}
-      className='relative py-32 md:py-48 overflow-hidden bg-gray-50'
+      className='relative py-32 md:py-48 overflow-hidden bg-transparent'
     >
       <div className='container-custom'>
-        {/* Section Header */}
         <div className='text-center mb-20'>
-          <h2 className='text-5xl md:text-7xl font-serif mb-4 text-gray-900 tracking-tight'>
+          <p className='premium-kicker mb-4'>Featured</p>
+          <h2 className='premium-heading text-5xl md:text-7xl mb-4 tracking-tight'>
             {title}
           </h2>
-          <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-6'></div>
+          <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-6'></div>
           {subtitle && (
-            <p className='text-lg text-gray-600 max-w-2xl mx-auto font-light'>
+            <p className='premium-body max-w-2xl mx-auto font-light'>
               {subtitle}
             </p>
           )}

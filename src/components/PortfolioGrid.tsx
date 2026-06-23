@@ -104,8 +104,8 @@ export default function PortfolioGrid() {
               }}
               className={`px-5 py-2 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
                 activeFilter === category
-                  ? "text-white bg-neutral-900 shadow-premium-soft"
-                  : "text-gray-600 hover:text-gray-900 border border-transparent hover:border-stone-300"
+                  ? "text-black bg-amber-400 shadow-premium-soft"
+                  : "text-zinc-400 hover:text-zinc-100 border border-white/10 hover:border-amber-500/30"
               }`}
             >
               {category}
@@ -129,12 +129,12 @@ export default function PortfolioGrid() {
         >
           {filteredItems.length === 0 ? (
             <div className='col-span-full text-center py-20'>
-              <p className='text-gray-600 text-lg mb-4'>
+              <p className='text-zinc-400 text-lg mb-4'>
                 No images found in this category
               </p>
               <button
                 onClick={() => setActiveFilter("All")}
-                className='px-6 py-2 border border-gray-300 text-gray-900 hover:bg-gray-100 transition-colors'
+                className='premium-button-secondary'
               >
                 View All Images
               </button>
@@ -188,13 +188,13 @@ export default function PortfolioGrid() {
         {/* Clean Empty State */}
         {filteredItems.length > 0 &&
           filteredItems.length < portfolioItems.length && (
-            <div className='text-center mt-16 py-8 border-t border-gray-200'>
-              <p className='text-gray-600 mb-2'>
+            <div className='text-center mt-16 py-8 border-t border-white/10'>
+              <p className='text-zinc-400 mb-2'>
                 Showing {filteredItems.length} of {portfolioItems.length} images
               </p>
               <button
                 onClick={() => setActiveFilter("All")}
-                className='text-gray-700 hover:text-gray-900 transition-colors text-sm underline underline-offset-4'
+                className='text-amber-400 hover:text-amber-300 transition-colors text-sm underline underline-offset-4'
               >
                 View All Images
               </button>

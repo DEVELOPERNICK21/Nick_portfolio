@@ -14,7 +14,7 @@ const nextConfig = {
     // Smaller image sizes for thumbnails and icons
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Long cache for optimized images
-    minimumCacheTTL: 31536000, // 1 year cache
+    minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     // Enable optimization (Next.js will convert to AVIF/WebP)

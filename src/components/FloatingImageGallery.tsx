@@ -81,19 +81,18 @@ export default function FloatingImageGallery() {
     <>
       <section
         ref={containerRef}
-        className='relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50'
+        className='relative py-32 md:py-48 overflow-hidden bg-transparent'
       >
-        {/* Background Gradient */}
-        <div className='absolute inset-0 bg-gradient-to-b from-transparent via-gray-100/30 to-transparent' />
+        <div className='absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/5 to-transparent' />
 
         <div className='container-custom relative z-10'>
-          {/* Section Title */}
           <div className='text-center mb-20'>
-            <h2 className='text-5xl md:text-7xl font-serif mb-4 text-gray-900 tracking-tight'>
+            <p className='premium-kicker mb-4'>Interactive</p>
+            <h2 className='premium-heading text-5xl md:text-7xl mb-4 tracking-tight'>
               MOMENTS
             </h2>
-            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-6'></div>
-            <p className='text-lg text-gray-600 max-w-2xl mx-auto font-light'>
+            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-6'></div>
+            <p className='premium-body max-w-2xl mx-auto font-light'>
               Scroll to explore interactive gallery
             </p>
           </div>

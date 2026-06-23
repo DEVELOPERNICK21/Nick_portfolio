@@ -13,6 +13,7 @@ export default function Navbar() {
     { href: "/portfolio", label: "Portfolio" },
     { href: "/library", label: "Library" },
     { href: "/premium", label: "Premium" },
+    { href: "/cinematic", label: "Cinematic" },
     { href: "/contact", label: "Contact" },
   ];
 

@@ -110,9 +110,9 @@ export default function HomeGallery() {
             </p>
           </div>
 
-          <div className='mb-10 h-1.5 w-full rounded-full bg-stone-200 overflow-hidden'>
+          <div className='mb-10 h-1.5 w-full rounded-full bg-white/10 overflow-hidden'>
             <div
-              className='h-full bg-gradient-to-r from-neutral-900 via-neutral-700 to-amber-700 transition-[width] duration-200'
+              className='h-full bg-gradient-to-r from-amber-700 via-amber-500 to-amber-300 transition-[width] duration-200'
               style={{ width: `${Math.max(sectionProgress * 100, 8)}%` }}
             />
           </div>
@@ -135,7 +135,7 @@ export default function HomeGallery() {
                     : "none",
                 }}
               >
-                <div className='relative overflow-hidden rounded-2xl border border-stone-200/80 bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-premium-soft'>
+                <div className='relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 transition-all duration-500 hover:-translate-y-1 hover:border-amber-500/30 hover:shadow-premium-soft'>
                   {/* Optimized Image - Only first 4 with priority */}
                   <div className={`relative w-full aspect-[3/4] ${getHeightClass(item.height)}`}>
                     <OptimizedImage

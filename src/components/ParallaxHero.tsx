@@ -76,12 +76,15 @@ export default function ParallaxHero() {
         }}
       >
         <div className='mb-6'>
-          <span className='text-xs uppercase tracking-widest text-white/90 font-semibold px-4 py-2 border border-white/30 bg-white/10 backdrop-blur-sm inline-block'>
+          <span className='text-xs uppercase tracking-widest text-white/90 font-semibold px-4 py-2 liquid-glass rounded-full inline-block'>
             Professional Model
           </span>
         </div>
 
-        <h1 className='text-6xl md:text-8xl lg:text-9xl font-serif mb-6 text-white tracking-tight leading-none drop-shadow-2xl text-balance'>
+        <h1
+          className='text-6xl md:text-8xl lg:text-9xl mb-6 text-white tracking-tight leading-none drop-shadow-2xl text-balance'
+          style={{ fontFamily: "'Instrument Serif', serif" }}
+        >
           NIKHIL KUBDE
         </h1>
 
@@ -120,7 +123,7 @@ export default function ParallaxHero() {
           </Link>
           <Link
             href='/contact'
-            className='px-8 py-4 border-2 border-white text-white font-semibold hover:bg-white hover:text-dark transition-all duration-300 transform hover:scale-105 active:scale-95'
+            className='liquid-glass rounded-full px-8 py-4 text-white font-semibold hover:bg-white/5 transition-all duration-300 transform hover:scale-105 active:scale-95'
           >
             Get In Touch
           </Link>

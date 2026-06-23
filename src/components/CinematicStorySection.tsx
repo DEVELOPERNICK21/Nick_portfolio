@@ -29,7 +29,7 @@ export default function CinematicStorySection() {
       <div className='container-custom'>
         <div className='premium-surface overflow-hidden'>
           <div className='grid lg:grid-cols-[1.1fr_1fr]'>
-            <div className='p-8 md:p-12 lg:p-14 border-b lg:border-b-0 lg:border-r border-stone-300/70'>
+            <div className='p-8 md:p-12 lg:p-14 border-b lg:border-b-0 lg:border-r border-white/10'>
               <p className='premium-kicker'>Scroll Narrative</p>
               <h2 className='premium-heading mt-4'>
                 An interactive story that feels cinematic and conversion-focused.
@@ -43,7 +43,7 @@ export default function CinematicStorySection() {
                   Book Campaign Inquiry
                 </Link>
               </div>
-              <div className='mt-10 h-1.5 w-full rounded-full bg-stone-200 overflow-hidden'>
+              <div className='mt-10 h-1.5 w-full rounded-full bg-white/10 overflow-hidden'>
                 <div
                   className='h-full bg-gradient-to-r from-amber-700 via-amber-500 to-amber-300 transition-[width] duration-200'
                   style={{ width: `${Math.max(6, progress * 100)}%` }}
@@ -61,8 +61,8 @@ export default function CinematicStorySection() {
                       key={block.step}
                       className={`rounded-2xl border p-6 transition-all duration-500 ${
                         isActive
-                          ? "border-stone-700/60 bg-neutral-900 text-white shadow-premium"
-                          : "border-stone-300/70 bg-white/60 text-neutral-800"
+                          ? "border-amber-500/40 bg-zinc-900/80 text-zinc-100 shadow-premium"
+                          : "border-white/10 bg-white/5 text-zinc-400"
                       }`}
                     >
                       <p className='text-[11px] uppercase tracking-[0.25em] opacity-70'>

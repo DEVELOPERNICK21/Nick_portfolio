@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import ScrollReveal from "@/components/ScrollReveal";
 import ModelPortfolioDownload from "@/components/ModelPortfolioDownload";
+import CaseStudySection from "@/components/CaseStudySection";
 import Link from "next/link";
 import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
 
@@ -73,20 +74,22 @@ export default function PortfolioPage() {
 
         <ModelPortfolioDownload />
 
+        <CaseStudySection />
+
         {/* Clean Contact Section */}
         <ScrollReveal direction='fade' delay={200} variant='scale-lift'>
           <div className='mt-32 md:mt-40 mb-20' data-chapter='Contact'>
-            <div className='text-center py-16 border-t border-gray-300 premium-surface'>
-              <h2 className='text-4xl md:text-5xl font-serif mb-6 text-gray-900'>
+            <div className='text-center py-16 border-t border-white/10 premium-surface bg-white/5'>
+              <h2 className='text-4xl md:text-5xl font-serif mb-6 text-zinc-100'>
                 TOUCH BASE
               </h2>
-              <p className='text-gray-600 mb-10 text-lg font-light'>
+              <p className='text-zinc-400 mb-10 text-lg font-light'>
                 I&apos;D LOVE TO HEAR FROM YOU
               </p>
               <div className='flex flex-col sm:flex-row gap-4 justify-center'>
                 <a
                   href='/contact'
-                  className='px-8 py-4 bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-colors duration-300 inline-block shadow-lg hover:shadow-xl'
+                  className='premium-button inline-block'
                 >
                   Get In Touch
                 </a>
@@ -94,7 +97,7 @@ export default function PortfolioPage() {
                   href='https://castyou.in/nikhil-kubde/'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='px-8 py-4 border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-900 hover:text-white transition-all duration-300 inline-block shadow-lg hover:shadow-xl'
+                  className='premium-button-secondary inline-block'
                 >
                   View Agency Profile
                 </a>

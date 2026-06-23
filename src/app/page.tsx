@@ -46,6 +46,16 @@ const TechAdvantage = dynamic(() => import("@/components/TechAdvantage"), {
   ssr: true,
 });
 
+const VideoReelSection = dynamic(
+  () => import("@/components/VideoReelSection"),
+  { ssr: true }
+);
+
+const TestimonialsSection = dynamic(
+  () => import("@/components/TestimonialsSection"),
+  { ssr: true }
+);
+
 export default function Home() {
   const featuredImages = MAIN_PHOTOS.map((photo) => photo.src);
 
@@ -206,11 +216,15 @@ export default function Home() {
         </div>
       </section>
 
+      <VideoReelSection />
+
       <section className='premium-section container-custom' data-chapter='Stats'>
         <ScrollReveal direction='fade' delay={200} variant='scale-lift'>
           <Stats />
         </ScrollReveal>
       </section>
+
+      <TestimonialsSection />
 
       <section className='premium-section container-custom' data-chapter='Advantage'>
         <TechAdvantage />

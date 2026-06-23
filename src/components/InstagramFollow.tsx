@@ -4,12 +4,13 @@ import { FaInstagram, FaExternalLinkAlt } from "react-icons/fa";
 
 export default function InstagramFollow() {
   return (
-    <section className='py-20 bg-white'>
+    <section className='py-20 bg-transparent'>
       <div className='container-custom'>
         <div className='max-w-2xl mx-auto'>
-          <div className='bg-white rounded-2xl shadow-lg p-8 text-center'>
-            <p className='text-gray-600 mb-6 text-lg'>
-              Follow me on Instagram for daily updates and behind-the-scenes content
+          <div className='premium-surface p-8 text-center bg-white/5 border border-white/10'>
+            <p className='premium-body mb-6'>
+              Follow me on Instagram for daily updates and behind-the-scenes
+              content
             </p>
             <a
               href='https://www.instagram.com/nikhil__kubde/'
@@ -27,4 +28,3 @@ export default function InstagramFollow() {
     </section>
   );
 }
-

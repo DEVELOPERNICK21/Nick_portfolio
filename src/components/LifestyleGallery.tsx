@@ -165,12 +165,11 @@ export default function LifestyleGallery() {
     <>
       <section
         ref={sectionRef}
-        className='bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20 md:py-32 relative overflow-hidden'
+        className='bg-transparent py-20 md:py-32 relative overflow-hidden'
       >
-        {/* Subtle Background Elements */}
         <div className='absolute inset-0 overflow-hidden pointer-events-none'>
-          <div className='absolute top-20 right-20 w-96 h-96 bg-gray-200/20 rounded-full blur-3xl' />
-          <div className='absolute bottom-20 left-20 w-96 h-96 bg-gray-300/20 rounded-full blur-3xl' />
+          <div className='absolute top-20 right-20 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl' />
+          <div className='absolute bottom-20 left-20 w-96 h-96 bg-amber-400/5 rounded-full blur-3xl' />
         </div>
 
         <div className='container-custom relative z-10'>
@@ -183,15 +182,15 @@ export default function LifestyleGallery() {
             }`}
           >
             <div className='inline-block mb-6'>
-              <span className='text-xs uppercase tracking-widest text-gray-700 font-semibold px-4 py-2 border border-gray-300 bg-white backdrop-blur-sm shadow-sm'>
+              <span className='premium-kicker inline-block px-4 py-2 border border-amber-500/30 bg-amber-500/10 rounded-full'>
                 Lifestyle
               </span>
             </div>
-            <h2 className='text-5xl md:text-7xl lg:text-8xl font-serif mb-6 text-gray-900 tracking-tight'>
+            <h2 className='premium-heading text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tight'>
               LIFESTYLE
             </h2>
-            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-6'></div>
-            <p className='text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-light'>
+            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-6'></div>
+            <p className='premium-body max-w-2xl mx-auto font-light'>
               Capturing moments beyond the studio - everyday style and authentic
               moments
             </p>
@@ -310,7 +309,7 @@ export default function LifestyleGallery() {
             >
               <button
                 onClick={loadMore}
-                className='group relative px-8 py-4 border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-900 hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl'
+                className='premium-button-secondary transform hover:scale-105 active:scale-95'
               >
                 <span className='relative z-10 flex items-center gap-2'>
                   Load More ({lifestyleItems.length - visibleItems} remaining)

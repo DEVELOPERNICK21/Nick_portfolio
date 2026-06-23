@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import FloatingSocialBar from "@/components/FloatingSocialBar";
-import ScrollChapterNav from "@/components/ScrollChapterNav";
+import SiteChrome from "@/components/SiteChrome";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,6 +16,10 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   display: "swap",
 });
+
+const twitterHandle = process.env.NEXT_PUBLIC_TWITTER_HANDLE || "";
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "";
+const gaId = process.env.NEXT_PUBLIC_GA_ID || "";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nick-portfolio-nine.vercel.app"),
@@ -77,7 +79,7 @@ export const metadata: Metadata = {
     description:
       "Professional model available for agency bookings. Fashion, editorial, and commercial modeling with unique tech expertise. Perfect for digital-first brands and modern campaigns. Represented by CastYou agency.",
     images: ["/main/hero.jpg"],
-    creator: "@yourhandle",
+    ...(twitterHandle ? { creator: twitterHandle } : {}),
   },
   robots: {
     index: true,
@@ -90,9 +92,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+  ...(googleVerification
+    ? { verification: { google: googleVerification } }
+    : {}),
 };
 
 export default function RootLayout({
@@ -101,29 +103,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={`${inter.variable} ${playfair.variable} light`} suppressHydrationWarning>
+    <html lang='en' className={`${inter.variable} ${playfair.variable} dark`}>
       <body className={`${inter.className} bg-[#0a0a0b]`}>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                // Keep a single fixed theme class before hydration.
-                try {
-                  document.documentElement.classList.remove('dark');
-                  document.documentElement.classList.add('light');
-                  localStorage.setItem('theme', 'light');
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
         <ThemeProvider>
-          <Navbar />
           <main className='min-h-screen bg-[#0a0a0b]'>{children}</main>
-          <ScrollChapterNav />
-          <Footer />
-          <FloatingSocialBar />
+          <SiteChrome />
         </ThemeProvider>
+        {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
       </body>
     </html>
   );
