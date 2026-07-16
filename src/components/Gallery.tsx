@@ -60,7 +60,7 @@ export default function Gallery() {
               ref={(el) => {
                 imageRefs.current[index] = el;
               }}
-              className='reveal reveal-up relative aspect-[3/4] overflow-hidden rounded-lg group cursor-pointer border border-accent/10 hover:border-accent/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,212,255,0.2)]'
+              className='reveal reveal-up relative aspect-[3/4] overflow-hidden rounded-lg group cursor-pointer border border-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]'
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <Image
@@ -72,10 +72,10 @@ export default function Gallery() {
               />
               <div className='absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6'>
                 <div className='transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500'>
-                  <span className='text-accent text-lg font-semibold block mb-1'>
+                  <span className='text-white text-lg font-semibold block mb-1'>
                     {image.category}
                   </span>
-                  <div className='h-0.5 w-0 group-hover:w-12 bg-gradient-to-r from-accent to-accentGold transition-all duration-500'></div>
+                  <div className='h-0.5 w-0 group-hover:w-12 bg-gradient-to-r from-white to-accentGold transition-all duration-500'></div>
                 </div>
               </div>
             </div>

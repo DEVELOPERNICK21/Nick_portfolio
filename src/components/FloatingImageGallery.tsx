@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import OptimizedImage from "./OptimizedImage";
 import ImageLightbox from "./ImageLightbox";
+import { MAIN_PHOTOS } from "@/data/media";
 
 interface FloatingImage {
   src: string;
@@ -24,20 +25,9 @@ export default function FloatingImageGallery() {
 
   // Generate random floating images from available gallery
   useEffect(() => {
-    const galleryImages = [
-      "/gallery-1.jpg",
-      "/gallery-2.jpg",
-      "/gallery-3.jpg",
-      "/portfolio-1.jpg",
-      "/portfolio-2.jpg",
-      "/portfolio-3.jpg",
-      "/nikhil-kubde-extra-01.jpg",
-      "/nikhil-kubde-extra-02.jpg",
-      "/nikhil-kubde-extra-03.jpg",
-      "/nikhil-kubde-extra-04.jpg",
-    ];
+    const galleryImages = MAIN_PHOTOS.map((photo) => photo.src);
 
-    const floatingImages: FloatingImage[] = galleryImages.slice(0, 6).map((src, index) => ({
+    const floatingImages: FloatingImage[] = galleryImages.map((src, index) => ({
       src,
       alt: `Floating gallery image ${index + 1} - Nikhil Kubde`,
       x: 10 + index * 15 + Math.random() * 10,
@@ -91,19 +81,18 @@ export default function FloatingImageGallery() {
     <>
       <section
         ref={containerRef}
-        className='relative py-32 md:py-48 overflow-hidden bg-gradient-to-b from-secondary/30 via-dark to-dark'
+        className='relative py-32 md:py-48 overflow-hidden bg-transparent'
       >
-        {/* Background Gradient */}
-        <div className='absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent' />
+        <div className='absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/5 to-transparent' />
 
         <div className='container-custom relative z-10'>
-          {/* Section Title */}
           <div className='text-center mb-20'>
-            <h2 className='text-5xl md:text-7xl font-serif mb-4 text-white tracking-tight'>
+            <p className='premium-kicker mb-4'>Interactive</p>
+            <h2 className='premium-heading text-5xl md:text-7xl mb-4 tracking-tight'>
               MOMENTS
             </h2>
-            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-6'></div>
-            <p className='text-lg text-gray-400 max-w-2xl mx-auto font-light'>
+            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-6'></div>
+            <p className='premium-body max-w-2xl mx-auto font-light'>
               Scroll to explore interactive gallery
             </p>
           </div>
@@ -134,17 +123,17 @@ export default function FloatingImageGallery() {
                   <div
                     className={`${getSizeClasses(
                       image.size
-                    )} relative overflow-hidden rounded-lg shadow-2xl border border-white/10 hover:border-accent/50 transition-all duration-500 hover:scale-110 hover:shadow-[0_20px_60px_rgba(0,212,255,0.3)] hover:z-50`}
+                    )} relative overflow-hidden rounded-lg shadow-2xl border border-gray-200 hover:border-gray-400 transition-all duration-500 hover:scale-110 hover:shadow-xl hover:z-50`}
                   >
                     <OptimizedImage
                       src={image.src}
                       alt={image.alt}
                       className='object-cover transition-transform duration-700 group-hover:scale-110'
-                      priority={index < 2}
+                      priority={false}
                     />
 
                     {/* Hover Overlay */}
-                    <div className='absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4'>
+                    <div className='absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4'>
                       <div className='transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>
                         <span className='text-white text-xs font-semibold uppercase tracking-wider'>
                           View

@@ -53,17 +53,17 @@ export default function ParallaxImageSection({
   return (
     <section
       ref={sectionRef}
-      className='relative py-32 md:py-48 overflow-hidden bg-dark'
+      className='relative py-32 md:py-48 overflow-hidden bg-transparent'
     >
       <div className='container-custom'>
-        {/* Section Header */}
         <div className='text-center mb-20'>
-          <h2 className='text-5xl md:text-7xl font-serif mb-4 text-white tracking-tight'>
+          <p className='premium-kicker mb-4'>Featured</p>
+          <h2 className='premium-heading text-5xl md:text-7xl mb-4 tracking-tight'>
             {title}
           </h2>
-          <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-6'></div>
+          <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-6'></div>
           {subtitle && (
-            <p className='text-lg text-gray-400 max-w-2xl mx-auto font-light'>
+            <p className='premium-body max-w-2xl mx-auto font-light'>
               {subtitle}
             </p>
           )}
@@ -78,7 +78,7 @@ export default function ParallaxImageSection({
             return (
               <div
                 key={index}
-                className='relative aspect-[3/4] overflow-hidden rounded-lg group cursor-pointer border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,212,255,0.25)]'
+                className='relative aspect-[3/4] overflow-hidden rounded-lg group cursor-pointer border border-gray-200 hover:border-gray-400 transition-all duration-500 hover:shadow-xl'
                 style={{
                   transform: `translateY(${isEven ? offset : -offset * 0.7}px)`,
                   transition: "transform 0.3s ease-out",
@@ -88,16 +88,16 @@ export default function ParallaxImageSection({
                   src={src}
                   alt={`Featured image ${index + 1} - Nikhil Kubde`}
                   className='object-cover transition-transform duration-700 group-hover:scale-110'
-                  priority={index < 2}
+                  priority={false}
                 />
 
                 {/* Hover Overlay */}
-                <div className='absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6'>
+                <div className='absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6'>
                   <div className='transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500'>
-                    <span className='text-accent text-lg font-semibold block mb-2'>
+                    <span className='text-white text-lg font-semibold block mb-2'>
                       View Details
                     </span>
-                    <div className='h-0.5 w-0 group-hover:w-24 bg-gradient-to-r from-accent to-accentGold transition-all duration-500'></div>
+                    <div className='h-0.5 w-0 group-hover:w-24 bg-gradient-to-r from-gray-400 to-gray-600 transition-all duration-500'></div>
                   </div>
                 </div>
               </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import ImageLightbox from "./ImageLightbox";
 import OptimizedImage from "./OptimizedImage";
+import { MAIN_PHOTOS } from "@/data/media";
 
 interface LifestyleItem {
   src: string;
@@ -16,41 +17,38 @@ export default function LifestyleGallery() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [visibleItems, setVisibleItems] = useState(9); // Start with fewer items
+  const [visibleItems, setVisibleItems] = useState(5);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [visibleImageIndices, setVisibleImageIndices] = useState<Set<number>>(
+    new Set([0, 1, 2])
+  ); // Only first 3 visible initially
 
-  const lifestyleItems: LifestyleItem[] = [
-    { src: "/nikhil-kubde-extra-01.jpg", alt: "Lifestyle photography - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-02.jpg", alt: "Casual lifestyle shoot - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-03.jpg", alt: "Lifestyle editorial - Nikhil Kubde", category: "Lifestyle", height: "short" },
-    { src: "/nikhil-kubde-extra-04.jpg", alt: "Everyday lifestyle photography - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-05.jpg", alt: "Lifestyle fashion - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-06.jpg", alt: "Lifestyle portrait - Nikhil Kubde", category: "Lifestyle", height: "short" },
-    { src: "/nikhil-kubde-extra-07.jpg", alt: "Lifestyle editorial shoot - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-08.jpg", alt: "Casual lifestyle photography - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-09.jpg", alt: "Lifestyle brand photography - Nikhil Kubde", category: "Lifestyle", height: "short" },
-    { src: "/nikhil-kubde-extra-10.jpg", alt: "Lifestyle fashion editorial - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-11.jpg", alt: "Everyday lifestyle shoot - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-12.jpg", alt: "Lifestyle portrait photography - Nikhil Kubde", category: "Lifestyle", height: "short" },
-    { src: "/nikhil-kubde-extra-13.jpg", alt: "Lifestyle editorial - Nikhil Kubde", category: "Lifestyle", height: "tall" },
-    { src: "/nikhil-kubde-extra-14.jpg", alt: "Casual lifestyle photography - Nikhil Kubde", category: "Lifestyle", height: "medium" },
-    { src: "/nikhil-kubde-extra-15.jpg", alt: "Lifestyle brand shoot - Nikhil Kubde", category: "Lifestyle", height: "short" },
-  ];
+  const lifestyleItems: LifestyleItem[] = MAIN_PHOTOS;
 
   const displayedItems = lifestyleItems.slice(0, visibleItems);
 
-  // Intersection Observer for scroll animations
+  // Intersection Observer for section visibility
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
+            setIsInitialLoad(false);
+            // Unobserve after first trigger for better performance
+            if (entry.target) {
+              observer.unobserve(entry.target);
+            }
           }
         });
       },
-      { threshold: 0.1, rootMargin: "100px" }
+      {
+        threshold: 0.05,
+        rootMargin: "50px",
+      }
     );
 
     const currentRef = sectionRef.current;
@@ -65,6 +63,48 @@ export default function LifestyleGallery() {
     };
   }, []);
 
+  // Intersection Observer for individual images - lazy loading optimization
+  useEffect(() => {
+    const imageObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(
+              entry.target.getAttribute("data-index") || "0",
+              10
+            );
+            setVisibleImageIndices((prev) => new Set(prev).add(index));
+            // Unobserve after loading to improve performance
+            imageObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "200px", // Start loading 200px before image enters viewport
+      }
+    );
+
+    // Capture current refs to avoid stale closure
+    const currentRefs = imageRefs.current;
+
+    // Observe all image containers
+    currentRefs.forEach((ref) => {
+      if (ref) {
+        imageObserver.observe(ref);
+      }
+    });
+
+    return () => {
+      // Use captured refs in cleanup
+      currentRefs.forEach((ref) => {
+        if (ref) {
+          imageObserver.unobserve(ref);
+        }
+      });
+    };
+  }, [visibleItems]);
+
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
@@ -75,7 +115,9 @@ export default function LifestyleGallery() {
   };
 
   const handlePrevious = () => {
-    setLightboxIndex((prev) => (prev - 1 + displayedItems.length) % displayedItems.length);
+    setLightboxIndex(
+      (prev) => (prev - 1 + displayedItems.length) % displayedItems.length
+    );
   };
 
   const handleGoTo = (index: number) => {
@@ -99,130 +141,174 @@ export default function LifestyleGallery() {
   };
 
   const loadMore = () => {
-    setVisibleItems((prev) => Math.min(prev + 6, lifestyleItems.length));
+    // Smoothly load more items
+    setVisibleItems((prev) => {
+      const next = Math.min(prev + 6, lifestyleItems.length);
+      // Scroll to maintain position after loading
+      setTimeout(() => {
+        if (sectionRef.current) {
+          const rect = sectionRef.current.getBoundingClientRect();
+          const scrollY = window.scrollY;
+          if (rect.top < window.innerHeight * 0.5) {
+            window.scrollTo({
+              top: scrollY + rect.top - window.innerHeight * 0.3,
+              behavior: "smooth",
+            });
+          }
+        }
+      }, 100);
+      return next;
+    });
   };
 
   return (
     <>
       <section
         ref={sectionRef}
-        className='bg-gradient-to-b from-dark via-secondary/50 to-dark py-20 md:py-32 relative overflow-hidden'
+        className='bg-transparent py-20 md:py-32 relative overflow-hidden'
       >
-        {/* Subtle Background Elements */}
         <div className='absolute inset-0 overflow-hidden pointer-events-none'>
-          <div className='absolute top-20 right-20 w-96 h-96 bg-accent/3 rounded-full blur-3xl' />
-          <div className='absolute bottom-20 left-20 w-96 h-96 bg-accentGold/3 rounded-full blur-3xl' />
+          <div className='absolute top-20 right-20 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl' />
+          <div className='absolute bottom-20 left-20 w-96 h-96 bg-amber-400/5 rounded-full blur-3xl' />
         </div>
 
         <div className='container-custom relative z-10'>
           {/* Section Header */}
           <div
-            className={`text-center mb-16 md:mb-20 transition-all duration-1000 ease-out ${
+            className={`text-center mb-16 md:mb-20 transition-all duration-700 ease-out ${
               isVisible
                 ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
+                : "opacity-0 translate-y-8"
             }`}
           >
             <div className='inline-block mb-6'>
-              <span className='text-xs uppercase tracking-widest text-accent font-semibold px-4 py-2 border border-accent/30 bg-accent/10 backdrop-blur-sm'>
+              <span className='premium-kicker inline-block px-4 py-2 border border-amber-500/30 bg-amber-500/10 rounded-full'>
                 Lifestyle
               </span>
             </div>
-            <h2 className='text-5xl md:text-7xl lg:text-8xl font-serif mb-6 text-white tracking-tight'>
+            <h2 className='premium-heading text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tight'>
               LIFESTYLE
             </h2>
-            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-6'></div>
-            <p className='text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light'>
-              Capturing moments beyond the studio - everyday style and authentic moments
+            <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-6'></div>
+            <p className='premium-body max-w-2xl mx-auto font-light'>
+              Capturing moments beyond the studio - everyday style and authentic
+              moments
             </p>
           </div>
 
           {/* Masonry Grid - Optimized Loading */}
           <div
-            className={`columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 md:gap-6 transition-opacity duration-1000 ${
+            className={`columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 md:gap-6 transition-opacity duration-500 ${
               isVisible ? "opacity-100" : "opacity-0"
             }`}
-            style={{ columnGap: "1.5rem" }}
+            style={{
+              columnGap: "1.5rem",
+              willChange: isInitialLoad ? "opacity" : "auto",
+              minHeight: isInitialLoad ? "600px" : "auto",
+            }}
           >
-            {displayedItems.map((item, index) => (
-              <div
-                key={`${item.src}-${index}`}
-                className='break-inside-avoid mb-6 group relative cursor-pointer'
-                onClick={() => openLightbox(index)}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                style={{
-                  animation: isVisible
-                    ? `fadeInUp 0.8s ease-out ${index * 0.08}s both`
-                    : "none",
-                }}
-              >
-                <div className='relative overflow-hidden bg-secondary/30 transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,212,255,0.15)] transform hover:-translate-y-1'>
-                  {/* Optimized Image - Only first 3 with priority */}
-                  <div className={`relative w-full aspect-[3/4] ${getHeightClass(item.height)}`}>
-                    <OptimizedImage
-                      src={item.src}
-                      alt={item.alt}
-                      className={`object-cover transition-all duration-500 ${
-                        hoveredIndex === index
-                          ? "scale-105 brightness-110"
-                          : "scale-100 brightness-100"
-                      }`}
-                      sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw'
-                      priority={index < 3}
-                      onLoad={() => handleImageLoad(index)}
-                    />
+            {displayedItems.map((item, index) => {
+              const shouldLoad = visibleImageIndices.has(index);
 
-                    {/* Minimal Hover Overlay */}
+              return (
+                <div
+                  key={`${item.src}-${index}`}
+                  ref={(el) => {
+                    imageRefs.current[index] = el;
+                  }}
+                  data-index={index}
+                  className='break-inside-avoid mb-6 group relative cursor-pointer'
+                  onClick={() => openLightbox(index)}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                    transition: `opacity 0.6s ease-out ${
+                      index * 0.05
+                    }s, transform 0.6s ease-out ${index * 0.05}s`,
+                    willChange: isVisible ? "auto" : "opacity, transform",
+                  }}
+                >
+                  <div
+                    className='relative overflow-hidden bg-gray-100 rounded-xl transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 border border-gray-200'
+                    style={{ willChange: "transform" }}
+                  >
+                    {/* Optimized Image - Progressive loading */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-300 ${
-                        hoveredIndex === index ? "opacity-100" : "opacity-0"
-                      }`}
-                    />
-
-                    {/* Hover Content */}
-                    <div
-                      className={`absolute inset-0 p-6 flex flex-col justify-between transition-all duration-300 ${
-                        hoveredIndex === index
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-4"
-                      }`}
+                      className={`relative w-full aspect-[3/4] ${getHeightClass(
+                        item.height
+                      )}`}
                     >
-                      <div className='flex justify-start'>
-                        <span className='px-4 py-2 bg-white/90 backdrop-blur-md text-dark text-xs font-bold uppercase tracking-wider'>
-                          {item.category}
-                        </span>
-                      </div>
-                      <div className='space-y-2'>
-                        <div
-                          className='h-0.5 bg-gradient-to-r from-accent to-accentGold transition-all duration-300 delay-100'
-                          style={{
-                            width: hoveredIndex === index ? "100%" : "0%",
-                          }}
-                        ></div>
-                        <p className='text-white text-sm font-medium uppercase tracking-wider'>
-                          Click to View
-                        </p>
+                      {shouldLoad ? (
+                        <OptimizedImage
+                          src={item.src}
+                          alt={item.alt}
+                          className={`object-cover transition-all duration-300 ${
+                            hoveredIndex === index
+                              ? "scale-105 brightness-110"
+                              : "scale-100 brightness-100"
+                          }`}
+                          sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw'
+                          priority={false}
+                          onLoad={() => handleImageLoad(index)}
+                        />
+                      ) : (
+                        // Lightweight placeholder while waiting to load - reduces initial page weight
+                        <div className='absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200' />
+                      )}
+
+                      {/* Minimal Hover Overlay */}
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent transition-all duration-300 ${
+                          hoveredIndex === index ? "opacity-100" : "opacity-0"
+                        }`}
+                      />
+
+                      {/* Hover Content */}
+                      <div
+                        className={`absolute inset-0 p-6 flex flex-col justify-between transition-all duration-300 ${
+                          hoveredIndex === index
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-4"
+                        }`}
+                      >
+                        <div className='flex justify-start'>
+                          <span className='px-4 py-2 bg-white/95 backdrop-blur-md text-gray-900 text-xs font-bold uppercase tracking-wider shadow-lg'>
+                            {item.category}
+                          </span>
+                        </div>
+                        <div className='space-y-2'>
+                          <div
+                            className='h-0.5 bg-gradient-to-r from-gray-400 to-gray-600 transition-all duration-300 delay-100'
+                            style={{
+                              width: hoveredIndex === index ? "100%" : "0%",
+                            }}
+                          ></div>
+                          <p className='text-white text-sm font-medium uppercase tracking-wider'>
+                            Click to View
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Load More Button */}
           {visibleItems < lifestyleItems.length && (
             <div
-              className={`text-center mt-12 transition-all duration-1000 delay-500 ${
+              className={`text-center mt-12 transition-all duration-500 delay-300 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
+                  : "opacity-0 translate-y-8"
               }`}
             >
               <button
                 onClick={loadMore}
-                className='group relative px-8 py-4 border-2 border-white text-white font-semibold hover:bg-white hover:text-dark transition-all duration-300 transform hover:scale-105 active:scale-95'
+                className='premium-button-secondary transform hover:scale-105 active:scale-95'
               >
                 <span className='relative z-10 flex items-center gap-2'>
                   Load More ({lifestyleItems.length - visibleItems} remaining)

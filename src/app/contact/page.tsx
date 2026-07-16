@@ -1,130 +1,142 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import ContactForm from "@/components/ContactForm";
-import { FaInstagram, FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import BookingCalendar from "@/components/BookingCalendar";
+import { FaInstagram, FaEnvelope } from "react-icons/fa";
 import ScrollReveal from "@/components/ScrollReveal";
+import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact - Book Nikhil Kubde for Modeling Projects",
   description:
-    "Get in touch with Nikhil Kubde for bookings, collaborations, or inquiries. Available worldwide for modeling projects.",
+    "Contact Nikhil Kubde for modeling bookings, agency inquiries, brand collaborations, photo shoots, and commercial projects. Available worldwide. Represented by CastYou agency. Perfect for fashion, editorial, commercial, and digital brand campaigns.",
+  keywords: [
+    "book Nikhil Kubde",
+    "model booking contact",
+    "modeling agency contact",
+    "hire model",
+    "model casting contact",
+    "commercial model booking",
+    "fashion model hire",
+    "model representation inquiry",
+    "CastYou agency contact",
+    "modeling services inquiry",
+  ],
   openGraph: {
-    title: "Contact - Nikhil Kubde",
+    title: "Contact - Book Nikhil Kubde for Modeling Projects",
     description:
-      "Get in touch with Nikhil Kubde for bookings, collaborations, or inquiries.",
+      "Contact for modeling bookings, agency inquiries, brand collaborations, and commercial projects. Available worldwide. Represented by CastYou agency.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact - Book Nikhil Kubde for Modeling Projects",
+    description:
+      "Contact for modeling bookings and agency inquiries. Available worldwide for fashion, editorial, and commercial projects.",
   },
 };
 
 export default function ContactPage() {
   return (
-    <div className='py-20 bg-dark min-h-screen'>
+    <div className='premium-shell min-h-screen'>
       <div className='container-custom'>
-        {/* Header */}
-        <ScrollReveal direction='fade'>
-          <div className='text-center mb-16'>
-            <h1 className='section-title'>Get In Touch</h1>
-            <p className='text-xl text-gray-400 max-w-2xl mx-auto'>
-              Available for bookings, collaborations, and creative projects
-              worldwide
-            </p>
+        <ScrollReveal direction='fade' variant='scale-lift'>
+          <div className='text-center premium-section pb-8' data-chapter='Header'>
+            <div className='premium-surface p-8 md:p-12'>
+              <p className='premium-kicker'>Bookings</p>
+              <h1 className='premium-heading mt-4'>Get In Touch</h1>
+              <p className='premium-body max-w-2xl mx-auto mt-4'>
+                Available for bookings, collaborations, and creative projects
+                worldwide
+              </p>
+              <a
+                href={PORTFOLIO_PDF}
+                download={PORTFOLIO_PDF_FILENAME}
+                className='premium-button mt-8 inline-flex'
+              >
+                Download Portfolio PDF (Singles & Polaroids)
+              </a>
+            </div>
           </div>
         </ScrollReveal>
 
-        <div className='grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto'>
-          {/* Contact Information */}
+        <BookingCalendar />
+
+        <div className='grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto premium-section' data-chapter='ContactForm'>
           <ScrollReveal direction='left' delay={100}>
-            <div>
-              <h2 className='text-2xl font-serif mb-6 glow-text'>
-                Lets Work Together
+            <div className='premium-surface p-8 bg-white/5 border border-white/10'>
+              <h2 className='text-2xl font-serif mb-6 text-zinc-100'>
+                Let&apos;s Work Together
               </h2>
-              <p className='text-gray-300 mb-8 leading-relaxed'>
-                Im always excited to collaborate on new projects. Whether youre
-                a photographer, brand, or agency, Id love to hear about your
-                vision and how we can create something amazing together.
+              <p className='text-zinc-400 mb-8 leading-relaxed'>
+                I&apos;m always excited to collaborate on new projects. Whether
+                you&apos;re a photographer, brand, or agency, I&apos;d love to
+                hear about your vision and how we can create something amazing
+                together.
               </p>
 
               <div className='space-y-6 mb-10'>
                 <div>
-                  <h3 className='font-semibold mb-2 flex items-center gap-2 text-lightGray'>
-                    <FaEnvelope className='text-accent' />
+                  <h3 className='font-semibold mb-2 flex items-center gap-2 text-zinc-300'>
+                    <FaEnvelope className='text-amber-400' />
                     Email
                   </h3>
                   <a
                     href='mailto:nikhilkubde21@gmail.com'
-                    className='text-gray-400 hover:text-accent transition-colors'
+                    className='text-zinc-400 hover:text-amber-400 transition-colors'
                   >
                     nikhilkubde21@gmail.com
                   </a>
                 </div>
 
                 <div>
-                  <h3 className='font-semibold mb-2 text-lightGray'>
-                    Based In
-                  </h3>
-                  <p className='text-gray-400'>India</p>
-                  <p className='text-sm text-gray-500'>
+                  <h3 className='font-semibold mb-2 text-zinc-300'>Based In</h3>
+                  <p className='text-zinc-400'>India</p>
+                  <p className='text-sm text-zinc-500'>
                     Available for travel worldwide
                   </p>
                 </div>
 
                 <div>
-                  <h3 className='font-semibold mb-2 text-lightGray'>
+                  <h3 className='font-semibold mb-2 text-zinc-300'>
                     Agency Representation
                   </h3>
-                  <p className='text-gray-400'>CastYou Agency</p>
+                  <p className='text-zinc-400'>CastYou Agency</p>
                   <a
                     href='https://castyou.in/nikhil-kubde/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='text-sm text-accent hover:text-accentGold transition-colors'
+                    className='text-sm text-amber-400 hover:text-amber-300 transition-colors'
                   >
                     View Profile on CastYou →
                   </a>
                 </div>
               </div>
 
-              {/* Social Links */}
               <div>
-                <h3 className='font-semibold mb-4 text-lightGray'>Follow Me</h3>
+                <h3 className='font-semibold mb-4 text-zinc-300'>Follow Me</h3>
                 <div className='flex gap-4'>
                   <a
-                    href='https://instagram.com/yourhandle'
+                    href='https://www.instagram.com/nikhil__kubde/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='w-12 h-12 bg-secondary border border-accent/30 text-accent rounded-full flex items-center justify-center hover:bg-accent hover:text-dark hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all duration-300'
+                    className='w-12 h-12 bg-white/5 border border-white/10 text-amber-400 rounded-full flex items-center justify-center hover:border-amber-500/50 hover:-translate-y-1 transition-all duration-300'
                     aria-label='Instagram'
                   >
                     <FaInstagram size={20} />
-                  </a>
-                  <a
-                    href='https://twitter.com/yourhandle'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='w-12 h-12 bg-secondary border border-accent/30 text-accent rounded-full flex items-center justify-center hover:bg-accent hover:text-dark hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all duration-300'
-                    aria-label='Twitter'
-                  >
-                    <FaTwitter size={20} />
-                  </a>
-                  <a
-                    href='https://linkedin.com/in/yourprofile'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='w-12 h-12 bg-secondary border border-accent/30 text-accent rounded-full flex items-center justify-center hover:bg-accent hover:text-dark hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all duration-300'
-                    aria-label='LinkedIn'
-                  >
-                    <FaLinkedin size={20} />
                   </a>
                 </div>
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Contact Form */}
           <ScrollReveal direction='right' delay={200}>
-            <div className='card-dark p-8'>
-              <h2 className='text-2xl font-serif mb-6 glow-text'>
+            <div className='premium-surface p-8 bg-white/5 border border-white/10'>
+              <h2 className='text-2xl font-serif mb-6 text-zinc-100'>
                 Send a Message
               </h2>
-              <ContactForm />
+              <Suspense fallback={<div className='text-zinc-400'>Loading form...</div>}>
+                <ContactForm />
+              </Suspense>
             </div>
           </ScrollReveal>
         </div>

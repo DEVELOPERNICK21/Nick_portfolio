@@ -6,45 +6,67 @@ interface ScrollRevealProps {
   children: ReactNode;
   delay?: number;
   direction?: "up" | "down" | "left" | "right" | "fade";
+  variant?: "default" | "mask" | "scale-lift" | "stagger";
   className?: string;
+  triggerOnce?: boolean;
+  threshold?: number;
+  rootMargin?: string;
 }
 
 export default function ScrollReveal({
   children,
   delay = 0,
   direction = "up",
+  variant = "default",
   className = "",
+  triggerOnce = true,
+  threshold = 0.2,
+  rootMargin = "0px 0px -10% 0px",
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentRef = ref.current;
+    if (!currentRef) return;
+
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      currentRef.classList.add("reveal-visible");
+      return;
+    }
+
+    const timers = new Set<number>();
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setTimeout(() => {
+            const timer = window.setTimeout(() => {
               entry.target.classList.add("reveal-visible");
             }, delay);
+            timers.add(timer);
+            if (triggerOnce) observer.unobserve(entry.target);
+          } else if (!triggerOnce) {
+            entry.target.classList.remove("reveal-visible");
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+        threshold,
+        rootMargin,
       }
     );
 
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    observer.observe(currentRef);
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      timers.forEach((timer) => window.clearTimeout(timer));
+      observer.unobserve(currentRef);
+      observer.disconnect();
     };
-  }, [delay]);
+  }, [delay, rootMargin, threshold, triggerOnce]);
 
   const getDirectionClass = () => {
     switch (direction) {
@@ -64,7 +86,10 @@ export default function ScrollReveal({
   };
 
   return (
-    <div ref={ref} className={`reveal ${getDirectionClass()} ${className}`}>
+    <div
+      ref={ref}
+      className={`reveal reveal-${variant} ${getDirectionClass()} ${className}`}
+    >
       {children}
     </div>
   );

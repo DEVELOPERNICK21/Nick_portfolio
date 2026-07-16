@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import ImageLightbox from "./ImageLightbox";
+import { MAIN_PHOTOS } from "@/data/media";
 
 interface PortfolioItem {
   src: string;
@@ -22,98 +23,16 @@ export default function PortfolioGrid() {
   const categories = [
     "All",
     "Editorial",
-    "Fashion",
     "Commercial",
-    "Runway",
-    "Beauty",
+    "Lifestyle",
+    "Fashion",
+    "Campaign",
   ];
 
-  const portfolioItems: PortfolioItem[] = [
-    {
-      src: "/portfolio-1.jpg",
-      alt: "Editorial fashion shoot - Nikhil Kubde",
-      category: "Editorial",
-      description: "Professional editorial photography showcasing modern fashion",
-      height: "tall",
-    },
-    {
-      src: "/portfolio-2.jpg",
-      alt: "High fashion campaign - Nikhil Kubde",
-      category: "Fashion",
-      description: "Luxury brand campaign featuring contemporary style",
-      height: "medium",
-    },
-    {
-      src: "/portfolio-3.jpg",
-      alt: "Commercial advertisement - Nikhil Kubde",
-      category: "Commercial",
-      description: "Professional commercial photography for brand marketing",
-      height: "short",
-    },
-    {
-      src: "/portfolio-4.jpg",
-      alt: "Fashion week runway - Nikhil Kubde",
-      category: "Runway",
-      description: "Striking runway presentation at international fashion week",
-      height: "tall",
-    },
-    {
-      src: "/portfolio-5.jpg",
-      alt: "Beauty close-up - Nikhil Kubde",
-      category: "Beauty",
-      description: "Artistic beauty portrait highlighting natural features",
-      height: "medium",
-    },
-    {
-      src: "/portfolio-6.jpg",
-      alt: "Magazine editorial - Nikhil Kubde",
-      category: "Editorial",
-      description: "Featured editorial spread in leading fashion magazine",
-      height: "short",
-    },
-    {
-      src: "/portfolio-7.jpg",
-      alt: "Brand campaign - Nikhil Kubde",
-      category: "Fashion",
-      description: "High-end fashion campaign with creative direction",
-      height: "tall",
-    },
-    {
-      src: "/portfolio-8.jpg",
-      alt: "Product photography - Nikhil Kubde",
-      category: "Commercial",
-      description: "Professional product endorsement photography",
-      height: "medium",
-    },
-    {
-      src: "/portfolio-9.jpg",
-      alt: "Designer runway - Nikhil Kubde",
-      category: "Runway",
-      description: "Exclusive designer showcase on international runway",
-      height: "short",
-    },
-    {
-      src: "/portfolio-10.jpg",
-      alt: "Beauty portrait - Nikhil Kubde",
-      category: "Beauty",
-      description: "Elegant beauty photography with artistic lighting",
-      height: "tall",
-    },
-    {
-      src: "/portfolio-11.jpg",
-      alt: "Fashion editorial - Nikhil Kubde",
-      category: "Editorial",
-      description: "Sophisticated fashion editorial with storytelling",
-      height: "medium",
-    },
-    {
-      src: "/portfolio-12.jpg",
-      alt: "Luxury brand - Nikhil Kubde",
-      category: "Fashion",
-      description: "Premium luxury brand campaign photography",
-      height: "tall",
-    },
-  ];
+  const portfolioItems: PortfolioItem[] = MAIN_PHOTOS.map((photo) => ({
+    ...photo,
+    description: `${photo.category} campaign photography — Nikhil Kubde`,
+  }));
 
   const filteredItems =
     activeFilter === "All"
@@ -171,8 +90,8 @@ export default function PortfolioGrid() {
   return (
     <>
       <div className='w-full'>
-        {/* Clean Filter Buttons - Minimal Style */}
-        <div className='flex flex-wrap justify-center gap-2 md:gap-3 mb-16 pb-8 border-b border-white/10'>
+        <div className='sticky top-20 z-20 mb-10 rounded-2xl border border-zinc-700/80 bg-zinc-950/80 px-4 py-4 backdrop-blur'>
+          <div className='flex flex-wrap justify-center gap-2 md:gap-3'>
           {categories.map((category) => (
             <button
               key={category}
@@ -183,10 +102,10 @@ export default function PortfolioGrid() {
                   block: "start",
                 });
               }}
-              className={`px-6 py-2 text-sm md:text-base font-medium transition-all duration-300 ${
+              className={`px-5 py-2 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
                 activeFilter === category
-                  ? "text-white border-b-2 border-white"
-                  : "text-gray-500 hover:text-gray-300 border-b-2 border-transparent hover:border-gray-600"
+                  ? "text-black bg-amber-400 shadow-premium-soft"
+                  : "text-zinc-400 hover:text-zinc-100 border border-white/10 hover:border-amber-500/30"
               }`}
             >
               {category}
@@ -197,9 +116,9 @@ export default function PortfolioGrid() {
               )}
             </button>
           ))}
+          </div>
         </div>
 
-        {/* Clean Pinterest-Style Masonry Grid */}
         <div
           ref={gridRef}
           className='columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 md:gap-6'
@@ -210,12 +129,12 @@ export default function PortfolioGrid() {
         >
           {filteredItems.length === 0 ? (
             <div className='col-span-full text-center py-20'>
-              <p className='text-gray-400 text-lg mb-4'>
+              <p className='text-zinc-400 text-lg mb-4'>
                 No images found in this category
               </p>
               <button
                 onClick={() => setActiveFilter("All")}
-                className='px-6 py-2 border border-white/20 text-white hover:bg-white/10 transition-colors'
+                className='premium-button-secondary'
               >
                 View All Images
               </button>
@@ -230,12 +149,11 @@ export default function PortfolioGrid() {
                   animation: `fadeInUp 0.6s ease-out ${index * 0.05}s both`,
                 }}
               >
-                {/* Clean Card */}
-                <div className='relative overflow-hidden bg-secondary/30 transition-all duration-500 hover:opacity-90'>
+                <div className='relative overflow-hidden bg-zinc-900 transition-all duration-500 hover:-translate-y-1 border border-zinc-700 rounded-2xl hover:shadow-premium-soft'>
                   {/* Loading Placeholder */}
                   {!loadedImages.has(index) && (
-                    <div className='absolute inset-0 bg-gradient-to-br from-secondary to-dark flex items-center justify-center z-10'>
-                      <div className='w-12 h-12 border-2 border-white/20 border-t-white/60 rounded-full animate-spin' />
+                    <div className='absolute inset-0 bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center z-10'>
+                      <div className='w-12 h-12 border-2 border-gray-400 border-t-gray-600 rounded-full animate-spin' />
                     </div>
                   )}
 
@@ -271,12 +189,12 @@ export default function PortfolioGrid() {
         {filteredItems.length > 0 &&
           filteredItems.length < portfolioItems.length && (
             <div className='text-center mt-16 py-8 border-t border-white/10'>
-              <p className='text-gray-400 mb-2'>
+              <p className='text-zinc-400 mb-2'>
                 Showing {filteredItems.length} of {portfolioItems.length} images
               </p>
               <button
                 onClick={() => setActiveFilter("All")}
-                className='text-gray-500 hover:text-white transition-colors text-sm underline underline-offset-4'
+                className='text-amber-400 hover:text-amber-300 transition-colors text-sm underline underline-offset-4'
               >
                 View All Images
               </button>
