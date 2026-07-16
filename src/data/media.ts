@@ -1,3 +1,5 @@
+import { photoAlt, site } from "@/config/site";
+
 export type PortfolioPhoto = {
   src: string;
   alt: string;
@@ -8,44 +10,40 @@ export type PortfolioPhoto = {
 export const HERO_IMAGE = "/main/hero.jpg";
 export const ABOUT_IMAGE = "/main/about.jpg";
 
-export const PORTFOLIO_PDF = "/downloads/nikhil-kubde-portfolio.pdf";
-export const PORTFOLIO_PDF_FILENAME = "Nikhil-Kubde-Portfolio.pdf";
+export const PORTFOLIO_PDF = site.portfolioPdf.path;
+export const PORTFOLIO_PDF_FILENAME = site.portfolioPdf.filename;
 
-export const BRAND_COLLABORATIONS = [
-  "Wework",
-  "Laundryto",
-  "Blue Budha Store",
-] as const;
+export const BRAND_COLLABORATIONS: readonly string[] = site.brands;
 
 /** Primary 5 photos — used across hero, featured sections, and portfolio highlights */
 export const MAIN_PHOTOS: PortfolioPhoto[] = [
   {
     src: "/main/main-1.jpg",
-    alt: "Nikhil Kubde — editorial portrait, Montelo campaign",
+    alt: photoAlt("editorial portrait"),
     category: "Editorial",
     height: "tall",
   },
   {
     src: "/main/main-2.jpg",
-    alt: "Nikhil Kubde — commercial fashion portrait",
+    alt: photoAlt("commercial fashion portrait"),
     category: "Commercial",
     height: "medium",
   },
   {
     src: "/main/main-3.jpg",
-    alt: "Nikhil Kubde — lifestyle brand photography",
+    alt: photoAlt("lifestyle brand photography"),
     category: "Lifestyle",
     height: "short",
   },
   {
     src: "/main/main-4.jpg",
-    alt: "Nikhil Kubde — fashion editorial close-up",
+    alt: photoAlt("fashion editorial close-up"),
     category: "Fashion",
     height: "tall",
   },
   {
     src: "/main/main-5.jpg",
-    alt: "Nikhil Kubde — campaign portrait photography",
+    alt: photoAlt("campaign portrait photography"),
     category: "Campaign",
     height: "medium",
   },
@@ -77,7 +75,7 @@ const libraryFilenames = [
 export const LIBRARY_PHOTOS: PortfolioPhoto[] = libraryFilenames.map(
   (file, index) => ({
     src: `/${file}`,
-    alt: `Nikhil Kubde — archive photo ${index + 1}`,
+    alt: photoAlt(`archive photo ${index + 1}`),
     category: "Archive",
     height: (["tall", "medium", "short"] as const)[index % 3],
   })

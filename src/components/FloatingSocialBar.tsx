@@ -2,6 +2,7 @@
 
 import { FaInstagram, FaEnvelope } from "react-icons/fa";
 import { useState } from "react";
+import { site } from "@/config/site";
 
 export default function FloatingSocialBar() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -43,9 +44,10 @@ export default function FloatingSocialBar() {
       >
         {/* Instagram */}
         <a
-          href='https://www.instagram.com/nikhil__kubde/'
-          target='_blank'
-          rel='noopener noreferrer'
+          href={site.instagram.href}
+          {...(site.instagram.href.startsWith("http")
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
           className='w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all duration-300 transform hover:shadow-xl group'
           aria-label='Instagram'
           onClick={() => setIsExpanded(false)}
@@ -55,7 +57,7 @@ export default function FloatingSocialBar() {
 
         {/* Email */}
         <a
-          href='mailto:nikhilkubde21@gmail.com'
+          href={`mailto:${site.email}`}
           className='w-12 h-12 md:w-14 md:h-14 bg-zinc-950 text-zinc-100 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all duration-300 transform hover:shadow-xl group border-2 border-zinc-700'
           aria-label='Email'
           onClick={() => setIsExpanded(false)}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import ImageLightbox from "./ImageLightbox";
 import { MAIN_PHOTOS } from "@/data/media";
+import { site } from "@/config/site";
 
 interface PortfolioItem {
   src: string;
@@ -31,7 +32,7 @@ export default function PortfolioGrid() {
 
   const portfolioItems: PortfolioItem[] = MAIN_PHOTOS.map((photo) => ({
     ...photo,
-    description: `${photo.category} campaign photography — Nikhil Kubde`,
+    description: `${photo.category} campaign photography — ${site.name}`,
   }));
 
   const filteredItems =

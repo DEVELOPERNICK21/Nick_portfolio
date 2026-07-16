@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import OptimizedImage from "./OptimizedImage";
+import { site } from "@/config/site";
 
 interface ParallaxImageSectionProps {
   images: string[];
@@ -86,7 +87,7 @@ export default function ParallaxImageSection({
               >
                 <OptimizedImage
                   src={src}
-                  alt={`Featured image ${index + 1} - Nikhil Kubde`}
+                  alt={`Featured image ${index + 1} - ${site.name}`}
                   className='object-cover transition-transform duration-700 group-hover:scale-110'
                   priority={false}
                 />

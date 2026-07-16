@@ -3,7 +3,8 @@ import ParallaxHero from "@/components/ParallaxHero";
 import HomeGallery from "@/components/HomeGallery";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollReveal from "@/components/ScrollReveal";
-import { HERO_IMAGE, MAIN_PHOTOS } from "@/data/media";
+import { MAIN_PHOTOS } from "@/data/media";
+import { createHomeJsonLd } from "@/config/jsonLd";
 
 const sectionFallback = (
   <div className='premium-section container-custom' aria-hidden>
@@ -76,98 +77,7 @@ export default function Home() {
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Nikhil Kubde",
-              jobTitle: ["Professional Model", "Mobile App Developer"],
-              url: "https://nick-portfolio-nine.vercel.app",
-              image: `https://nick-portfolio-nine.vercel.app${HERO_IMAGE}`,
-              description:
-                "Professional model available for agency bookings. Fashion, editorial, and commercial modeling with 5+ years tech experience. Represented by CastYou agency.",
-              sameAs: [
-                "https://castyou.in/nikhil-kubde/",
-                "https://www.instagram.com/nikhil__kubde/",
-              ],
-              knowsAbout: [
-                "Fashion Modeling",
-                "Editorial Modeling",
-                "Commercial Modeling",
-                "Mobile App Development",
-                "Digital Content Strategy",
-                "Video Production",
-              ],
-              worksFor: {
-                "@type": "Organization",
-                name: "CastYou Agency",
-                url: "https://castyou.in/nikhil-kubde/",
-              },
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              name: "Nikhil Kubde - Professional Modeling Services",
-              description:
-                "Professional modeling services for fashion, editorial, commercial, and digital brand campaigns. Available for photo shoots, video production, brand ambassador roles, and commercial modeling projects.",
-              provider: {
-                "@type": "Person",
-                name: "Nikhil Kubde",
-              },
-              serviceType: [
-                "Fashion Modeling",
-                "Editorial Modeling",
-                "Commercial Modeling",
-                "Brand Ambassador",
-                "Photo Shoot Modeling",
-                "Video Production Modeling",
-              ],
-              areaServed: "Worldwide",
-              availableChannel: {
-                "@type": "ServiceChannel",
-                serviceUrl: "https://nick-portfolio-nine.vercel.app/contact",
-                serviceType: "Modeling Bookings",
-              },
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: [
-                {
-                  "@type": "Question",
-                  name: "Is Nikhil Kubde available for modeling bookings?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes, Nikhil Kubde is available for modeling bookings through CastYou agency. He specializes in fashion, editorial, and commercial modeling projects.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What types of modeling projects does Nikhil Kubde work on?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Nikhil Kubde works on fashion modeling, editorial shoots, commercial campaigns, video production, brand ambassador roles, and digital-first brand campaigns. His unique tech background makes him ideal for tech companies and digital brands.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "How can agencies book Nikhil Kubde for a project?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Agencies can book Nikhil Kubde through CastYou agency or by contacting directly through the portfolio website contact page. He is represented by CastYou and available for worldwide bookings.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What makes Nikhil Kubde unique as a model?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Nikhil Kubde brings a unique combination of professional modeling skills and 5+ years of mobile app development experience. This tech background makes him particularly valuable for digital-first brands, tech companies, and modern brand campaigns that require both on-camera presence and technical understanding.",
-                  },
-                },
-              ],
-            },
-          ]),
+          __html: JSON.stringify(createHomeJsonLd()),
         }}
       />
 

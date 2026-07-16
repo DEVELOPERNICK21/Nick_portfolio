@@ -3,8 +3,10 @@
 import ScrollReveal from "./ScrollReveal";
 import Link from "next/link";
 import { FaCode, FaMobileAlt, FaLightbulb, FaRocket } from "react-icons/fa";
+import { site } from "@/config/site";
 
 export default function TechAdvantage() {
+  if (!site.showTechAdvantage) return null;
   const advantages = [
     {
       icon: FaCode,

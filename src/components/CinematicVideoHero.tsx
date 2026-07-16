@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useSeamlessVideoFade } from "@/hooks/useSeamlessVideoFade";
 import { HERO_IMAGE, PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
+import { isDemo, site } from "@/config/site";
 
 const HERO_VIDEO_URL =
   process.env.NEXT_PUBLIC_HERO_VIDEO_URL ||
@@ -96,7 +97,7 @@ export default function CinematicVideoHero() {
               className='flex items-center gap-2 text-white font-semibold text-lg'
             >
               <Globe size={24} aria-hidden='true' />
-              <span>Nikhil Kubde</span>
+              <span>{site.name}</span>
             </Link>
             <div className='hidden md:flex items-center gap-8'>
               {navLinks.map((link) => (
@@ -160,9 +161,9 @@ export default function CinematicVideoHero() {
           </form>
 
           <p className='text-white text-sm leading-relaxed px-4'>
-            Available for fashion, editorial, and commercial campaigns.
-            Represented by CastYou — book a shoot or download the comp card
-            below.
+            {isDemo
+              ? "Demo layout — your bio, agency, and comp card replace this on delivery."
+              : `Available for fashion, editorial, and commercial campaigns. Represented by ${site.agency.name} — book a shoot or download the comp card below.`}
           </p>
 
           <div className='flex flex-col sm:flex-row items-center justify-center gap-3 pt-2'>
@@ -174,12 +175,13 @@ export default function CinematicVideoHero() {
               View portfolio
             </button>
             <a
-              href='https://castyou.in/nikhil-kubde/'
-              target='_blank'
-              rel='noopener noreferrer'
+              href={site.agency.url}
+              {...(site.agency.url.startsWith("http")
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               className='liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium hover:bg-white/5 transition-colors'
             >
-              CastYou profile
+              {site.agency.profileLabel || site.agency.name}
             </a>
           </div>
         </div>
@@ -188,9 +190,10 @@ export default function CinematicVideoHero() {
       {/* Social footer */}
       <div className='relative z-10 flex justify-center gap-4 pb-12'>
         <a
-          href='https://www.instagram.com/nikhil__kubde/'
-          target='_blank'
-          rel='noopener noreferrer'
+          href={site.instagram.href}
+          {...(site.instagram.href.startsWith("http")
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
           className='liquid-glass rounded-full p-4 text-white/80 hover:text-white hover:bg-white/5 transition-all'
           aria-label='Instagram'
         >
@@ -212,16 +215,17 @@ export default function CinematicVideoHero() {
           </svg>
         </a>
         <a
-          href='https://castyou.in/nikhil-kubde/'
-          target='_blank'
-          rel='noopener noreferrer'
+          href={site.agency.url}
+          {...(site.agency.url.startsWith("http")
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
           className='liquid-glass rounded-full p-4 text-white/80 hover:text-white hover:bg-white/5 transition-all'
-          aria-label='CastYou agency profile'
+          aria-label={`${site.agency.name} profile`}
         >
           <Globe size={20} />
         </a>
         <a
-          href='mailto:nikhilkubde21@gmail.com'
+          href={`mailto:${site.email}`}
           className='liquid-glass rounded-full p-4 text-white/80 hover:text-white hover:bg-white/5 transition-all'
           aria-label='Email'
         >

@@ -1,40 +1,18 @@
-import type { Metadata } from "next";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import ScrollReveal from "@/components/ScrollReveal";
 import ModelPortfolioDownload from "@/components/ModelPortfolioDownload";
 import CaseStudySection from "@/components/CaseStudySection";
 import Link from "next/link";
 import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
+import { createPageMetadata } from "@/config/metadata";
+import { site } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: "Portfolio | Nikhil Kubde - Professional Model",
+export const metadata = createPageMetadata({
+  title: `Portfolio | ${site.name} - Professional Model`,
   description:
-    "Professional modeling portfolio showcasing fashion, editorial, commercial, runway, and beauty work. Available for agency bookings and brand campaigns. High-quality photography demonstrating versatility and professional modeling expertise.",
-  keywords: [
-    "Nikhil Kubde portfolio",
-    "model portfolio gallery",
-    "fashion model portfolio",
-    "editorial photography",
-    "commercial modeling portfolio",
-    "model work samples",
-    "modeling agency portfolio",
-    "professional model gallery",
-    "fashion photography",
-    "model comp card",
-  ],
-  openGraph: {
-    title: "Portfolio - Model Gallery | Nikhil Kubde",
-    description:
-      "Professional modeling portfolio - Fashion, editorial, commercial, runway, and beauty work. Available for agency bookings and brand campaigns.",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Portfolio - Model Gallery | Nikhil Kubde",
-    description:
-      "Professional modeling portfolio showcasing diverse work across fashion, editorial, commercial, and beauty categories.",
-  },
-};
+    "Professional modeling portfolio showcasing fashion, editorial, commercial, runway, and beauty work. Available for agency bookings and brand campaigns.",
+  keywords: [`${site.name} portfolio`, "model portfolio gallery", "fashion model portfolio"],
+});
 
 export default function PortfolioPage() {
   return (
@@ -94,9 +72,10 @@ export default function PortfolioPage() {
                   Get In Touch
                 </a>
                 <a
-                  href='https://castyou.in/nikhil-kubde/'
-                  target='_blank'
-                  rel='noopener noreferrer'
+                  href={site.agency.url}
+                  {...(site.agency.url.startsWith("http")
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className='premium-button-secondary inline-block'
                 >
                   View Agency Profile

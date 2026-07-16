@@ -6,6 +6,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HERO_IMAGE, MAIN_PHOTOS, BRAND_COLLABORATIONS } from "@/data/media";
+import { site } from "@/config/site";
 import { useCinematicScroll } from "@/hooks/useCinematicScroll";
 
 const serif = { fontFamily: "var(--font-instrument), Georgia, serif" };
@@ -63,6 +64,8 @@ function SplitWords({ text, className = "" }: { text: string; className?: string
 }
 
 export default function GtaCinematicLanding() {
+  const [heroFirstName, ...heroLastParts] = site.nameUpper.split(" ");
+  const heroLastName = heroLastParts.join(" ");
   const rootRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState(0);
@@ -403,7 +406,7 @@ export default function GtaCinematicLanding() {
           Exit
         </Link>
         <span className='text-sm md:text-base tracking-tight text-white' style={serif}>
-          Nikhil Kubde
+          {site.name}
         </span>
         <Link href='/contact' className='text-xs uppercase tracking-[0.35em] text-white/90 hover:text-white'>
           Book
@@ -423,7 +426,7 @@ export default function GtaCinematicLanding() {
         <div ref={heroBgRef} className='absolute inset-0 will-change-transform'>
           <Image
             src={HERO_IMAGE}
-            alt='Nikhil Kubde — professional model'
+            alt={`${site.name} — professional model`}
             fill
             className='object-cover object-top'
             priority
@@ -434,19 +437,21 @@ export default function GtaCinematicLanding() {
         <div className='cine-vignette absolute inset-0 pointer-events-none' />
 
         <div ref={heroContentRef} className='relative z-10 flex h-full flex-col items-center justify-center px-6 text-center'>
-          <p className='mb-4 text-[11px] uppercase tracking-[0.45em] text-amber-300/90'>Professional Model</p>
+          <p className='mb-4 text-[11px] uppercase tracking-[0.45em] text-amber-300/90'>{site.heroKicker}</p>
           <h1 className='text-[clamp(3.2rem,13vw,10rem)] leading-[0.88] tracking-tight' style={serif}>
             <span className='cine-hero-word block overflow-hidden'>
-              <span className='cine-hero-word-inner inline-block'>NIKHIL</span>
+              <span className='cine-hero-word-inner inline-block'>{heroFirstName}</span>
             </span>
-            <span className='cine-hero-word block overflow-hidden'>
-              <span className='cine-hero-word-inner inline-block'>KUBDE</span>
-            </span>
+            {heroLastName ? (
+              <span className='cine-hero-word block overflow-hidden'>
+                <span className='cine-hero-word-inner inline-block'>{heroLastName}</span>
+              </span>
+            ) : null}
           </h1>
           <p className='mt-8 max-w-lg text-sm md:text-base text-white/70 leading-relaxed'>
-            Fashion · Editorial · Commercial
+            {site.tagline.replace(/ • /g, " · ")}
             <br />
-            Represented by CastYou Agency
+            Represented by {site.agency.name}
           </p>
         </div>
 
@@ -586,7 +591,7 @@ export default function GtaCinematicLanding() {
           <div>
             <p className='text-[11px] uppercase tracking-[0.4em] text-amber-300/80 mb-3'>On Camera</p>
             <h2 className='text-4xl md:text-7xl leading-none' style={serif}>
-              Meet Nikhil
+              Meet {site.firstName}
             </h2>
             <p className='mt-4 text-white/70 text-sm md:text-base max-w-md'>
               Scrub the reel with your scroll — presence, personality, and professional demeanor.
@@ -624,7 +629,7 @@ export default function GtaCinematicLanding() {
         className='relative h-screen w-full overflow-hidden flex items-center justify-center'
       >
         <div ref={outroBgRef} className='absolute inset-[-15%] will-change-transform'>
-          <Image src={MAIN_PHOTOS[4].src} alt='Nikhil Kubde' fill className='object-cover' sizes='100vw' />
+          <Image src={MAIN_PHOTOS[4].src} alt={site.name} fill className='object-cover' sizes='100vw' />
           <div className='absolute inset-0 bg-black/70' />
         </div>
         <div className='cine-vignette absolute inset-0 pointer-events-none' />

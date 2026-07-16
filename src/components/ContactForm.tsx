@@ -3,11 +3,11 @@
 import { useState, useRef, FormEvent, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import emailjs from "emailjs-com";
+import { isDemo, site } from "@/config/site";
 
 type FormStatus = "idle" | "loading" | "success" | "error" | "mailto";
 
-const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL || "nikhilkubde21@gmail.com";
+const CONTACT_EMAIL = site.email;
 
 export default function ContactForm() {
   const searchParams = useSearchParams();
@@ -153,6 +153,9 @@ export default function ContactForm() {
           className={`${fieldClass} [&>option]:bg-zinc-900 [&>option]:text-zinc-100`}
         >
           <option value=''>Select a subject</option>
+          {isDemo ? (
+            <option value='portfolio'>I want a portfolio like this</option>
+          ) : null}
           <option value='booking'>Booking Inquiry</option>
           <option value='collaboration'>Collaboration</option>
           <option value='general'>General Inquiry</option>

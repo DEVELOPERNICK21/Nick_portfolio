@@ -1,8 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { site, isDemo } from "@/config/site";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,12 +17,12 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className='fixed top-0 left-0 right-0 z-40 bg-black/70 backdrop-blur-xl border-b border-zinc-800/80 shadow-[0_12px_30px_rgba(0,0,0,0.35)] transition-all duration-300'>
+    <nav className={`fixed left-0 right-0 z-40 bg-black/70 backdrop-blur-xl border-b border-zinc-800/80 shadow-[0_12px_30px_rgba(0,0,0,0.35)] transition-all duration-300 ${isDemo ? "top-[52px]" : "top-0"}`}>
       <div className='container-custom'>
         <div className='flex justify-between items-center h-20'>
           {/* Logo */}
           <Link href='/' className='text-2xl font-serif font-bold text-zinc-100 hover:text-amber-200 transition-colors'>
-            Nikhil Kubde
+            {site.name}
           </Link>
 
           {/* Desktop Navigation */}

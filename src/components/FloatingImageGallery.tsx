@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import OptimizedImage from "./OptimizedImage";
 import ImageLightbox from "./ImageLightbox";
 import { MAIN_PHOTOS } from "@/data/media";
+import { site } from "@/config/site";
 
 interface FloatingImage {
   src: string;
@@ -29,7 +30,7 @@ export default function FloatingImageGallery() {
 
     const floatingImages: FloatingImage[] = galleryImages.map((src, index) => ({
       src,
-      alt: `Floating gallery image ${index + 1} - Nikhil Kubde`,
+      alt: `Floating gallery image ${index + 1} - ${site.name}`,
       x: 10 + index * 15 + Math.random() * 10,
       y: 20 + (index % 3) * 30,
       size: (["small", "medium", "large"] as const)[index % 3],

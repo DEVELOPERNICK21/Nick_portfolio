@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
 import { useElementScrollProgress, useScrollSignals } from "@/hooks/useScrollSignals";
 import { HERO_IMAGE } from "@/data/media";
+import { site } from "@/config/site";
 
 export default function ParallaxHero() {
   const { y, velocity } = useScrollSignals();
@@ -53,7 +54,7 @@ export default function ParallaxHero() {
       >
         <Image
           src={HERO_IMAGE}
-          alt='Nikhil Kubde - Professional modeling photo'
+          alt={`${site.name} - Professional modeling photo`}
           fill
           className='object-cover md:object-top object-center scale-110'
           priority
@@ -80,32 +81,35 @@ export default function ParallaxHero() {
       >
         <div className='mb-6'>
           <span className='text-xs uppercase tracking-widest text-white/90 font-semibold px-4 py-2 liquid-glass rounded-full inline-block'>
-            Professional Model
+            {site.heroKicker}
           </span>
         </div>
 
         <h1 className='font-display text-6xl md:text-8xl lg:text-9xl mb-6 text-white tracking-tight leading-none drop-shadow-2xl text-balance'>
-          NIKHIL KUBDE
+          {site.nameUpper}
         </h1>
 
         <div className='w-32 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-8'></div>
 
         <p className='text-xl md:text-2xl lg:text-3xl mb-6 font-light tracking-wide text-gray-200'>
-          Fashion • Editorial • Commercial
+          {site.tagline}
         </p>
-        <p className='text-sm md:text-base text-gray-300 mb-4 tracking-wide'>
-          Model & Mobile App Developer • 5+ Years Tech Experience
-        </p>
+        {site.heroSubtitle ? (
+          <p className='text-sm md:text-base text-gray-300 mb-4 tracking-wide'>
+            {site.heroSubtitle}
+          </p>
+        ) : null}
 
         <p className='text-sm md:text-base text-gray-400 mb-10 tracking-wider uppercase'>
           Represented by{" "}
           <a
-            href='https://castyou.in/nikhil-kubde/'
-            target='_blank'
-            rel='noopener noreferrer'
+            href={site.agency.url}
+            {...(site.agency.url.startsWith("http")
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
             className='text-white hover:text-accentGold transition-colors underline underline-offset-4'
           >
-            CastYou Agency
+            {site.agency.name}
           </a>
         </p>
 

@@ -1,39 +1,17 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import ModelPortfolioDownload from "@/components/ModelPortfolioDownload";
 import MeasurementsCard from "@/components/MeasurementsCard";
 import AvailabilitySection from "@/components/AvailabilitySection";
 import { ABOUT_IMAGE } from "@/data/media";
+import { createPageMetadata } from "@/config/metadata";
+import { site } from "@/config/site";
 
-export const metadata: Metadata = {
-  title: "About - Professional Model Profile | Nikhil Kubde",
-  description:
-    "Professional model Nikhil Kubde - Available for agency bookings. 5+ years tech experience combined with modeling expertise. Specializes in fashion, editorial, and commercial modeling. Represented by CastYou agency. Perfect for digital-first brands and tech companies.",
-  keywords: [
-    "Nikhil Kubde model",
-    "professional model profile",
-    "model for hire",
-    "fashion model portfolio",
-    "commercial model available",
-    "editorial model",
-    "tech-savvy model",
-    "modeling agency talent",
-    "CastYou model",
-    "available model bookings",
-  ],
-  openGraph: {
-    title: "About - Professional Model Profile | Nikhil Kubde",
-    description:
-      "Professional model available for agency bookings. 5+ years tech experience. Fashion, editorial, and commercial modeling. Represented by CastYou agency.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About - Professional Model Profile | Nikhil Kubde",
-    description:
-      "Professional model available for agency bookings. 5+ years tech experience. Fashion, editorial, and commercial modeling.",
-  },
-};
+export const metadata = createPageMetadata({
+  title: `About - Professional Model Profile | ${site.name}`,
+  description: site.aboutIntro,
+  keywords: [`${site.name} model`, "professional model profile", "model for hire"],
+});
 
 export default function AboutPage() {
   return (
@@ -44,8 +22,7 @@ export default function AboutPage() {
             <p className='premium-kicker'>Profile</p>
             <h1 className='premium-heading mt-4'>About Me</h1>
             <p className='premium-body mt-4 max-w-3xl mx-auto'>
-              Passionate about fashion, storytelling, and bringing creative
-              visions to life with a disciplined, campaign-ready process.
+              {site.aboutIntro}
             </p>
           </div>
         </section>
@@ -55,7 +32,7 @@ export default function AboutPage() {
             <div className='relative h-[600px] rounded-lg overflow-hidden border border-white/10 hover:border-amber-500/30 transition-all duration-500 bg-white/5'>
               <Image
                 src={ABOUT_IMAGE}
-                alt='Nikhil Kubde - Professional modeling photo'
+                alt={`${site.name} - Professional modeling photo`}
                 fill
                 className='object-contain object-center hover:scale-105 transition-transform duration-700'
                 sizes='(max-width: 768px) 100vw, 50vw'
@@ -69,42 +46,19 @@ export default function AboutPage() {
               <h2 className='text-3xl font-serif mb-4 text-zinc-100'>
                 My Journey
               </h2>
-              <p className='text-zinc-400 leading-relaxed'>
-                I&apos;m a fresh face in the modeling industry, driven by a
-                passion for fashion and creative expression. With over 5 years
-                of experience as a professional mobile app developer, I bring a
-                unique combination of technical expertise and creative vision to
-                every project. This background gives me a distinct advantage in
-                understanding digital content, social media strategy, and the
-                technical aspects of modern brand campaigns.
-              </p>
-              <p className='text-zinc-400 leading-relaxed'>
-                My technical background enhances my modeling career in unique
-                ways - I understand the digital landscape, content creation
-                workflows, and how to effectively communicate with tech-savvy
-                brands. This makes me particularly valuable for tech companies,
-                digital-first brands, and campaigns that require both on-camera
-                presence and technical understanding. I&apos;m eager to work
-                across various modeling genres - from fashion editorial to
-                commercial campaigns - bringing both authenticity and
-                professionalism to every project.
-              </p>
-              <p className='text-zinc-400 leading-relaxed'>
-                When I&apos;m not on set, I balance my time between fitness,
-                studying fashion trends, practicing poses, and continuing to
-                develop both my modeling craft and technical skills. I&apos;m
-                passionate about building meaningful relationships in the
-                industry and am always open to new opportunities and
-                collaborations that allow me to showcase this unique combination
-                of skills.
-              </p>
+              {site.aboutParagraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)} className='text-zinc-400 leading-relaxed'>
+                  {paragraph}
+                </p>
+              ))}
               <a
-                href='https://castyou.in/nikhil-kubde/'
-                target='_blank'
-                rel='noopener noreferrer'
+                href={site.agency.url}
+                {...(site.agency.url.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 className='inline-block mt-4 text-amber-400 hover:text-amber-300 transition-colors font-medium'
               >
-                View Full CastYou Profile →
+                View Full {site.agency.name} Profile →
               </a>
             </div>
           </ScrollReveal>
@@ -187,6 +141,7 @@ export default function AboutPage() {
         </ScrollReveal>
 
         <ScrollReveal direction='fade' delay={100}>
+          {site.showTechAdvantage ? (
           <div className='mb-20 premium-section pt-0' data-chapter='Advantage'>
             <div className='premium-surface p-10 md:p-12 bg-white/5 border border-white/10'>
               <div className='text-center mb-8'>
@@ -258,6 +213,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+          ) : null}
         </ScrollReveal>
 
         <ScrollReveal direction='up' delay={150}>

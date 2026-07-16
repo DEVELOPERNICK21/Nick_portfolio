@@ -25,6 +25,7 @@ import {
   MAIN_PHOTOS,
   PORTFOLIO_PDF,
 } from "@/data/media";
+import { isDemo, site } from "@/config/site";
 
 type Stat = {
   label: string;
@@ -45,23 +46,27 @@ const galleryItems = MAIN_PHOTOS.map((photo) => ({
 }));
 
 const linkCards = [
-  { label: "Behance", href: "https://www.behance.net/kkubde", icon: <FaBehance /> },
-  {
-    label: "Personal Website",
-    href: "https://nick-portfolio-nine.vercel.app/",
-    icon: <FiArrowUpRight />,
-  },
-  {
-    label: "Pinterest",
-    href: "https://in.pinterest.com/nickkubde/",
-    icon: <FaPinterestP />,
-  },
+  ...(isDemo
+    ? []
+    : [
+        { label: "Behance", href: "https://www.behance.net/kkubde", icon: <FaBehance /> },
+        {
+          label: "Personal Website",
+          href: site.siteUrl,
+          icon: <FiArrowUpRight />,
+        },
+        {
+          label: "Pinterest",
+          href: "https://in.pinterest.com/nickkubde/",
+          icon: <FaPinterestP />,
+        },
+      ]),
   {
     label: "Instagram",
-    href: "https://www.instagram.com/nikhil__kubde/",
+    href: site.instagram.href,
     icon: <FaInstagram />,
   },
-  { label: "Email", href: "mailto:nikhilkubde21@gmail.com", icon: <FaEnvelope /> },
+  { label: "Email", href: `mailto:${site.email}`, icon: <FaEnvelope /> },
   {
     label: "Comp Card PDF",
     href: PORTFOLIO_PDF,
@@ -69,23 +74,41 @@ const linkCards = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Nikhil blends editorial confidence with clean brand storytelling. Every shot felt premium.",
-    author: "Creative Director, FWD Studio",
-  },
-  {
-    quote:
-      "Highly disciplined on set, fast with direction, and camera-ready in every frame.",
-    author: "Campaign Producer, Urban Fit",
-  },
-  {
-    quote:
-      "A rare model who understands both aesthetics and digital-first campaign goals.",
-    author: "Brand Lead, Luxe Street",
-  },
-];
+const testimonials = isDemo
+  ? [
+      {
+        quote:
+          "Blends editorial confidence with clean brand storytelling. Every shot felt premium.",
+        author: "Creative Director, FWD Studio",
+      },
+      {
+        quote:
+          "Highly disciplined on set, fast with direction, and camera-ready in every frame.",
+        author: "Campaign Producer, Urban Fit",
+      },
+      {
+        quote:
+          "A rare talent who understands both aesthetics and digital-first campaign goals.",
+        author: "Brand Lead, Luxe Street",
+      },
+    ]
+  : [
+      {
+        quote:
+          "Nikhil blends editorial confidence with clean brand storytelling. Every shot felt premium.",
+        author: "Creative Director, FWD Studio",
+      },
+      {
+        quote:
+          "Highly disciplined on set, fast with direction, and camera-ready in every frame.",
+        author: "Campaign Producer, Urban Fit",
+      },
+      {
+        quote:
+          "A rare model who understands both aesthetics and digital-first campaign goals.",
+        author: "Brand Lead, Luxe Street",
+      },
+    ];
 
 const experiencePillars = [
   {
@@ -303,7 +326,7 @@ export default function PremiumExperience() {
             transition={{ delay: 0.35, duration: 0.9 }}
             className='mt-6 text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight'
           >
-            Nikhil Kubde
+            {site.name}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -540,7 +563,7 @@ export default function PremiumExperience() {
           <div className='grid gap-10 lg:grid-cols-2'>
             <div>
               <p className='text-xs uppercase tracking-[0.25em] text-amber-300/70'>
-                Book Nikhil
+                Book {site.firstName}
               </p>
               <h2 className='text-3xl md:text-4xl font-semibold mt-3'>
                 Contact / Booking
@@ -583,7 +606,7 @@ export default function PremiumExperience() {
       </section>
 
       <footer className='pb-12 text-center text-xs uppercase tracking-[0.18em] text-zinc-400'>
-        © {year} Nikhil Kubde — Crafted for premium storytelling
+        © {year} {site.name} — Crafted for premium storytelling
       </footer>
 
       <style jsx global>{`

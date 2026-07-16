@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaDownload, FaExternalLinkAlt, FaFilePdf } from "react-icons/fa";
 import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
+import { site } from "@/config/site";
 
 interface ModelPortfolioDownloadProps {
   id?: string;
@@ -59,7 +60,7 @@ export default function ModelPortfolioDownload({
           >
             {loadPdf ? (
               <iframe
-                title='Nikhil Kubde portfolio PDF — singles and polaroids'
+                title={`${site.name} portfolio PDF — singles and polaroids`}
                 src={`${PORTFOLIO_PDF}#view=FitH`}
                 className='absolute inset-0 h-full w-full'
                 loading='lazy'
