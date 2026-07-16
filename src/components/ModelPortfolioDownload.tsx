@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { FaDownload, FaExternalLinkAlt } from "react-icons/fa";
+import { useState } from "react";
+import { FaDownload, FaExternalLinkAlt, FaFilePdf } from "react-icons/fa";
 import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
 
 interface ModelPortfolioDownloadProps {
@@ -13,6 +14,8 @@ export default function ModelPortfolioDownload({
   id = "comp-card",
   compact = false,
 }: ModelPortfolioDownloadProps) {
+  const [loadPdf, setLoadPdf] = useState(false);
+
   return (
     <section id={id} className='premium-section pt-8'>
       <div className='container-custom'>
@@ -54,11 +57,28 @@ export default function ModelPortfolioDownload({
               compact ? "h-[min(70vh,720px)]" : "h-[min(85vh,920px)]"
             }`}
           >
-            <iframe
-              title='Nikhil Kubde portfolio PDF — singles and polaroids'
-              src={`${PORTFOLIO_PDF}#view=FitH`}
-              className='absolute inset-0 h-full w-full'
-            />
+            {loadPdf ? (
+              <iframe
+                title='Nikhil Kubde portfolio PDF — singles and polaroids'
+                src={`${PORTFOLIO_PDF}#view=FitH`}
+                className='absolute inset-0 h-full w-full'
+                loading='lazy'
+              />
+            ) : (
+              <div className='absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-zinc-900 to-black px-6 text-center'>
+                <FaFilePdf className='text-4xl text-amber-400/80' aria-hidden />
+                <p className='max-w-md text-sm text-zinc-400'>
+                  Preview loads on demand to keep the page fast (~14 MB file).
+                </p>
+                <button
+                  type='button'
+                  onClick={() => setLoadPdf(true)}
+                  className='premium-button'
+                >
+                  Load PDF Preview
+                </button>
+              </div>
+            )}
           </div>
           <p className='mt-4 text-center text-sm text-zinc-500'>
             If the viewer does not load, use Download PDF or Open Full Screen above.

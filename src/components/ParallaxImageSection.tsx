@@ -88,7 +88,7 @@ export default function ParallaxImageSection({
                   src={src}
                   alt={`Featured image ${index + 1} - Nikhil Kubde`}
                   className='object-cover transition-transform duration-700 group-hover:scale-110'
-                  priority={index < 2}
+                  priority={false}
                 />
 
                 {/* Hover Overlay */}

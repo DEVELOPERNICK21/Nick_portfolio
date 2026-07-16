@@ -15,7 +15,7 @@ const HERO_VIDEO_URL =
   process.env.NEXT_PUBLIC_HERO_VIDEO_URL ||
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4";
 
-const instrumentSerif = { fontFamily: "'Instrument Serif', serif" };
+const instrumentSerif = { fontFamily: "var(--font-instrument), Georgia, serif" };
 
 const navLinks = [
   { href: "/portfolio", label: "Portfolio" },
@@ -80,7 +80,7 @@ export default function CinematicVideoHero() {
           muted
           playsInline
           loop={reduceMotion}
-          preload='auto'
+          preload='metadata'
           aria-hidden='true'
         />
         <div className='absolute inset-0 bg-black/35' />

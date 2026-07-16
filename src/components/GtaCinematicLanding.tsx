@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HERO_IMAGE, MAIN_PHOTOS, BRAND_COLLABORATIONS } from "@/data/media";
 import { useCinematicScroll } from "@/hooks/useCinematicScroll";
 
-const serif = { fontFamily: "'Instrument Serif', serif" };
+const serif = { fontFamily: "var(--font-instrument), Georgia, serif" };
 
 const chapters = [
   {
@@ -574,7 +574,7 @@ export default function GtaCinematicLanding() {
           src='/intro-video.mp4'
           muted
           playsInline
-          preload='auto'
+          preload='metadata'
           poster={HERO_IMAGE}
           className='absolute inset-0 h-full w-full object-cover'
         />

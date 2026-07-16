@@ -129,7 +129,7 @@ export default function FloatingImageGallery() {
                       src={image.src}
                       alt={image.alt}
                       className='object-cover transition-transform duration-700 group-hover:scale-110'
-                      priority={index < 2}
+                      priority={false}
                     />
 
                     {/* Hover Overlay */}

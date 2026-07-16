@@ -209,7 +209,6 @@ export default function LifestyleGallery() {
           >
             {displayedItems.map((item, index) => {
               const shouldLoad = visibleImageIndices.has(index);
-              const isPriority = index < 3; // First 3 images are priority
 
               return (
                 <div
@@ -251,7 +250,7 @@ export default function LifestyleGallery() {
                               : "scale-100 brightness-100"
                           }`}
                           sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw'
-                          priority={isPriority}
+                          priority={false}
                           onLoad={() => handleImageLoad(index)}
                         />
                       ) : (

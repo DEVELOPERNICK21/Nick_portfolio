@@ -30,11 +30,8 @@ export default function OptimizedImage({
   const [retryCount, setRetryCount] = useState(0);
   const [imageSrc, setImageSrc] = useState(src);
   
-  // Adaptive quality: optimized for performance
-  // Priority images (hero, above fold): 85% quality for best visual
-  // Lazy images: 65% quality (significantly smaller file size, still excellent quality)
-  // This reduces bandwidth usage by ~30-40% for lazy-loaded images
-  const imageQuality = priority ? 85 : 65;
+  // Adaptive quality for Next.js image optimizer
+  const imageQuality = priority ? 75 : 60;
 
   // Reset error state when src changes
   useEffect(() => {

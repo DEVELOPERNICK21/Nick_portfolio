@@ -3,57 +3,68 @@ import ParallaxHero from "@/components/ParallaxHero";
 import HomeGallery from "@/components/HomeGallery";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollReveal from "@/components/ScrollReveal";
-import CinematicStorySection from "@/components/CinematicStorySection";
-import ModelPortfolioDownload from "@/components/ModelPortfolioDownload";
 import { HERO_IMAGE, MAIN_PHOTOS } from "@/data/media";
 
-// Lazy load heavy components that aren't immediately visible
-// Using simpler loading states to avoid build issues
+const sectionFallback = (
+  <div className='premium-section container-custom' aria-hidden>
+    <div className='h-40 animate-pulse rounded-2xl bg-white/5' />
+  </div>
+);
+
+// Below-fold sections: client-only to shrink initial JS and defer heavy galleries
 const FloatingImageGallery = dynamic(
   () => import("@/components/FloatingImageGallery"),
-  {
-    ssr: true,
-  }
+  { ssr: false, loading: () => sectionFallback }
 );
 
 const ParallaxImageSection = dynamic(
   () => import("@/components/ParallaxImageSection"),
-  {
-    ssr: true,
-  }
+  { ssr: false, loading: () => sectionFallback }
 );
 
 const LifestyleGallery = dynamic(
   () => import("@/components/LifestyleGallery"),
-  {
-    ssr: true,
-  }
+  { ssr: false, loading: () => sectionFallback }
 );
 
 const Stats = dynamic(() => import("@/components/Stats"), {
-  ssr: true,
+  ssr: false,
+  loading: () => sectionFallback,
 });
 
 const CTA = dynamic(() => import("@/components/CTA"), {
-  ssr: true,
+  ssr: false,
+  loading: () => sectionFallback,
 });
 
 const InstagramFollow = dynamic(() => import("@/components/InstagramFollow"), {
-  ssr: true,
+  ssr: false,
+  loading: () => sectionFallback,
 });
 
 const TechAdvantage = dynamic(() => import("@/components/TechAdvantage"), {
-  ssr: true,
+  ssr: false,
+  loading: () => sectionFallback,
 });
 
 const VideoReelSection = dynamic(
   () => import("@/components/VideoReelSection"),
-  { ssr: true }
+  { ssr: false, loading: () => sectionFallback }
 );
 
 const TestimonialsSection = dynamic(
   () => import("@/components/TestimonialsSection"),
-  { ssr: true }
+  { ssr: false, loading: () => sectionFallback }
+);
+
+const CinematicStorySection = dynamic(
+  () => import("@/components/CinematicStorySection"),
+  { ssr: false, loading: () => sectionFallback }
+);
+
+const ModelPortfolioDownload = dynamic(
+  () => import("@/components/ModelPortfolioDownload"),
+  { ssr: false, loading: () => sectionFallback }
 );
 
 export default function Home() {

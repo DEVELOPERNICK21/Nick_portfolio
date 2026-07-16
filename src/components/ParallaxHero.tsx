@@ -57,8 +57,11 @@ export default function ParallaxHero() {
           fill
           className='object-cover md:object-top object-center scale-110'
           priority
-          quality={90}
+          fetchPriority='high'
+          quality={75}
           sizes='100vw'
+          placeholder='blur'
+          blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
         />
         <div className='absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/15' />
       </div>
@@ -81,10 +84,7 @@ export default function ParallaxHero() {
           </span>
         </div>
 
-        <h1
-          className='text-6xl md:text-8xl lg:text-9xl mb-6 text-white tracking-tight leading-none drop-shadow-2xl text-balance'
-          style={{ fontFamily: "'Instrument Serif', serif" }}
-        >
+        <h1 className='font-display text-6xl md:text-8xl lg:text-9xl mb-6 text-white tracking-tight leading-none drop-shadow-2xl text-balance'>
           NIKHIL KUBDE
         </h1>
 
