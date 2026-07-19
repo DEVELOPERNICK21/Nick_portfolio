@@ -4,7 +4,12 @@ import ContactForm from "@/components/ContactForm";
 import BookingCalendar from "@/components/BookingCalendar";
 import { FaInstagram, FaEnvelope } from "react-icons/fa";
 import ScrollReveal from "@/components/ScrollReveal";
-import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
+import {
+  PORTFOLIO_PDF,
+  PORTFOLIO_PDF_FILENAME,
+  PRICING_PDF,
+  PRICING_PDF_FILENAME,
+} from "@/data/media";
 import { createPageMetadata } from "@/config/metadata";
 import { isDemo, site } from "@/config/site";
 
@@ -40,7 +45,23 @@ export default function ContactPage() {
                   ? "Send a message for pricing, packages, and 5–7 day turnaround. This demo becomes your name, photos, and agency details."
                   : "Available for bookings, collaborations, and creative projects worldwide"}
               </p>
-              {!isDemo ? (
+              {isDemo ? (
+                <div className='mt-8 flex flex-wrap justify-center gap-3'>
+                  <a
+                    href='/pricing'
+                    className='premium-button inline-flex'
+                  >
+                    View packages & pricing
+                  </a>
+                  <a
+                    href={PRICING_PDF}
+                    download={PRICING_PDF_FILENAME}
+                    className='premium-button-secondary inline-flex'
+                  >
+                    Download pricing PDF
+                  </a>
+                </div>
+              ) : (
                 <a
                   href={PORTFOLIO_PDF}
                   download={PORTFOLIO_PDF_FILENAME}
@@ -48,7 +69,7 @@ export default function ContactPage() {
                 >
                   Download Portfolio PDF (Singles & Polaroids)
                 </a>
-              ) : null}
+              )}
             </div>
           </div>
         </ScrollReveal>

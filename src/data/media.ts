@@ -13,6 +13,10 @@ export const ABOUT_IMAGE = "/main/about.jpg";
 export const PORTFOLIO_PDF = site.portfolioPdf.path;
 export const PORTFOLIO_PDF_FILENAME = site.portfolioPdf.filename;
 
+/** Sales pricing one-pager — shareable from demo site */
+export const PRICING_PDF = "/downloads/model-portfolio-pricing.pdf";
+export const PRICING_PDF_FILENAME = "Model-Portfolio-Pricing.pdf";
+
 export const BRAND_COLLABORATIONS: readonly string[] = site.brands;
 
 /** Primary 5 photos — used across hero, featured sections, and portfolio highlights */

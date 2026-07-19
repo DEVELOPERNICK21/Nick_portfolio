@@ -12,12 +12,20 @@ export default function DemoBanner() {
           {" — "}sample layout with placeholder name & photos. Yours would use
           your images, bio, and agency details.
         </p>
-        <Link
-          href='/contact'
-          className='shrink-0 rounded-full border border-amber-500/50 px-4 py-1.5 text-amber-300 hover:bg-amber-500/10 transition-colors'
-        >
-          Get yours →
-        </Link>
+        <div className='flex shrink-0 items-center gap-2'>
+          <Link
+            href='/pricing'
+            className='rounded-full border border-amber-500/50 px-4 py-1.5 text-amber-300 hover:bg-amber-500/10 transition-colors'
+          >
+            Pricing
+          </Link>
+          <Link
+            href='/contact'
+            className='rounded-full bg-amber-500/15 border border-amber-500/50 px-4 py-1.5 text-amber-300 hover:bg-amber-500/25 transition-colors'
+          >
+            Get yours →
+          </Link>
+        </div>
       </div>
     </div>
   );

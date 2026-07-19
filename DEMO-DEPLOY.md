@@ -35,6 +35,19 @@ NEXT_PUBLIC_WHATSAPP_MESSAGE=Hi! I saw the demo portfolio and want one for mysel
 
 Optional: copy other vars from `.env.local.example` (stats, measurements, etc.) — demo uses the same placeholder images until you swap per-client.
 
+## Shareable pricing link (demo only)
+
+After deploy, send prospects:
+
+| Link | Use |
+|------|-----|
+| `https://modelportfolio-demo.vercel.app/pricing` | Nice page with PDF viewer + CTAs |
+| `https://modelportfolio-demo.vercel.app/downloads/model-portfolio-pricing.pdf` | Direct PDF file |
+
+The pricing page and nav link only appear when `NEXT_PUBLIC_SITE_MODE=demo`. Your personal site redirects `/pricing` → home.
+
+Update the PDF by replacing `public/downloads/model-portfolio-pricing.pdf`.
+
 ## What changes in demo mode
 
 - Model name → **Arjun Mehta** (config in `src/config/site.ts`)

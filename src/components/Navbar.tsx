@@ -13,6 +13,7 @@ export default function Navbar() {
     { href: "/library", label: "Library" },
     { href: "/premium", label: "Premium" },
     { href: "/cinematic", label: "Cinematic" },
+    ...(isDemo ? [{ href: "/pricing", label: "Pricing" }] : []),
     { href: "/contact", label: "Contact" },
   ];
 
