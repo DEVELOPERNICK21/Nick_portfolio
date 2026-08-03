@@ -38,3 +38,8 @@ next-env.d.ts
 # large media files
 *.MOV
 src/assets/ExtraPhotos/IMG_6434.MOV
+
+# local tooling / dumps
+.superpowers/
+drive-download-*/
+temp_optimized/

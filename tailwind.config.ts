@@ -23,6 +23,12 @@ const config: Config = {
           muted: "#b3b3b8",
           accent: "#c5a46d",
         },
+        editorial: {
+          bg: "#FAF6EC",
+          ink: "#2B2B2B",
+          muted: "#5C5C5C",
+          accent: "#886D20",
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

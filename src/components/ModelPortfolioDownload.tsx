@@ -9,25 +9,36 @@ import { site } from "@/config/site";
 interface ModelPortfolioDownloadProps {
   id?: string;
   compact?: boolean;
+  variant?: "default" | "editorial";
 }
 
 export default function ModelPortfolioDownload({
   id = "comp-card",
   compact = false,
+  variant = "default",
 }: ModelPortfolioDownloadProps) {
   const [loadPdf, setLoadPdf] = useState(false);
+  const isEditorial = variant === "editorial";
 
   return (
-    <section id={id} className='premium-section pt-8'>
+    <section id={id} className={isEditorial ? "ed-section" : "premium-section pt-8"}>
       <div className='container-custom'>
-        <div className='premium-surface overflow-hidden p-6 md:p-10'>
+        <div
+          className={`${isEditorial ? "ed-surface" : "premium-surface"} overflow-hidden p-6 md:p-10`}
+        >
           <div className='flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6'>
             <div>
-              <p className='premium-kicker'>Agency Comp Card</p>
-              <h2 className='premium-heading mt-3 text-3xl md:text-4xl'>
+              <p className={isEditorial ? "ed-kicker" : "premium-kicker"}>
+                Agency Comp Card
+              </p>
+              <h2
+                className={`${isEditorial ? "ed-heading" : "premium-heading"} mt-3 text-3xl md:text-4xl`}
+              >
                 Portfolio PDF — Singles & Polaroids
               </h2>
-              <p className='premium-body mt-3 max-w-2xl'>
+              <p
+                className={`${isEditorial ? "ed-body" : "premium-body"} mt-3 max-w-2xl`}
+              >
                 View or download the official comp card with measurements, singles,
                 and polaroids — ready for casting and brand bookings.
               </p>
@@ -36,7 +47,7 @@ export default function ModelPortfolioDownload({
               <a
                 href={PORTFOLIO_PDF}
                 download={PORTFOLIO_PDF_FILENAME}
-                className='premium-button'
+                className={isEditorial ? "ed-button" : "premium-button"}
               >
                 <FaDownload />
                 Download PDF
@@ -45,7 +56,9 @@ export default function ModelPortfolioDownload({
                 href={PORTFOLIO_PDF}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='premium-button-secondary'
+                className={
+                  isEditorial ? "ed-button-secondary" : "premium-button-secondary"
+                }
               >
                 <FaExternalLinkAlt />
                 Open Full Screen
@@ -74,7 +87,7 @@ export default function ModelPortfolioDownload({
                 <button
                   type='button'
                   onClick={() => setLoadPdf(true)}
-                  className='premium-button'
+                  className={isEditorial ? "ed-button" : "premium-button"}
                 >
                   Load PDF Preview
                 </button>
