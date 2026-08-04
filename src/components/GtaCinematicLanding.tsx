@@ -451,7 +451,7 @@ export default function GtaCinematicLanding() {
           <p className='mt-8 max-w-lg text-sm md:text-base text-white/70 leading-relaxed'>
             {site.tagline.replace(/ • /g, " · ")}
             <br />
-            Represented by {site.agency.name}
+            {site.representationText}
           </p>
         </div>
 
@@ -576,7 +576,7 @@ export default function GtaCinematicLanding() {
       >
         <video
           ref={videoRef}
-          src='/intro-video.mp4'
+          src='/cinematic/bts-landscape.mp4'
           muted
           playsInline
           preload='metadata'

@@ -14,7 +14,7 @@ import {
 } from "@/lib/imagePlaceholders";
 
 export default function CategorizedPortfolio() {
-  const [active, setActive] = useState<PortfolioCategoryId>("formal");
+  const [active, setActive] = useState<PortfolioCategoryId>("all");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -34,7 +34,7 @@ export default function CategorizedPortfolio() {
           <p className="ed-kicker">Portfolio</p>
           <h2 className="ed-heading mt-3">Selected work</h2>
           <p className="ed-body mt-4 max-w-2xl">
-            Browse by look — Formal, Ethnic, or Casual.
+            Browse by look — All, Formal, Ethnic, or Casual.
           </p>
           <div className="ed-divider my-8 max-w-md" />
         </ScrollReveal>

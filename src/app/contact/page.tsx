@@ -19,7 +19,7 @@ export const metadata: Metadata = createPageMetadata({
     : `Contact - Book ${site.name} for Modeling Projects`,
   description: isDemo
     ? "Request pricing and turnaround for a premium model portfolio site like this demo — gallery, comp card, testimonials, and contact flow included."
-    : `Contact ${site.name} for modeling bookings, agency inquiries, brand collaborations, photo shoots, and commercial projects. Represented by ${site.agency.name}.`,
+    : `Contact ${site.name} for modeling bookings, agency inquiries, brand collaborations, photo shoots, and commercial projects. ${site.representationText}.`,
   keywords: isDemo
     ? ["model portfolio pricing", "model website contact", "portfolio demo inquiry"]
     : [`book ${site.name}`, "model booking contact", site.agency.name],

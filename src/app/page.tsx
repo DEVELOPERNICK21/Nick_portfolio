@@ -24,6 +24,11 @@ const DuoGallerySection = dynamic(() => import("@/components/DuoGallerySection")
   loading: () => sectionFallback,
 });
 
+const VideoReelSection = dynamic(
+  () => import("@/components/VideoReelSection"),
+  { loading: () => sectionFallback }
+);
+
 const CategorizedPortfolio = dynamic(
   () => import("@/components/CategorizedPortfolio"),
   { loading: () => sectionFallback }
@@ -49,6 +54,7 @@ export default function Home() {
       <AboutMeSection />
       <InstagramProofSection />
       <DuoGallerySection />
+      <VideoReelSection />
       <CategorizedPortfolio />
       <ModelPortfolioDownload variant="editorial" />
       <WorkWithMeCTA />

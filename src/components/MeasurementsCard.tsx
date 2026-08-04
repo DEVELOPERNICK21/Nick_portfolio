@@ -1,10 +1,10 @@
 const measurements = [
-  { label: "Height", value: process.env.NEXT_PUBLIC_MEAS_HEIGHT || `5'10" / 175 cm` },
+  { label: "Height", value: process.env.NEXT_PUBLIC_MEAS_HEIGHT || `5'10" / 180 cm` },
   { label: "Weight", value: process.env.NEXT_PUBLIC_MEAS_WEIGHT || "70 kg / 154 lbs" },
   { label: "Chest", value: process.env.NEXT_PUBLIC_MEAS_CHEST || '38"' },
-  { label: "Waist", value: process.env.NEXT_PUBLIC_MEAS_WAIST || '30"' },
+  { label: "Waist", value: process.env.NEXT_PUBLIC_MEAS_WAIST || '31"' },
   { label: "Hips", value: process.env.NEXT_PUBLIC_MEAS_HIPS || '36"' },
-  { label: "Shoe Size", value: process.env.NEXT_PUBLIC_MEAS_SHOE || "US 9 / EU 42" },
+  { label: "Shoe Size", value: process.env.NEXT_PUBLIC_MEAS_SHOE || "UK 9" },
   { label: "Hair Colour", value: process.env.NEXT_PUBLIC_MEAS_HAIR || "Black" },
   { label: "Eye Colour", value: process.env.NEXT_PUBLIC_MEAS_EYES || "Brown" },
   { label: "Skin Tone", value: process.env.NEXT_PUBLIC_MEAS_SKIN || "Medium" },

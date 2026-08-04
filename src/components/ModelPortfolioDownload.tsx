@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { FaDownload, FaExternalLinkAlt, FaFilePdf } from "react-icons/fa";
 import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
-import { site } from "@/config/site";
 
 interface ModelPortfolioDownloadProps {
   id?: string;
@@ -17,7 +15,6 @@ export default function ModelPortfolioDownload({
   compact = false,
   variant = "default",
 }: ModelPortfolioDownloadProps) {
-  const [loadPdf, setLoadPdf] = useState(false);
   const isEditorial = variant === "editorial";
 
   return (
@@ -71,28 +68,20 @@ export default function ModelPortfolioDownload({
               compact ? "h-[min(70vh,720px)]" : "h-[min(85vh,920px)]"
             }`}
           >
-            {loadPdf ? (
-              <iframe
-                title={`${site.name} portfolio PDF — singles and polaroids`}
-                src={`${PORTFOLIO_PDF}#view=FitH`}
-                className='absolute inset-0 h-full w-full'
-                loading='lazy'
-              />
-            ) : (
-              <div className='absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-zinc-900 to-black px-6 text-center'>
-                <FaFilePdf className='text-4xl text-amber-400/80' aria-hidden />
-                <p className='max-w-md text-sm text-zinc-400'>
-                  Preview loads on demand to keep the page fast (~14 MB file).
-                </p>
-                <button
-                  type='button'
-                  onClick={() => setLoadPdf(true)}
-                  className={isEditorial ? "ed-button" : "premium-button"}
-                >
-                  Load PDF Preview
-                </button>
-              </div>
-            )}
+            <div className='absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-zinc-900 to-black px-6 text-center'>
+              <FaFilePdf className='text-4xl text-amber-400/80' aria-hidden />
+              <p className='max-w-md text-sm text-zinc-400'>
+                Open the full comp card in a new tab for fullscreen viewing or download it directly.
+              </p>
+              <a
+                href={PORTFOLIO_PDF}
+                target='_blank'
+                rel='noopener noreferrer'
+                className={isEditorial ? "ed-button" : "premium-button"}
+              >
+                Open PDF in New Tab
+              </a>
+            </div>
           </div>
           <p className='mt-4 text-center text-sm text-zinc-500'>
             If the viewer does not load, use Download PDF or Open Full Screen above.

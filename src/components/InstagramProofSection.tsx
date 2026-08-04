@@ -19,6 +19,13 @@ function ProofCardLarge({
 }) {
   const imageCount = Math.min(card.images.length, featured ? 4 : 2);
   const isMultiGrid = imageCount >= 3;
+  const imageLinkProps = card.href
+    ? {
+        href: card.href,
+        target: "_blank",
+        rel: "noopener noreferrer",
+      }
+    : null;
 
   return (
     <ScrollReveal direction="up" delay={delay} className="h-full">
@@ -64,19 +71,39 @@ function ProofCardLarge({
         <div className="md:hidden">
           {imageCount === 1 ? (
             <div className="relative aspect-[9/16] max-h-[70vh] w-full bg-black/[0.04] p-3">
-              <div className="relative h-full w-full overflow-hidden rounded-xl bg-editorial-bg">
-                <Image
-                  src={card.images[0].src}
-                  alt={card.images[0].alt}
-                  fill
-                  className="object-cover object-top"
-                  sizes="100vw"
-                  quality={IMAGE_QUALITY_CARD}
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL={IMAGE_BLUR_DATA_URL}
-                />
-              </div>
+              {imageLinkProps ? (
+                <a
+                  {...imageLinkProps}
+                  aria-label={`Open ${card.brand} reel`}
+                  className="relative block h-full w-full overflow-hidden rounded-xl bg-editorial-bg"
+                >
+                  <Image
+                    src={card.images[0].src}
+                    alt={card.images[0].alt}
+                    fill
+                    className="object-cover object-top transition-transform duration-300 hover:scale-[1.02]"
+                    sizes="100vw"
+                    quality={IMAGE_QUALITY_CARD}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={IMAGE_BLUR_DATA_URL}
+                  />
+                </a>
+              ) : (
+                <div className="relative h-full w-full overflow-hidden rounded-xl bg-editorial-bg">
+                  <Image
+                    src={card.images[0].src}
+                    alt={card.images[0].alt}
+                    fill
+                    className="object-cover object-top"
+                    sizes="100vw"
+                    quality={IMAGE_QUALITY_CARD}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={IMAGE_BLUR_DATA_URL}
+                  />
+                </div>
+              )}
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-2 bg-black/[0.04] p-3">
@@ -85,17 +112,37 @@ function ProofCardLarge({
                   key={img.src + img.alt}
                   className="relative aspect-[3/4] overflow-hidden rounded-xl bg-editorial-bg"
                 >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover object-[center_22%]"
-                    sizes="50vw"
-                    quality={IMAGE_QUALITY_CARD}
-                    loading="lazy"
-                    placeholder="blur"
-                    blurDataURL={IMAGE_BLUR_DATA_URL}
-                  />
+                  {imageLinkProps ? (
+                    <a
+                      {...imageLinkProps}
+                      aria-label={`Open ${card.brand} reel`}
+                      className="relative block h-full w-full"
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-cover object-[center_22%] transition-transform duration-300 hover:scale-[1.02]"
+                        sizes="50vw"
+                        quality={IMAGE_QUALITY_CARD}
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL={IMAGE_BLUR_DATA_URL}
+                      />
+                    </a>
+                  ) : (
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover object-[center_22%]"
+                      sizes="50vw"
+                      quality={IMAGE_QUALITY_CARD}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL={IMAGE_BLUR_DATA_URL}
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -110,17 +157,37 @@ function ProofCardLarge({
                 key={img.src + img.alt}
                 className="relative min-h-[340px] overflow-hidden rounded-xl bg-editorial-bg md:min-h-full"
               >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 50vw, 25vw"
-                  quality={IMAGE_QUALITY_CARD}
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL={IMAGE_BLUR_DATA_URL}
-                />
+                {imageLinkProps ? (
+                  <a
+                    {...imageLinkProps}
+                    aria-label={`Open ${card.brand} reel`}
+                    className="relative block h-full w-full"
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover object-center transition-transform duration-300 hover:scale-[1.02]"
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      quality={IMAGE_QUALITY_CARD}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL={IMAGE_BLUR_DATA_URL}
+                    />
+                  </a>
+                ) : (
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                    quality={IMAGE_QUALITY_CARD}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={IMAGE_BLUR_DATA_URL}
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -131,34 +198,74 @@ function ProofCardLarge({
                 key={img.src + img.alt}
                 className="relative aspect-[3/4] overflow-hidden rounded-xl bg-editorial-bg"
               >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 1024px) 30vw, 22vw"
-                  quality={IMAGE_QUALITY_CARD}
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL={IMAGE_BLUR_DATA_URL}
-                />
+                {imageLinkProps ? (
+                  <a
+                    {...imageLinkProps}
+                    aria-label={`Open ${card.brand} reel`}
+                    className="relative block h-full w-full"
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover object-top transition-transform duration-300 hover:scale-[1.02]"
+                      sizes="(max-width: 1024px) 30vw, 22vw"
+                      quality={IMAGE_QUALITY_CARD}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL={IMAGE_BLUR_DATA_URL}
+                    />
+                  </a>
+                ) : (
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 1024px) 30vw, 22vw"
+                    quality={IMAGE_QUALITY_CARD}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={IMAGE_BLUR_DATA_URL}
+                  />
+                )}
               </div>
             ))}
           </div>
         ) : (
           <div className="hidden flex-1 items-stretch justify-end bg-black/[0.03] p-5 md:flex lg:p-6">
             <div className="relative ml-auto aspect-[9/16] h-full max-h-[560px] w-full max-w-[280px] overflow-hidden rounded-xl bg-editorial-bg shadow-premium-soft lg:max-w-[320px]">
-              <Image
-                src={card.images[0].src}
-                alt={card.images[0].alt}
-                fill
-                className="object-cover object-top"
-                sizes="320px"
-                quality={IMAGE_QUALITY_CARD}
-                loading="lazy"
-                placeholder="blur"
-                blurDataURL={IMAGE_BLUR_DATA_URL}
-              />
+              {imageLinkProps ? (
+                <a
+                  {...imageLinkProps}
+                  aria-label={`Open ${card.brand} reel`}
+                  className="relative block h-full w-full"
+                >
+                  <Image
+                    src={card.images[0].src}
+                    alt={card.images[0].alt}
+                    fill
+                    className="object-cover object-top transition-transform duration-300 hover:scale-[1.02]"
+                    sizes="320px"
+                    quality={IMAGE_QUALITY_CARD}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={IMAGE_BLUR_DATA_URL}
+                  />
+                </a>
+              ) : (
+                <Image
+                  src={card.images[0].src}
+                  alt={card.images[0].alt}
+                  fill
+                  className="object-cover object-top"
+                  sizes="320px"
+                  quality={IMAGE_QUALITY_CARD}
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={IMAGE_BLUR_DATA_URL}
+                />
+              )}
             </div>
           </div>
         )}

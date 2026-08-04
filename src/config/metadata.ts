@@ -16,9 +16,13 @@ export function createPageMetadata({
     title,
     description,
     keywords: keywords.length > 0 ? keywords : site.seo.keywords,
+    alternates: {
+      canonical: site.siteUrl,
+    },
     openGraph: {
       title,
       description,
+      url: site.siteUrl,
       images: [heroImage],
     },
     twitter: {

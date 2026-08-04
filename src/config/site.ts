@@ -21,6 +21,7 @@ export type SiteProfile = {
   siteUrl: string;
   email: string;
   agency: AgencyInfo;
+  representationText: string;
   instagram: SocialLink;
   portfolioPdf: {
     path: string;
@@ -42,6 +43,22 @@ export type SiteProfile = {
   };
 };
 
+function resolveSiteUrl(defaultUrl: string): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (explicit) {
+    return explicit.startsWith("http") ? explicit : `https://${explicit}`;
+  }
+
+  const vercelUrl =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim() ||
+    process.env.VERCEL_URL?.trim();
+  if (vercelUrl) {
+    return vercelUrl.startsWith("http") ? vercelUrl : `https://${vercelUrl}`;
+  }
+
+  return defaultUrl;
+}
+
 const productionProfile: SiteProfile = {
   mode: "production",
   name: "Nikhil Kubde",
@@ -49,15 +66,15 @@ const productionProfile: SiteProfile = {
   firstName: "Nikhil",
   tagline: "Fashion • Editorial • Commercial",
   heroKicker: "Professional Model",
-  heroSubtitle: "Model & Mobile App Developer • 5+ Years Tech Experience",
-  siteUrl:
-    process.env.NEXT_PUBLIC_SITE_URL || "https://nick-portfolio-nine.vercel.app",
+  heroSubtitle: "Fitness & lifestyle-focused • Strong on-camera presence",
+  siteUrl: resolveSiteUrl("https://nikhilkubde-model-portfolio.vercel.app"),
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "nikhilkubde21@gmail.com",
   agency: {
     name: "CastYou Agency",
     url: "https://castyou.in/nikhil-kubde/",
     profileLabel: "CastYou Profile",
   },
+  representationText: "Currently managed by Montelo Agency · Listed on CastYou",
   instagram: {
     label: "Instagram",
     href: "https://www.instagram.com/nikhil__kubde/",
@@ -67,20 +84,20 @@ const productionProfile: SiteProfile = {
     path: "/downloads/nikhil-kubde-portfolio.pdf",
     filename: "Nikhil-Kubde-Portfolio.pdf",
   },
-  brands: ["Wework", "Laundryto", "Blue Budha Store"],
+  brands: ["WeWork", "LaundryTO", "Blue Buddha Store"],
   aboutIntro:
-    "Passionate about fashion, storytelling, and bringing creative visions to life with a disciplined, campaign-ready process.",
+    "Fitness- and lifestyle-focused model with clean editorial range, strong on-camera energy, and a calm, professional presence on set.",
   aboutParagraphs: [
-    "I'm a fresh face in the modeling industry, driven by a passion for fashion and creative expression. With over 5 years of experience as a professional mobile app developer, I bring a unique combination of technical expertise and creative vision to every project. This background gives me a distinct advantage in understanding digital content, social media strategy, and the technical aspects of modern brand campaigns.",
-    "My technical background enhances my modeling career in unique ways - I understand the digital landscape, content creation workflows, and how to effectively communicate with tech-savvy brands. This makes me particularly valuable for tech companies, digital-first brands, and campaigns that require both on-camera presence and technical understanding. I'm eager to work across various modeling genres - from fashion editorial to commercial campaigns - bringing both authenticity and professionalism to every project.",
-    "When I'm not on set, I balance my time between fitness, studying fashion trends, practicing poses, and continuing to develop both my modeling craft and technical skills. I'm passionate about building meaningful relationships in the industry and am always open to new opportunities and collaborations that allow me to showcase this unique combination of skills.",
+    "I work across fashion, lifestyle, and commercial shoots with a polished look, reliable set etiquette, and a focus on creating clean, brand-ready frames. I am currently managed by Montelo Agency and also listed on CastYou for agency discovery.",
+    "With over 5 years of professional mobile app development experience, I understand digital-first campaigns, content workflows, and how brands evaluate presentation, consistency, and audience fit. That makes me especially useful for modern campaigns that need both visual presence and professionalism.",
+    "I am most comfortable in fitness, lifestyle, and editorial-driven work, and I bring steady energy on camera, direction-friendly collaboration, and a disciplined approach to every booking.",
   ],
   showTechAdvantage: true,
   seo: {
     title: "Nikhil Kubde - Professional Model Portfolio",
     titleTemplate: "%s | Nikhil Kubde",
     description:
-      "Professional model available for agency bookings. Nikhil Kubde - Fashion, editorial, and commercial model with 5+ years tech experience. Represented by CastYou agency. Available for brand campaigns, photo shoots, video production, and commercial modeling projects.",
+      "Nikhil Kubde is a fashion, lifestyle, editorial, and commercial model based in India. Currently managed by Montelo Agency and listed on CastYou, available for brand campaigns, photo shoots, BTS reels, and video production.",
     keywords: [
       "Nikhil Kubde",
       "model for hire",
@@ -88,8 +105,11 @@ const productionProfile: SiteProfile = {
       "fashion model",
       "editorial model",
       "commercial model",
+      "lifestyle model",
+      "fitness model",
       "modeling agency",
       "model portfolio",
+      "Montelo Agency",
       "CastYou agency",
       "Indian model",
     ],
@@ -104,15 +124,14 @@ const demoProfile: SiteProfile = {
   tagline: "Fashion • Editorial • Commercial",
   heroKicker: "Professional Model",
   heroSubtitle: "Campaign-ready presence for brands and agencies",
-  siteUrl:
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://modelportfolio-demo.vercel.app",
+  siteUrl: resolveSiteUrl("https://modelportfolio-demo.vercel.app"),
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "nikhilkubde21@gmail.com",
   agency: {
     name: "Elite Talent Agency",
     url: "/contact",
     profileLabel: "Agency Profile",
   },
+  representationText: "Represented by Elite Talent Agency",
   instagram: {
     label: "Instagram",
     href: "/contact",

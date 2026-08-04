@@ -163,7 +163,7 @@ export default function CinematicVideoHero() {
           <p className='text-white text-sm leading-relaxed px-4'>
             {isDemo
               ? "Demo layout — your bio, agency, and comp card replace this on delivery."
-              : `Available for fashion, editorial, and commercial campaigns. Represented by ${site.agency.name} — book a shoot or download the comp card below.`}
+              : `Available for fashion, editorial, lifestyle, and commercial campaigns. ${site.representationText} — book a shoot or download the comp card below.`}
           </p>
 
           <div className='flex flex-col sm:flex-row items-center justify-center gap-3 pt-2'>

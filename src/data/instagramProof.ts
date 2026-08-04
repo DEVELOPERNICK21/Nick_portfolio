@@ -8,6 +8,7 @@ export type ProofCard = {
   metrics: string[];
   note?: string;
   images: ProofImage[];
+  href?: string;
 };
 
 /** Order: WeWork → Blue Buddha → LaundryTO → Instagram Reach */
@@ -23,7 +24,7 @@ export const INSTAGRAM_PROOF_CARDS: ProofCard[] = [
       { src: "/proof/wework-08.png", alt: "WeWork final lifestyle frame" },
       { src: "/proof/wework-05.png", alt: "WeWork on-set production" },
       { src: "/proof/wework-06.png", alt: "WeWork BTS lighting setup" },
-      { src: "/proof/wework-01.png", alt: "WeWork conference room BTS" },
+      { src: "/proof/wework-03.png", alt: "WeWork campaign meeting frame" },
     ],
   },
   {
@@ -32,6 +33,7 @@ export const INSTAGRAM_PROOF_CARDS: ProofCard[] = [
     headline: "459K views · 904 likes · 205 shares",
     metrics: ["459K reel views", "904 likes", "205 shares"],
     note: "Posted via partner account @pune.vibes_",
+    href: "https://www.instagram.com/reel/DWlplUhCOVn/",
     images: [
       { src: "/proof/blue-buddha-reel-a.png", alt: "Blue Buddha store reel" },
       { src: "/proof/blue-buddha-reel-b.png", alt: "Blue Buddha reel engagement" },
@@ -43,6 +45,7 @@ export const INSTAGRAM_PROOF_CARDS: ProofCard[] = [
     headline: "37.7K views · 404 likes",
     metrics: ["37.7K reel views", "404 likes"],
     note: "Posted via partner account @pune.vibes_",
+    href: "https://www.instagram.com/reel/DXYc80kCEat/",
     images: [
       { src: "/proof/laundryto-reel.png", alt: "LaundryTO reel screenshot" },
     ],

@@ -21,7 +21,7 @@ export function createHomeJsonLd() {
         ? {
             worksFor: {
               "@type": "Organization",
-              name: site.agency.name,
+              name: site.representationText,
               url: site.agency.url,
             },
           }
@@ -68,7 +68,7 @@ export function createHomeJsonLd() {
           name: `Is ${site.name} available for modeling bookings?`,
           acceptedAnswer: {
             "@type": "Answer",
-            text: `Yes, ${site.name} is available for modeling bookings through ${site.agency.name}. Specializes in fashion, editorial, and commercial modeling projects.`,
+            text: `Yes, ${site.name} is available for modeling bookings through Montelo Agency management and a CastYou listing. Specializes in fashion, editorial, commercial, and lifestyle modeling projects.`,
           },
         },
         {
