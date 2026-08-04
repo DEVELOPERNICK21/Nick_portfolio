@@ -296,7 +296,7 @@ export default function PremiumExperience() {
       <section
         ref={registerSection(0)}
         data-section-index={0}
-        className='relative min-h-screen flex items-center pt-24'
+        className='relative flex min-h-screen items-center pt-20 pb-16 md:pt-24'
       >
         <motion.video
           style={{ y: heroY, scale: heroScale }}
@@ -311,7 +311,25 @@ export default function PremiumExperience() {
         </motion.video>
         <div className='absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-[#090503]' />
 
-        <div className='container-custom relative z-10'>
+        <div className='container-custom relative z-10 flex flex-col items-center text-center md:items-start md:text-left'>
+          {/* Link-in-bio style avatar — mobile first */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.12, duration: 0.55 }}
+            className='relative mb-5 h-[88px] w-[88px] shrink-0 overflow-hidden rounded-full border-2 border-white/70 shadow-[0_8px_28px_rgba(0,0,0,0.45)] md:mb-6 md:h-24 md:w-24'
+          >
+            <Image
+              src={HERO_IMAGE}
+              alt={`${site.name} profile`}
+              fill
+              className='object-cover object-[center_18%]'
+              sizes='96px'
+              priority
+              quality={92}
+            />
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -324,7 +342,7 @@ export default function PremiumExperience() {
             initial={{ opacity: 0, y: 36 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.9 }}
-            className='mt-6 text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight'
+            className='mt-5 text-4xl font-semibold leading-tight sm:text-5xl md:mt-6 md:text-6xl lg:text-7xl'
           >
             {site.name}
           </motion.h1>
@@ -332,7 +350,7 @@ export default function PremiumExperience() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className='mt-5 max-w-2xl text-lg text-zinc-200/90'
+            className='mt-4 max-w-md text-base text-zinc-200/90 md:mt-5 md:max-w-2xl md:text-lg'
           >
             Professional model from India crafting premium visual narratives for
             fashion editorials, lifestyle brands, and high-performance campaigns.
@@ -342,7 +360,7 @@ export default function PremiumExperience() {
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.62, duration: 0.7 }}
-            className='mt-7 inline-flex items-center gap-2 rounded-full border border-amber-200/35 bg-black/30 px-4 py-2 text-sm text-amber-100'
+            className='mt-6 inline-flex items-center gap-2 rounded-full border border-amber-200/35 bg-black/30 px-4 py-2 text-sm text-amber-100 md:mt-7'
           >
             <FaStar className='text-amber-300' /> Available for bookings &
             campaigns
@@ -352,7 +370,7 @@ export default function PremiumExperience() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className='mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'
+            className='mt-8 w-full max-w-md grid gap-3 sm:mt-10 sm:max-w-none sm:grid-cols-2 sm:gap-4 lg:grid-cols-3'
           >
             {linkCards.map((item) => (
               <a

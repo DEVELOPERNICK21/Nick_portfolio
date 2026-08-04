@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import ParallaxHero from "@/components/ParallaxHero";
 import ScrollProgress from "@/components/ScrollProgress";
-import AboutMeSection from "@/components/AboutMeSection";
 import WorkWithMeCTA from "@/components/WorkWithMeCTA";
 import { createHomeJsonLd } from "@/config/jsonLd";
 
@@ -11,29 +10,33 @@ const sectionFallback = (
   </div>
 );
 
-const DuoGallerySection = dynamic(
-  () => import("@/components/DuoGallerySection"),
-  { ssr: false, loading: () => sectionFallback }
-);
+/** Below-fold: code-split + SSR so HTML/SEO stay intact; images still lazy-load */
+const AboutMeSection = dynamic(() => import("@/components/AboutMeSection"), {
+  loading: () => sectionFallback,
+});
 
 const InstagramProofSection = dynamic(
   () => import("@/components/InstagramProofSection"),
-  { ssr: false, loading: () => sectionFallback }
+  { loading: () => sectionFallback }
 );
+
+const DuoGallerySection = dynamic(() => import("@/components/DuoGallerySection"), {
+  loading: () => sectionFallback,
+});
 
 const CategorizedPortfolio = dynamic(
   () => import("@/components/CategorizedPortfolio"),
-  { ssr: false, loading: () => sectionFallback }
+  { loading: () => sectionFallback }
 );
 
 const ModelPortfolioDownload = dynamic(
   () => import("@/components/ModelPortfolioDownload"),
-  { ssr: false, loading: () => sectionFallback }
+  { loading: () => sectionFallback }
 );
 
 export default function Home() {
   return (
-    <div className="home-editorial">
+    <div className="home-editorial overflow-x-clip">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

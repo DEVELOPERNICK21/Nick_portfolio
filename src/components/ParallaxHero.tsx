@@ -10,6 +10,10 @@ import {
 } from "@/hooks/useScrollSignals";
 import { HERO_IMAGE } from "@/data/media";
 import { site } from "@/config/site";
+import {
+  IMAGE_BLUR_DATA_URL,
+  IMAGE_QUALITY_HERO,
+} from "@/lib/imagePlaceholders";
 
 /**
  * Mobile: full-bleed cinematic hero (works for Instagram bio traffic).
@@ -43,7 +47,6 @@ export default function ParallaxHero() {
 
   const safeY = shouldReduceMotion ? 0 : y;
   const bgParallax = safeY * 0.22;
-  const overlayParallax = safeY * 0.12;
   const headingScale = shouldReduceMotion ? 1 : 1 - heroProgress * 0.08;
   const headingOpacity = shouldReduceMotion
     ? 1
@@ -66,11 +69,13 @@ export default function ParallaxHero() {
       className='relative overflow-hidden md:min-h-[min(100vh,860px)] md:h-auto md:grid md:grid-cols-2 md:bg-[#FAF6EC]'
     >
       {/* ——— Mobile full-bleed ——— */}
-      <div className='relative flex h-screen items-center justify-center md:hidden'>
+      <div className='relative flex h-[100svh] items-end justify-center md:hidden'>
         <div
           className='absolute inset-0 z-0'
           style={{
-            transform: `translateY(${bgParallax}px) scale(${1.08 + heroProgress * 0.1})`,
+            transform: shouldReduceMotion
+              ? undefined
+              : `translateY(${bgParallax}px)`,
             transition: "transform 120ms linear",
           }}
         >
@@ -78,51 +83,43 @@ export default function ParallaxHero() {
             src={HERO_IMAGE}
             alt={`${site.name} - Professional modeling photo`}
             fill
-            className='object-cover object-center scale-110'
+            className={`object-cover object-[center_18%] ${
+              shouldReduceMotion ? "" : "ed-ken-slow"
+            }`}
             priority
             fetchPriority='high'
-            quality={75}
+            quality={IMAGE_QUALITY_HERO}
             sizes='100vw'
             placeholder='blur'
-            blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
+            blurDataURL={IMAGE_BLUR_DATA_URL}
           />
-          <div className='absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/15' />
+          <div className='absolute inset-0 bg-gradient-to-b from-black/25 via-black/20 to-black/85' />
         </div>
 
         <div
-          className='absolute inset-0 z-[1] bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70'
-          style={{ transform: `translateY(${overlayParallax}px)` }}
-        />
-
-        <div
-          className='relative z-10 mx-auto max-w-6xl px-4 text-center text-white'
+          className='ed-hero-enter relative z-10 mx-auto w-full max-w-6xl px-5 pb-28 text-center text-white'
           style={{
             opacity: headingOpacity,
-            transform: `translateY(${safeY * 0.18}px) scale(${headingScale})`,
+            transform: `translateY(${safeY * 0.12}px) scale(${headingScale})`,
           }}
         >
-          <div className='mb-6'>
-            <span className='inline-block rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white/90 liquid-glass'>
+          <div>
+            <span className='inline-block rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-widest text-white/90 liquid-glass'>
               {site.heroKicker}
             </span>
           </div>
 
-          <h1 className='mb-6 font-display text-6xl leading-none tracking-tight text-white drop-shadow-2xl text-balance'>
+          <h1 className='mt-5 font-display text-5xl leading-none tracking-tight text-white drop-shadow-2xl text-balance'>
             {site.nameUpper}
           </h1>
 
-          <div className='mx-auto mb-8 h-0.5 w-32 bg-gradient-to-r from-transparent via-accent to-transparent' />
+          <div className='mx-auto mt-5 h-0.5 w-24 bg-gradient-to-r from-transparent via-accent to-transparent' />
 
-          <p className='mb-6 text-xl font-light tracking-wide text-gray-200'>
+          <p className='mt-5 text-base font-light tracking-wide text-gray-200'>
             {site.tagline}
           </p>
-          {site.heroSubtitle ? (
-            <p className='mb-4 text-sm tracking-wide text-gray-300'>
-              {site.heroSubtitle}
-            </p>
-          ) : null}
 
-          <p className='mb-10 text-sm uppercase tracking-wider text-gray-400'>
+          <p className='mt-3 text-xs uppercase tracking-wider text-gray-400'>
             Represented by{" "}
             <a
               href={site.agency.url}
@@ -135,12 +132,12 @@ export default function ParallaxHero() {
             </a>
           </p>
 
-          <div className='flex flex-col items-center justify-center gap-4 sm:flex-row'>
+          <div className='mt-7 flex flex-col items-center justify-center gap-3'>
             <Link
               href='/portfolio'
-              className={`group relative overflow-hidden bg-white px-8 py-4 font-bold text-dark transition-all duration-300 hover:scale-105 hover:bg-gray-100 active:scale-95 ${velocityClass}`}
+              className={`ed-tap group relative w-full max-w-xs overflow-hidden bg-white px-8 py-3.5 text-sm font-bold text-dark transition-all duration-300 hover:bg-gray-100 ${velocityClass}`}
             >
-              <span className='relative z-10 flex items-center gap-2'>
+              <span className='relative z-10 flex items-center justify-center gap-2'>
                 View Portfolio
                 <span className='transition-transform group-hover:translate-x-1'>
                   →
@@ -149,7 +146,7 @@ export default function ParallaxHero() {
             </Link>
             <Link
               href='/contact'
-              className='rounded-full px-8 py-4 font-semibold text-white liquid-glass transition-all duration-300 hover:scale-105 hover:bg-white/5 active:scale-95'
+              className='ed-tap w-full max-w-xs rounded-full px-8 py-3.5 text-sm font-semibold text-white liquid-glass transition-all duration-300 hover:bg-white/5'
             >
               Get In Touch
             </Link>
@@ -157,16 +154,16 @@ export default function ParallaxHero() {
         </div>
 
         <div
-          className='absolute bottom-8 left-1/2 z-10 -translate-x-1/2 cursor-pointer group'
+          className='absolute bottom-6 left-1/2 z-10 -translate-x-1/2 cursor-pointer group'
           onClick={scrollToAbout}
           style={{ opacity: Math.max(0, 1 - y / 400) }}
         >
           <div className='flex animate-bounce flex-col items-center gap-2'>
-            <span className='text-xs uppercase tracking-widest text-white/80 transition-colors group-hover:text-white'>
+            <span className='text-[10px] uppercase tracking-widest text-white/80 transition-colors group-hover:text-white'>
               Scroll
             </span>
-            <div className='flex h-10 w-6 justify-center rounded-full border-2 border-white/80 p-2 transition-colors group-hover:border-accent'>
-              <FaChevronDown className='h-3 w-3 animate-pulse text-white/80 group-hover:text-white' />
+            <div className='flex h-9 w-5 justify-center rounded-full border-2 border-white/80 p-1.5 transition-colors group-hover:border-accent'>
+              <FaChevronDown className='h-2.5 w-2.5 animate-pulse text-white/80 group-hover:text-white' />
             </div>
           </div>
         </div>
@@ -243,10 +240,10 @@ export default function ParallaxHero() {
             className='object-cover object-top'
             priority
             fetchPriority='high'
-            quality={80}
+            quality={IMAGE_QUALITY_HERO}
             sizes='(min-width: 768px) 50vw, 100vw'
             placeholder='blur'
-            blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
+            blurDataURL={IMAGE_BLUR_DATA_URL}
           />
           <div className='absolute inset-0 bg-gradient-to-r from-[#FAF6EC]/40 via-transparent to-transparent md:from-[#FAF6EC]/25' />
         </div>

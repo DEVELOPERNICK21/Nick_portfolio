@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { IMAGE_QUALITY_LIGHTBOX } from "@/lib/imagePlaceholders";
 
 interface ImageLightboxProps {
   images: Array<{ src: string; alt: string; category?: string }>;
@@ -113,6 +114,7 @@ export default function ImageLightbox({
               fill
               className='object-contain transition-opacity duration-500'
               priority
+              quality={IMAGE_QUALITY_LIGHTBOX}
               sizes='90vw'
               onLoad={() => setImageLoaded(true)}
             />

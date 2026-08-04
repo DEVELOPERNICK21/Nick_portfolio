@@ -1,10 +1,11 @@
 export type AboutStat = { label: string; value: string };
 
-export type AboutPolaroid = {
+export type DigitalShot = {
   src: string;
+  label: string;
   alt: string;
-  rotate: string;
-  group: "closeup" | "full";
+  /** full = head-to-toe · closeup = crop bottom, frame head → chest */
+  frame: "full" | "closeup";
 };
 
 export const ABOUT_STATS: AboutStat[] = [
@@ -21,14 +22,31 @@ export const ABOUT_STATS: AboutStat[] = [
 ];
 
 /**
- * Unretouched digitals — close-ups + full-body for front / 3/4 / profile
- * (classic multi-angle comp-card set)
+ * Agency-standard digitals sheet:
+ * Row 1 — full body · Row 2 — close-ups (chest crop)
  */
-export const ABOUT_POLAROIDS: AboutPolaroid[] = [
-  { src: "/polaroid/01.jpg", alt: "Front close-up", rotate: "-rotate-2", group: "closeup" },
-  { src: "/polaroid/04.jpg", alt: "Three-quarter close-up", rotate: "rotate-2", group: "closeup" },
-  { src: "/polaroid/06.jpg", alt: "Profile close-up", rotate: "-rotate-1", group: "closeup" },
-  { src: "/polaroid/03.jpg", alt: "Front full", rotate: "rotate-2", group: "full" },
-  { src: "/polaroid/05.jpg", alt: "Three-quarter full", rotate: "-rotate-2", group: "full" },
-  { src: "/polaroid/07.jpg", alt: "Profile full", rotate: "rotate-1", group: "full" },
+export const DIGITAL_SHEET: DigitalShot[] = [
+  { src: "/polaroid/03.jpg", label: "Front", alt: "Full-body front digital", frame: "full" },
+  { src: "/polaroid/02.jpg", label: "Back", alt: "Full-body back digital", frame: "full" },
+  { src: "/polaroid/07.jpg", label: "Side", alt: "Full-body side digital", frame: "full" },
+  { src: "/polaroid/05.jpg", label: "3/4", alt: "Full-body three-quarter digital", frame: "full" },
+  { src: "/polaroid/01.jpg", label: "Front", alt: "Close-up front — head to chest", frame: "closeup" },
+  { src: "/polaroid/06.jpg", label: "Profile", alt: "Close-up profile — head to chest", frame: "closeup" },
+  { src: "/polaroid/04.jpg", label: "3/4", alt: "Close-up three-quarter — head to chest", frame: "closeup" },
+  { src: "/polaroid/08.jpg", label: "Back", alt: "Full-body back digital", frame: "full" },
 ];
+
+/** @deprecated use DIGITAL_SHEET */
+export type AboutPolaroid = {
+  src: string;
+  alt: string;
+  rotate: string;
+  group: "closeup" | "full";
+};
+
+export const ABOUT_POLAROIDS: AboutPolaroid[] = DIGITAL_SHEET.map((shot) => ({
+  src: shot.src,
+  alt: shot.label,
+  rotate: "",
+  group: shot.frame === "full" ? ("full" as const) : ("closeup" as const),
+}));
