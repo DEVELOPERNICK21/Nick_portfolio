@@ -190,6 +190,8 @@
     --ed-line: rgba(43, 43, 43, 0.12);
     background-color: var(--ed-bg);
     color: var(--ed-ink);
+    width: 100%;
+    max-width: 100%;
   }
 
   .ed-section {

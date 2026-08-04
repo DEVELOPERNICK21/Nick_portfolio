@@ -17,22 +17,16 @@ type LookbookShot = PortfolioPhoto & { kind: "solo" | "duo" };
 
 function LookThumb({
   img,
-  featured,
   onOpen,
 }: {
   img: LookbookShot;
-  featured?: boolean;
   onOpen: () => void;
 }) {
   return (
     <button
       type="button"
       aria-label={`View ${img.alt}`}
-      className={`ed-tap group relative overflow-hidden rounded-xl bg-black/5 ${
-        featured
-          ? "col-span-2 aspect-[4/5] md:col-span-2 md:aspect-[3/4]"
-          : "aspect-[3/4]"
-      }`}
+      className="ed-tap group relative aspect-[3/4] overflow-hidden rounded-xl bg-black/5"
       onClick={onOpen}
     >
       <Image
@@ -40,11 +34,7 @@ function LookThumb({
         alt={img.alt}
         fill
         className="ed-img-zoom object-cover object-[center_18%]"
-        sizes={
-          featured
-            ? "(max-width: 768px) 100vw, 50vw"
-            : "(max-width: 768px) 50vw, 25vw"
-        }
+        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
         quality={IMAGE_QUALITY_THUMB}
         loading="lazy"
         placeholder="blur"
@@ -62,19 +52,24 @@ function LookThumb({
 function ShotGrid({
   shots,
   onOpen,
-  featuredFirst = false,
+  columns,
 }: {
   shots: LookbookShot[];
   onOpen: (index: number) => void;
-  featuredFirst?: boolean;
+  /** Desktop column count chosen to fill the row without orphan gaps */
+  columns: 3 | 5;
 }) {
+  const colClass =
+    columns === 5
+      ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5"
+      : "grid-cols-2 sm:grid-cols-3 md:grid-cols-3";
+
   return (
-    <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4 md:gap-4">
+    <div className={`grid gap-2.5 sm:gap-3 md:gap-4 ${colClass}`}>
       {shots.map((img, index) => (
         <LookThumb
           key={`${img.kind}-${img.src}`}
           img={img}
-          featured={featuredFirst && index === 0}
           onOpen={() => onOpen(index)}
         />
       ))}
@@ -135,7 +130,7 @@ export default function DuoGallerySection() {
           <ScrollReveal direction="fade" variant="stagger">
             <ShotGrid
               shots={previewShots}
-              featuredFirst
+              columns={3}
               onOpen={(i) => openAt(i, previewShots)}
             />
             {hiddenCount > 0 ? (
@@ -170,7 +165,7 @@ export default function DuoGallerySection() {
               </div>
               <ShotGrid
                 shots={soloShots}
-                featuredFirst
+                columns={5}
                 onOpen={(i) => openAt(i, soloShots)}
               />
             </ScrollReveal>
@@ -189,7 +184,7 @@ export default function DuoGallerySection() {
               </div>
               <ShotGrid
                 shots={duoShots}
-                featuredFirst
+                columns={5}
                 onOpen={(i) => openAt(i, duoShots)}
               />
             </ScrollReveal>

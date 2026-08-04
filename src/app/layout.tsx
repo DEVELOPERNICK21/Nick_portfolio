@@ -47,7 +47,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-[#0a0a0b]`}>
         <ThemeProvider>
           <DemoBanner />
-          <main className='min-h-screen bg-[#0a0a0b]'>{children}</main>
+          <main className='min-h-screen w-full bg-[#0a0a0b]'>{children}</main>
           <SiteChrome />
         </ThemeProvider>
         {gaId ? <GoogleAnalytics gaId={gaId} /> : null}

@@ -10,17 +10,8 @@ export type ProofCard = {
   images: ProofImage[];
 };
 
+/** Order: WeWork → Blue Buddha → LaundryTO → Instagram Reach */
 export const INSTAGRAM_PROOF_CARDS: ProofCard[] = [
-  {
-    id: "reach",
-    brand: "Instagram Reach",
-    headline: "33.8K views in the last 30 days",
-    metrics: ["33.8K views / 30 days", "Growing commercial & lifestyle presence"],
-    note: "Headline metric shown in Insights; screenshot includes profile chrome for account context",
-    images: [
-      { src: "/proof/reach-profile.png", alt: "Instagram reach screenshot — 33.8K views" },
-    ],
-  },
   {
     id: "wework",
     brand: "WeWork",
@@ -36,6 +27,17 @@ export const INSTAGRAM_PROOF_CARDS: ProofCard[] = [
     ],
   },
   {
+    id: "blue-buddha",
+    brand: "Blue Buddha",
+    headline: "459K views · 904 likes · 205 shares",
+    metrics: ["459K reel views", "904 likes", "205 shares"],
+    note: "Posted via partner account @pune.vibes_",
+    images: [
+      { src: "/proof/blue-buddha-reel-a.png", alt: "Blue Buddha store reel" },
+      { src: "/proof/blue-buddha-reel-b.png", alt: "Blue Buddha reel engagement" },
+    ],
+  },
+  {
     id: "laundryto",
     brand: "LaundryTO",
     headline: "37.7K views · 404 likes",
@@ -46,14 +48,13 @@ export const INSTAGRAM_PROOF_CARDS: ProofCard[] = [
     ],
   },
   {
-    id: "blue-buddha",
-    brand: "Blue Buddha",
-    headline: "459K views · 904 likes · 205 shares",
-    metrics: ["459K reel views", "904 likes", "205 shares"],
-    note: "Posted via partner account @pune.vibes_",
+    id: "reach",
+    brand: "Instagram Reach",
+    headline: "33.8K views in the last 30 days",
+    metrics: ["33.8K views / 30 days", "Growing commercial & lifestyle presence"],
+    note: "Headline metric shown in Insights; screenshot includes profile chrome for account context",
     images: [
-      { src: "/proof/blue-buddha-reel-a.png", alt: "Blue Buddha store reel" },
-      { src: "/proof/blue-buddha-reel-b.png", alt: "Blue Buddha reel engagement" },
+      { src: "/proof/reach-profile.png", alt: "Instagram reach screenshot — 33.8K views" },
     ],
   },
 ];

@@ -36,7 +36,7 @@ const ModelPortfolioDownload = dynamic(
 
 export default function Home() {
   return (
-    <div className="home-editorial overflow-x-clip">
+    <div className="home-editorial w-full min-w-0 overflow-x-clip">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
