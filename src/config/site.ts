@@ -81,7 +81,7 @@ const productionProfile: SiteProfile = {
     handle: "@nikhil__kubde",
   },
   portfolioPdf: {
-    path: "/downloads/nikhil-kubde-portfolio.pdf",
+    path: "/downloads/nikhil_kubde_portfolio_final.pdf",
     filename: "Nikhil-Kubde-Portfolio.pdf",
   },
   brands: ["WeWork", "LaundryTO", "Blue Buddha Store"],
@@ -138,7 +138,7 @@ const demoProfile: SiteProfile = {
     handle: "@your.handle",
   },
   portfolioPdf: {
-    path: "/downloads/nikhil-kubde-portfolio.pdf",
+    path: "/downloads/nikhil_kubde_portfolio_final.pdf",
     filename: "Model-Portfolio-Sample.pdf",
   },
   brands: ["Lifestyle Brand", "Fashion Label", "Wellness Co."],
