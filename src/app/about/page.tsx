@@ -3,7 +3,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import ModelPortfolioDownload from "@/components/ModelPortfolioDownload";
 import MeasurementsCard from "@/components/MeasurementsCard";
 import AvailabilitySection from "@/components/AvailabilitySection";
-import { ABOUT_IMAGE } from "@/data/media";
+import ShareIntroLink from "@/components/ShareIntroLink";
+import { ABOUT_IMAGE, INTRO_VIDEO } from "@/data/media";
 import { createPageMetadata } from "@/config/metadata";
 import { site } from "@/config/site";
 
@@ -85,7 +86,11 @@ export default function AboutPage() {
         </ScrollReveal>
 
         <ScrollReveal direction='fade' delay={300}>
-          <div className='mb-20 premium-section pt-0' data-chapter='Video'>
+          <div
+            id='intro'
+            className='mb-20 premium-section pt-0'
+            data-chapter='Video'
+          >
             <div className='text-center mb-16'>
               <span className='premium-kicker'>Video Introduction</span>
               <h2 className='premium-heading mt-4 mb-6'>GET TO KNOW ME</h2>
@@ -100,7 +105,7 @@ export default function AboutPage() {
               <div className='relative group'>
                 <div className='relative rounded-2xl overflow-hidden border border-amber-500/20 bg-black'>
                   <video
-                    src='/intro-video.mp4'
+                    src={INTRO_VIDEO}
                     className='w-full h-auto max-h-[80vh]'
                     controls
                     playsInline
@@ -119,6 +124,7 @@ export default function AboutPage() {
                       skills, and professional demeanor - essential qualities
                       for successful modeling collaborations.
                     </p>
+                    <ShareIntroLink />
                     <div className='flex flex-wrap justify-center gap-4 mt-6'>
                       {[
                         "On-Camera Presence",

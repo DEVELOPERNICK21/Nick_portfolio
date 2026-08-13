@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
+import { site } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://nick-portfolio-nine.vercel.app";
+  const baseUrl = site.siteUrl;
   const currentDate = new Date();
 
   return [
@@ -16,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/intro`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/portfolio`,

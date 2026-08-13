@@ -22,6 +22,7 @@ import { HiOutlineSparkles } from "react-icons/hi2";
 import {
   BRAND_COLLABORATIONS,
   HERO_IMAGE,
+  INTRO_VIDEO,
   MAIN_PHOTOS,
   PORTFOLIO_PDF,
 } from "@/data/media";
@@ -307,7 +308,7 @@ export default function PremiumExperience() {
           className='absolute inset-0 h-full w-full object-cover'
           poster={HERO_IMAGE}
         >
-          <source src='/intro-video.mp4' type='video/mp4' />
+          <source src={INTRO_VIDEO} type='video/mp4' />
         </motion.video>
         <div className='absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-[#090503]' />
 

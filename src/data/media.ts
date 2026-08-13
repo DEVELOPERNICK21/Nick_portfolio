@@ -10,6 +10,9 @@ export type PortfolioPhoto = {
 export const HERO_IMAGE = "/main/hero.jpg";
 export const ABOUT_IMAGE = "/main/about.jpg";
 
+/** Intro / “Get to know me” video — shareable at /intro */
+export const INTRO_VIDEO = "/intro-video.mp4";
+
 export const PORTFOLIO_PDF = site.portfolioPdf.path;
 export const PORTFOLIO_PDF_FILENAME = site.portfolioPdf.filename;
 

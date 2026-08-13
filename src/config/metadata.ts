@@ -7,22 +7,28 @@ export function createPageMetadata({
   title,
   description,
   keywords = [],
+  path = "",
 }: {
   title: string;
   description: string;
   keywords?: string[];
+  path?: string;
 }): Metadata {
+  const pageUrl = path
+    ? `${site.siteUrl}${path.startsWith("/") ? path : `/${path}`}`
+    : site.siteUrl;
+
   return {
     title,
     description,
     keywords: keywords.length > 0 ? keywords : site.seo.keywords,
     alternates: {
-      canonical: site.siteUrl,
+      canonical: pageUrl,
     },
     openGraph: {
       title,
       description,
-      url: site.siteUrl,
+      url: pageUrl,
       images: [heroImage],
     },
     twitter: {
