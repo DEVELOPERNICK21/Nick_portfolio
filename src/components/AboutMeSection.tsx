@@ -4,7 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import {
   ABOUT_STATS,
+  DIGITAL_COMP_SHEET,
   DIGITAL_SHEET,
+  DIGITAL_SINGLES,
   type DigitalShot,
 } from "@/data/aboutProfile";
 import { site } from "@/config/site";
@@ -15,7 +17,7 @@ import {
   IMAGE_QUALITY_THUMB,
 } from "@/lib/imagePlaceholders";
 
-const PREVIEW_COUNT = 4; // mobile: first row (full-body set)
+const PREVIEW_COUNT = 4; // mobile: first row of individual digitals
 
 function DigitalThumb({
   shot,
@@ -69,9 +71,9 @@ export default function AboutMeSection() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const mobileShots = expanded
-    ? DIGITAL_SHEET
-    : DIGITAL_SHEET.slice(0, PREVIEW_COUNT);
-  const hiddenCount = DIGITAL_SHEET.length - PREVIEW_COUNT;
+    ? DIGITAL_SINGLES
+    : DIGITAL_SINGLES.slice(0, PREVIEW_COUNT);
+  const hiddenCount = DIGITAL_SINGLES.length - PREVIEW_COUNT;
 
   const lightboxImages = DIGITAL_SHEET.map((s) => ({
     src: s.src,
@@ -135,6 +137,35 @@ export default function AboutMeSection() {
               </p>
             </div>
 
+            {/* Composite card — featured first */}
+            <button
+              type="button"
+              onClick={() => openShot(DIGITAL_COMP_SHEET)}
+              className="ed-tap group mx-auto mb-8 block w-full max-w-xl md:mb-10"
+              aria-label="Open composite card"
+            >
+              <div className="relative aspect-[819/1024] overflow-hidden border border-editorial-ink/10 bg-[#f4f4f2]">
+                <Image
+                  src={DIGITAL_COMP_SHEET.src}
+                  alt={DIGITAL_COMP_SHEET.alt}
+                  fill
+                  className="object-contain transition-transform duration-500 group-hover:scale-[1.01] group-active:scale-[1.005]"
+                  sizes="(min-width: 768px) 36rem, 90vw"
+                  quality={IMAGE_QUALITY_THUMB}
+                  priority
+                  placeholder="blur"
+                  blurDataURL={IMAGE_BLUR_DATA_URL}
+                />
+              </div>
+              <p className="mt-2 text-center font-serif text-xs text-editorial-ink md:mt-3 md:text-sm">
+                {DIGITAL_COMP_SHEET.label}
+              </p>
+            </button>
+
+            <p className="mb-4 text-center text-[10px] font-semibold uppercase tracking-[0.22em] text-editorial-accent md:mb-5 md:text-[11px]">
+              Individual digitals
+            </p>
+
             {/* Mobile: 2-col so shots stay readable; expand for full sheet */}
             <div className="grid grid-cols-2 gap-x-2 gap-y-4 md:hidden">
               {mobileShots.map((shot) => (
@@ -162,9 +193,9 @@ export default function AboutMeSection() {
               </div>
             ) : null}
 
-            {/* Desktop / tablet: full 4×2 casting sheet */}
+            {/* Desktop / tablet: full casting sheet */}
             <div className="hidden gap-x-3 gap-y-5 md:grid md:grid-cols-4 lg:gap-x-4 lg:gap-y-6">
-              {DIGITAL_SHEET.map((shot) => (
+              {DIGITAL_SINGLES.map((shot) => (
                 <DigitalThumb
                   key={shot.src + shot.label + shot.frame}
                   shot={shot}
