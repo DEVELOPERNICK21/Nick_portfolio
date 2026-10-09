@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { FaInstagram, FaHeart } from "react-icons/fa";
+import { FaEnvelope, FaHeart, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { isDemo, site } from "@/config/site";
+import { whatsappHref } from "@/data/booking";
 import { PORTFOLIO_PDF, PORTFOLIO_PDF_FILENAME } from "@/data/media";
 
 export default function Footer() {
@@ -18,7 +19,7 @@ export default function Footer() {
             <p className='text-zinc-400 text-sm leading-relaxed mb-3'>
               {isDemo
                 ? "Sample portfolio layout for fashion, editorial, and commercial bookings."
-                : "Professional model available for fashion, editorial, and commercial projects worldwide."}
+                : "Pune-based model available for fashion, editorial, and commercial projects across India."}
             </p>
             <a
               href={site.agency.url}
@@ -100,6 +101,26 @@ export default function Footer() {
               >
                 <FaInstagram size={18} className='text-zinc-200' />
               </a>
+              {!isDemo ? (
+                <>
+                  <a
+                    href={whatsappHref()}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='w-10 h-10 bg-zinc-900 border border-zinc-700 rounded-full flex items-center justify-center hover:bg-zinc-800 transition-colors'
+                    aria-label='WhatsApp'
+                  >
+                    <FaWhatsapp size={18} className='text-zinc-200' />
+                  </a>
+                  <a
+                    href={`mailto:${site.email}`}
+                    className='w-10 h-10 bg-zinc-900 border border-zinc-700 rounded-full flex items-center justify-center hover:bg-zinc-800 transition-colors'
+                    aria-label='Email'
+                  >
+                    <FaEnvelope size={18} className='text-zinc-200' />
+                  </a>
+                </>
+              ) : null}
             </div>
           </div>
         </div>

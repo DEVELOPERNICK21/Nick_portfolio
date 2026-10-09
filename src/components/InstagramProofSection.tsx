@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { INSTAGRAM_PROOF_CARDS, type ProofCard } from "@/data/instagramProof";
+import CountUpText from "@/components/CountUpText";
 import ScrollReveal from "@/components/ScrollReveal";
 import {
   IMAGE_BLUR_DATA_URL,
@@ -48,7 +49,7 @@ function ProofCardLarge({
             {card.brand}
           </h3>
           <p className="mt-2 text-lg font-medium leading-snug text-editorial-ink sm:mt-3 sm:text-xl md:text-2xl">
-            {card.headline}
+            <CountUpText text={card.headline} />
           </p>
           <ul className="mt-4 space-y-2 sm:mt-6">
             {card.metrics.map((m) => (
@@ -56,7 +57,7 @@ function ProofCardLarge({
                 key={m}
                 className="text-sm text-editorial-muted before:mr-2 before:text-editorial-accent before:content-['•'] sm:text-base md:text-lg"
               >
-                {m}
+                <CountUpText text={m} />
               </li>
             ))}
           </ul>

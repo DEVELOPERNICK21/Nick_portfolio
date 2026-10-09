@@ -1,3 +1,5 @@
+import { PROFILE_FACTS } from "@/data/booking";
+
 export type AboutStat = { label: string; value: string };
 
 export type DigitalShot = {
@@ -10,14 +12,14 @@ export type DigitalShot = {
 
 export const ABOUT_STATS: AboutStat[] = [
   { label: "Skills", value: process.env.NEXT_PUBLIC_SKILLS || "Fashion, Editorial, Commercial, Lifestyle" },
-  { label: "Languages", value: process.env.NEXT_PUBLIC_AVAIL_LANGUAGES || "English, Hindi" },
-  { label: "Height", value: process.env.NEXT_PUBLIC_MEAS_HEIGHT || `5'10" / 177 cm` },
+  { label: "Languages", value: process.env.NEXT_PUBLIC_AVAIL_LANGUAGES || PROFILE_FACTS.languages },
+  { label: "Height", value: process.env.NEXT_PUBLIC_MEAS_HEIGHT || PROFILE_FACTS.height },
   { label: "Weight", value: process.env.NEXT_PUBLIC_MEAS_WEIGHT || "70 kg / 154 lbs" },
   { label: "Skin Tone", value: process.env.NEXT_PUBLIC_MEAS_SKIN || "Medium" },
   { label: "Hair Colour", value: process.env.NEXT_PUBLIC_MEAS_HAIR || "Black" },
   { label: "Eye Colour", value: process.env.NEXT_PUBLIC_MEAS_EYES || "Brown" },
   { label: "Tattoos", value: process.env.NEXT_PUBLIC_TATTOOS || "None" },
-  { label: "Location", value: process.env.NEXT_PUBLIC_AVAIL_CITY || "Pune, India" },
+  { label: "Location", value: process.env.NEXT_PUBLIC_AVAIL_CITY || PROFILE_FACTS.city },
   { label: "Age", value: process.env.NEXT_PUBLIC_AGE || "26" },
 ];
 

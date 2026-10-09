@@ -1,5 +1,7 @@
+import { PROFILE_FACTS } from "@/data/booking";
+
 const measurements = [
-  { label: "Height", value: process.env.NEXT_PUBLIC_MEAS_HEIGHT || `5'10" / 180 cm` },
+  { label: "Height", value: process.env.NEXT_PUBLIC_MEAS_HEIGHT || PROFILE_FACTS.height },
   { label: "Weight", value: process.env.NEXT_PUBLIC_MEAS_WEIGHT || "70 kg / 154 lbs" },
   { label: "Chest", value: process.env.NEXT_PUBLIC_MEAS_CHEST || '38"' },
   { label: "Waist", value: process.env.NEXT_PUBLIC_MEAS_WAIST || '31"' },

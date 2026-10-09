@@ -1,13 +1,18 @@
 "use client";
 
+import { isDemo } from "@/config/site";
+import { WHATSAPP_NUMBER } from "@/data/booking";
+import { WHATSAPP_BOOKING_MESSAGE } from "@/data/instagramProof";
+
 export default function WhatsAppButton() {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim();
+  const number =
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() ||
+    (isDemo ? "" : WHATSAPP_NUMBER);
 
   if (!number) return null;
 
   const message =
-    process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
-    "Hi, I'd like to enquire about a booking.";
+    process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE || WHATSAPP_BOOKING_MESSAGE;
   const href = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
   return (
@@ -15,9 +20,13 @@ export default function WhatsAppButton() {
       href={href}
       target='_blank'
       rel='noopener noreferrer'
-      className='fixed right-4 md:right-6 bottom-24 md:bottom-28 z-50 w-12 h-12 md:w-14 md:h-14 bg-zinc-950/90 border-2 border-amber-500/50 text-amber-400 rounded-full shadow-lg flex items-center justify-center hover:bg-zinc-900 hover:border-amber-400 hover:scale-110 transition-all duration-300 backdrop-blur-sm'
+      className='fixed right-4 md:right-6 bottom-5 md:bottom-28 z-50 w-12 h-12 md:w-14 md:h-14 bg-zinc-950/90 border-2 border-amber-500/50 text-amber-400 rounded-full shadow-lg flex items-center justify-center hover:bg-zinc-900 hover:border-amber-400 hover:scale-110 transition-all duration-300 backdrop-blur-sm'
       aria-label='Contact on WhatsApp'
     >
+      <span
+        className='wa-ring pointer-events-none absolute inset-0 rounded-full border-2 border-amber-400/70'
+        aria-hidden='true'
+      />
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 24 24'

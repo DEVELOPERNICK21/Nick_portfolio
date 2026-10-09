@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import ContactForm from "@/components/ContactForm";
 import BookingCalendar from "@/components/BookingCalendar";
-import { FaInstagram, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaEnvelope, FaWhatsapp, FaDownload } from "react-icons/fa";
 import ScrollReveal from "@/components/ScrollReveal";
 import {
   PORTFOLIO_PDF,
@@ -12,6 +12,7 @@ import {
 } from "@/data/media";
 import { createPageMetadata } from "@/config/metadata";
 import { isDemo, site } from "@/config/site";
+import { AGENCY_ROUTE, BOOKING, PROFILE_FACTS, whatsappHref } from "@/data/booking";
 
 export const metadata: Metadata = createPageMetadata({
   title: isDemo
@@ -43,7 +44,7 @@ export default function ContactPage() {
               <p className='premium-body max-w-2xl mx-auto mt-4'>
                 {isDemo
                   ? "Send a message for pricing, packages, and 5–7 day turnaround. This demo becomes your name, photos, and agency details."
-                  : "Available for bookings, collaborations, and creative projects worldwide"}
+                  : `Available for bookings, collaborations, and creative projects across India. ${BOOKING.status} for ${BOOKING.window} — I reply within ${BOOKING.replyWithin}.`}
               </p>
               {isDemo ? (
                 <div className='mt-8 flex flex-wrap justify-center gap-3'>
@@ -62,13 +63,37 @@ export default function ContactPage() {
                   </a>
                 </div>
               ) : (
-                <a
-                  href={PORTFOLIO_PDF}
-                  download={PORTFOLIO_PDF_FILENAME}
-                  className='premium-button mt-8 inline-flex'
-                >
-                  Download Portfolio PDF (Singles & Polaroids)
-                </a>
+                <>
+                  <div className='mt-8 flex flex-wrap justify-center gap-3'>
+                    <a
+                      href={whatsappHref()}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='premium-button inline-flex items-center gap-2'
+                    >
+                      <FaWhatsapp aria-hidden />
+                      Book on WhatsApp
+                    </a>
+                    <a
+                      href={`mailto:${site.email}`}
+                      className='premium-button-secondary inline-flex items-center gap-2'
+                    >
+                      <FaEnvelope aria-hidden />
+                      Email me
+                    </a>
+                    <a
+                      href={PORTFOLIO_PDF}
+                      download={PORTFOLIO_PDF_FILENAME}
+                      className='premium-button-secondary inline-flex items-center gap-2'
+                    >
+                      <FaDownload aria-hidden />
+                      Comp card PDF
+                    </a>
+                  </div>
+                  <p className='mt-4 text-sm text-zinc-500'>
+                    {BOOKING.ratesNote} — {BOOKING.ratesHelp}
+                  </p>
+                </>
               )}
             </div>
           </div>
@@ -106,17 +131,28 @@ export default function ContactPage() {
                   <>
                     <div>
                       <h3 className='font-semibold mb-2 text-zinc-300'>Based In</h3>
-                      <p className='text-zinc-400'>India</p>
+                      <p className='text-zinc-400'>{PROFILE_FACTS.city}</p>
                       <p className='text-sm text-zinc-500'>
-                        Available for travel worldwide
+                        {PROFILE_FACTS.travel}
                       </p>
                     </div>
 
                     <div>
                       <h3 className='font-semibold mb-2 text-zinc-300'>
-                        Agency Representation
+                        Prefer to book through an agency?
                       </h3>
-                      <p className='text-zinc-400'>{site.agency.name}</p>
+                      <p className='text-zinc-400'>
+                        Managed by{" "}
+                        <a
+                          href={AGENCY_ROUTE.href}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          className='text-amber-400 hover:text-amber-300 transition-colors'
+                        >
+                          {AGENCY_ROUTE.name}
+                        </a>
+                        . Also listed on {site.agency.name}.
+                      </p>
                       <a
                         href={site.agency.url}
                         {...agencyLinkProps}

@@ -29,17 +29,19 @@ function LookThumb({
       className="ed-tap group relative aspect-[3/4] overflow-hidden rounded-xl bg-black/5"
       onClick={onOpen}
     >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        fill
-        className="ed-img-zoom object-cover object-[center_18%]"
-        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
-        quality={IMAGE_QUALITY_THUMB}
-        loading="lazy"
-        placeholder="blur"
-        blurDataURL={IMAGE_BLUR_DATA_URL}
-      />
+      <div className="scroll-parallax absolute inset-0">
+        <Image
+          src={img.src}
+          alt={img.alt}
+          fill
+          className="ed-img-zoom object-cover object-[center_18%]"
+          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+          quality={IMAGE_QUALITY_THUMB}
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL={IMAGE_BLUR_DATA_URL}
+        />
+      </div>
       <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent px-3 pb-3 pt-10">
         <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/90">
           {img.kind === "solo" ? "Solo" : "Duo"}

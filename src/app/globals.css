@@ -249,6 +249,115 @@
     );
   }
 
+  /* Section dividers draw themselves in as their block scrolls into view */
+  .reveal .ed-divider {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1000ms var(--ease-premium) 250ms;
+  }
+
+  .reveal-visible .ed-divider {
+    transform: scaleX(1);
+  }
+
+  /* Soft light sweep across primary buttons on hover (pointer devices only) */
+  .ed-button {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  @media (hover: hover) {
+    .ed-button::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        110deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.28) 50%,
+        transparent 70%
+      );
+      transform: translateX(-120%);
+      transition: transform 800ms var(--ease-premium);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .ed-button:hover::after {
+      transform: translateX(120%);
+    }
+  }
+
+  /* Brand marquee (pure CSS, pauses on hover) */
+  .ed-marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .ed-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: ed-marquee 45s linear infinite;
+    will-change: transform;
+  }
+
+  .ed-marquee:hover .ed-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .ed-marquee-group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 3rem;
+    padding-right: 3rem;
+  }
+
+  @keyframes ed-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Gentle scroll-linked drift on gallery images. Progressive enhancement:
+     only browsers with scroll-driven animations run it; everything else sees a still image. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .scroll-parallax {
+        animation: ed-parallax linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
+
+      @keyframes ed-parallax {
+        from {
+          transform: translate3d(0, -5%, 0) scale(1.1);
+        }
+        to {
+          transform: translate3d(0, 5%, 0) scale(1.1);
+        }
+      }
+    }
+  }
+
+  /* WhatsApp button: three soft rings a few seconds after load, then still */
+  .wa-ring {
+    animation: wa-ring 2.4s ease-out 4s 3 both;
+  }
+
+  @keyframes wa-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1.7);
+      opacity: 0;
+    }
+  }
+
   /* Mobile editorial interactions */
   .ed-tap {
     @apply transition-transform duration-200 ease-premium active:scale-[0.97];
@@ -371,6 +480,7 @@
     opacity: 1;
     transform: translateY(0) translateX(0) scale(1);
     filter: blur(0);
+    will-change: auto;
   }
 
   .reveal-mask {
@@ -408,6 +518,37 @@
 
   .reveal-visible.reveal-stagger > *:nth-child(4) {
     transition-delay: 240ms;
+  }
+
+  /* Cards slide out from a stacked pile into their places */
+  .reveal-fan > * {
+    opacity: 0;
+    transition: opacity 700ms var(--ease-premium), transform 900ms var(--ease-premium);
+  }
+
+  .reveal-fan > *:nth-child(1) {
+    transform: translateX(55%) rotate(-5deg) scale(0.94);
+  }
+
+  .reveal-fan > *:nth-child(2) {
+    transform: translateY(24px) scale(0.94);
+  }
+
+  .reveal-fan > *:nth-child(3) {
+    transform: translateX(-55%) rotate(5deg) scale(0.94);
+  }
+
+  .reveal-visible.reveal-fan > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-visible.reveal-fan > *:nth-child(2) {
+    transition-delay: 120ms;
+  }
+
+  .reveal-visible.reveal-fan > *:nth-child(3) {
+    transition-delay: 220ms;
   }
 
   .scroll-chapter-label {

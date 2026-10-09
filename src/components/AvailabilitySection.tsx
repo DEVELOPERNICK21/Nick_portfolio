@@ -1,10 +1,10 @@
+import { PROFILE_FACTS } from "@/data/booking";
+
 export default function AvailabilitySection() {
-  const city = process.env.NEXT_PUBLIC_AVAIL_CITY || "Mumbai";
-  const travel =
-    process.env.NEXT_PUBLIC_AVAIL_TRAVEL ||
-    "Pan-India, available for international";
+  const city = process.env.NEXT_PUBLIC_AVAIL_CITY || PROFILE_FACTS.city;
+  const travel = process.env.NEXT_PUBLIC_AVAIL_TRAVEL || PROFILE_FACTS.travel;
   const languages =
-    process.env.NEXT_PUBLIC_AVAIL_LANGUAGES || "Hindi, English, Marathi";
+    process.env.NEXT_PUBLIC_AVAIL_LANGUAGES || PROFILE_FACTS.languages;
 
   const items = [
     { label: "Base City", value: city },

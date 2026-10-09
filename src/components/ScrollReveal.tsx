@@ -6,7 +6,7 @@ interface ScrollRevealProps {
   children: ReactNode;
   delay?: number;
   direction?: "up" | "down" | "left" | "right" | "fade";
-  variant?: "default" | "mask" | "scale-lift" | "stagger";
+  variant?: "default" | "mask" | "scale-lift" | "stagger" | "fan";
   className?: string;
   triggerOnce?: boolean;
   threshold?: number;

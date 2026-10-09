@@ -155,7 +155,7 @@ export default function ParallaxHero() {
               href="/contact"
               className="ed-tap w-full max-w-xs rounded-full px-8 py-3.5 text-sm font-semibold text-white liquid-glass transition-all duration-300 hover:bg-white/5"
             >
-              Get In Touch
+              Check Availability
             </Link>
           </div>
         </div>
@@ -225,7 +225,7 @@ export default function ParallaxHero() {
             href="/contact"
             className="inline-flex items-center border border-[#2B2B2B]/25 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-[#2B2B2B] transition hover:border-[#886D20] hover:text-[#886D20]"
           >
-            Get In Touch
+            Check Availability
           </Link>
         </div>
 

@@ -14,7 +14,7 @@ export default function Navbar() {
     { href: "/premium", label: "Premium" },
     { href: "/cinematic", label: "Cinematic" },
     ...(isDemo ? [{ href: "/pricing", label: "Pricing" }] : []),
-    { href: "/contact", label: "Contact" },
+    { href: "/contact", label: "Book" },
   ];
 
   return (

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ABOUT_IMAGE, INTRO_VIDEO } from "@/data/media";
+import { INTRO_POSTER, INTRO_VIDEO } from "@/data/media";
 import { createPageMetadata } from "@/config/metadata";
 import { site } from "@/config/site";
 import ShareIntroLink from "@/components/ShareIntroLink";
@@ -37,7 +37,7 @@ export default function IntroPage() {
               controls
               playsInline
               preload="metadata"
-              poster={ABOUT_IMAGE}
+              poster={INTRO_POSTER}
             >
               Your browser does not support the video tag.
             </video>

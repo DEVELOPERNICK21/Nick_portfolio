@@ -4,6 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import SiteChrome from "@/components/SiteChrome";
+import ClickTracker from "@/components/ClickTracker";
 import DemoBanner from "@/components/DemoBanner";
 import { createRootMetadata } from "@/config/metadata";
 
@@ -49,6 +50,7 @@ export default function RootLayout({
           <DemoBanner />
           <main className='min-h-screen w-full bg-[#0a0a0b]'>{children}</main>
           <SiteChrome />
+          <ClickTracker />
         </ThemeProvider>
         {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
       </body>

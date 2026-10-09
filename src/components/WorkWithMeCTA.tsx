@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { isDemo } from "@/config/site";
+import { AGENCY_ROUTE, BOOKING } from "@/data/booking";
 import { WHATSAPP_BOOKING_HREF } from "@/data/instagramProof";
 
 export default function WorkWithMeCTA() {
@@ -20,16 +22,35 @@ export default function WorkWithMeCTA() {
           Work With Me
         </h2>
         <div className="mx-auto my-8 h-px max-w-xs bg-gradient-to-r from-transparent via-[#B8963E] to-transparent" />
-        <p className="mx-auto mb-10 max-w-xl text-base text-[#FAF6EC]/90 md:text-lg">
-          Available for fashion, editorial, commercial, and brand campaigns.
-          Let&apos;s build the next look together.
-        </p>
+
+        {isDemo ? (
+          <p className="mx-auto mb-10 max-w-xl text-base text-[#FAF6EC]/90 md:text-lg">
+            Available for fashion, editorial, commercial, and brand campaigns.
+            Let&apos;s build the next look together.
+          </p>
+        ) : (
+          <>
+            <p className="mx-auto mb-6 max-w-xl text-base text-[#FAF6EC]/90 md:text-lg">
+              On time, on brief, on camera. Send me the date, city and brief and
+              I&apos;ll reply within {BOOKING.replyWithin} with availability and a
+              quote.
+            </p>
+            <p className="mx-auto mb-10 inline-flex items-center gap-2 rounded-full border border-[#B8963E]/50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#FAF6EC]">
+              <span
+                className="h-2 w-2 rounded-full bg-[#B8963E]"
+                aria-hidden
+              />
+              {BOOKING.status} · {BOOKING.window}
+            </p>
+          </>
+        )}
+
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="/contact"
             className="inline-flex items-center justify-center rounded-md bg-[#886D20] px-8 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#FAF6EC] transition hover:-translate-y-0.5 hover:bg-[#745C1C]"
           >
-            Work With Me
+            {isDemo ? "Work With Me" : "Check Availability"}
           </Link>
           <a
             href={WHATSAPP_BOOKING_HREF}
@@ -40,6 +61,20 @@ export default function WorkWithMeCTA() {
             WhatsApp Inquiry
           </a>
         </div>
+
+        {isDemo ? null : (
+          <p className="mt-8 text-sm text-[#FAF6EC]/70">
+            {BOOKING.ratesNote}. Prefer to book through an agency?{" "}
+            <a
+              href={AGENCY_ROUTE.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-[#FAF6EC]"
+            >
+              Contact {AGENCY_ROUTE.name}
+            </a>
+          </p>
+        )}
       </div>
     </section>
   );

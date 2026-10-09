@@ -66,7 +66,7 @@ const productionProfile: SiteProfile = {
   firstName: "Nikhil",
   tagline: "Fashion • Editorial • Commercial",
   heroKicker: "Professional Model",
-  heroSubtitle: "Fitness & lifestyle-focused • Strong on-camera presence",
+  heroSubtitle: "Fitness & lifestyle-focused • Reliable on set, natural on camera",
   siteUrl: resolveSiteUrl("https://nikhilkubde-model-portfolio.vercel.app"),
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "nikhilkubde21@gmail.com",
   agency: {
@@ -84,7 +84,7 @@ const productionProfile: SiteProfile = {
     path: "/downloads/nikhil_kubde_portfolio_final.pdf",
     filename: "Nikhil-Kubde-Portfolio.pdf",
   },
-  brands: ["WeWork", "LaundryTO", "Blue Buddha Store"],
+  brands: ["WeWork", "LaundryTO", "Blue Buddha Store", "Smart Bazaar", "Dragon Hill"],
   aboutIntro:
     "Fitness- and lifestyle-focused model with clean editorial range, strong on-camera energy, and a calm, professional presence on set.",
   aboutParagraphs: [
@@ -97,7 +97,7 @@ const productionProfile: SiteProfile = {
     title: "Nikhil Kubde - Professional Model Portfolio",
     titleTemplate: "%s | Nikhil Kubde",
     description:
-      "Nikhil Kubde is a fashion, lifestyle, editorial, and commercial model based in India. Currently managed by Montelo Agency and listed on CastYou, available for brand campaigns, photo shoots, BTS reels, and video production.",
+      "Nikhil Kubde is a fashion, lifestyle, editorial, and commercial model based in Pune, India. Currently managed by Montelo Agency and listed on CastYou, available for brand campaigns, photo shoots, BTS reels, and video production.",
     keywords: [
       "Nikhil Kubde",
       "model for hire",
@@ -112,6 +112,9 @@ const productionProfile: SiteProfile = {
       "Montelo Agency",
       "CastYou agency",
       "Indian model",
+      "male model in Pune",
+      "Pune model for hire",
+      "model for brand shoot Pune",
     ],
   },
 };

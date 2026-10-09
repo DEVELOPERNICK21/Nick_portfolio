@@ -1,16 +1,17 @@
-"use client";
+import AutoPlayVideo from "@/components/AutoPlayVideo";
 
-import { useEffect, useRef, useState } from "react";
-
+/** File names match the real orientation: bts-portrait is 9:16, bts-landscape is 16:9. */
 const BTS_VIDEOS = [
   {
     src: "/cinematic/bts-portrait.mp4",
+    poster: "/cinematic/bts-portrait-poster.jpg",
     title: "Portrait BTS",
     note: "Vertical behind-the-scenes clip for mobile-first viewing",
     frameClass: "aspect-[9/16]",
   },
   {
     src: "/cinematic/bts-landscape.mp4",
+    poster: "/cinematic/bts-landscape-poster.jpg",
     title: "Landscape BTS",
     note: "Wider on-set movement and camera presence",
     frameClass: "aspect-video",
@@ -18,31 +19,8 @@ const BTS_VIDEOS = [
 ];
 
 export default function VideoReelSection() {
-  const [shouldLoad, setShouldLoad] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setShouldLoad(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      id='showreel'
-      className='ed-section'
-      data-chapter='Showreel'
-    >
+    <section id='showreel' className='ed-section' data-chapter='Showreel'>
       <div className='container-custom'>
         <p className='ed-kicker'>On Camera</p>
         <h2 className='ed-heading mt-3'>BTS reel</h2>
@@ -59,21 +37,11 @@ export default function VideoReelSection() {
               className='ed-surface overflow-hidden border border-editorial-ink/10 bg-white'
             >
               <div className={`relative bg-black ${video.frameClass}`}>
-                {shouldLoad ? (
-                  <video
-                    src={video.src}
-                    className='absolute inset-0 h-full w-full object-cover'
-                    controls
-                    playsInline
-                    preload='metadata'
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <div className='absolute inset-0 flex items-center justify-center text-sm text-white/60'>
-                    Loading reel…
-                  </div>
-                )}
+                <AutoPlayVideo
+                  src={video.src}
+                  poster={video.poster}
+                  label={video.title}
+                />
               </div>
               <div className='p-4 md:p-5'>
                 <p className='text-[10px] font-semibold uppercase tracking-[0.22em] text-editorial-accent'>

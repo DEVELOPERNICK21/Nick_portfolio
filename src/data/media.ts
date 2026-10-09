@@ -12,6 +12,7 @@ export const ABOUT_IMAGE = "/main/about.jpg";
 
 /** Intro / “Get to know me” video — shareable at /intro */
 export const INTRO_VIDEO = "/intro-video.mp4";
+export const INTRO_POSTER = "/intro-poster.jpg";
 
 export const PORTFOLIO_PDF = site.portfolioPdf.path;
 export const PORTFOLIO_PDF_FILENAME = site.portfolioPdf.filename;

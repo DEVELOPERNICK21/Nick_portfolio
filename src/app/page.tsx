@@ -1,5 +1,8 @@
 import dynamic from "next/dynamic";
 import ParallaxHero from "@/components/ParallaxHero";
+import BookingStrip from "@/components/BookingStrip";
+import BrandMarquee from "@/components/BrandMarquee";
+import OnSetFeedback from "@/components/OnSetFeedback";
 import ScrollProgress from "@/components/ScrollProgress";
 import WorkWithMeCTA from "@/components/WorkWithMeCTA";
 import { createHomeJsonLd } from "@/config/jsonLd";
@@ -51,8 +54,11 @@ export default function Home() {
 
       <ScrollProgress />
       <ParallaxHero />
+      <BookingStrip />
+      <BrandMarquee />
       <AboutMeSection />
       <InstagramProofSection />
+      <OnSetFeedback />
       <DuoGallerySection />
       <VideoReelSection />
       <CategorizedPortfolio />

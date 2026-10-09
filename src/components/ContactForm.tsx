@@ -3,11 +3,22 @@
 import { useState, useRef, FormEvent, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import emailjs from "emailjs-com";
+import { FaWhatsapp } from "react-icons/fa";
 import { isDemo, site } from "@/config/site";
+import { BOOKING, whatsappHref } from "@/data/booking";
+import { track } from "@/lib/analytics";
 
-type FormStatus = "idle" | "loading" | "success" | "error" | "mailto";
+type FormStatus = "idle" | "loading" | "success" | "error" | "mailto" | "whatsapp";
 
 const CONTACT_EMAIL = site.email;
+
+const SUBJECT_LABELS: Record<string, string> = {
+  portfolio: "I want a portfolio like this",
+  booking: "Booking inquiry",
+  collaboration: "Collaboration",
+  general: "General inquiry",
+  other: "Other",
+};
 
 export default function ContactForm() {
   const searchParams = useSearchParams();
@@ -16,6 +27,8 @@ export default function ContactForm() {
     name: "",
     email: "",
     phone: "",
+    company: "",
+    date: "",
     subject: "",
     message: "",
   });
@@ -34,6 +47,37 @@ export default function ContactForm() {
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
   );
 
+  // Without an email service the form sends the enquiry to WhatsApp (email is the backup).
+  // The sales demo keeps the old email-only behaviour so it never points at this number.
+  const useWhatsApp = !isDemo && !isConfigured;
+
+  const subjectLabel = SUBJECT_LABELS[formData.subject] || "Portfolio inquiry";
+
+  const sendMailto = () => {
+    const mailSubject = encodeURIComponent(`${subjectLabel} — ${formData.name}`);
+    const mailBody = encodeURIComponent(
+      `Name: ${formData.name}\nCompany: ${formData.company || "Not provided"}\nEmail: ${formData.email}\nPhone: ${formData.phone || "Not provided"}\nShoot date / timeline: ${formData.date || "Not decided yet"}\nSubject: ${subjectLabel}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${mailSubject}&body=${mailBody}`;
+    setStatus("mailto");
+    setTimeout(() => setStatus("idle"), 6000);
+  };
+
+  const sendWhatsApp = () => {
+    const details = [
+      `Hi Nikhil, I'm ${formData.name}${formData.company ? ` from ${formData.company}` : ""}.`,
+      `Enquiry: ${subjectLabel}`,
+      `Shoot date / timeline: ${formData.date || "Not decided yet"}`,
+      `Email: ${formData.email}`,
+      ...(formData.phone ? [`Phone: ${formData.phone}`] : []),
+    ];
+    const text = `${details.join("\n")}\n\n${formData.message}`;
+    window.open(whatsappHref(text), "_blank", "noopener,noreferrer");
+    track("generate_lead", { method: "whatsapp_form" });
+    setStatus("whatsapp");
+    setTimeout(() => setStatus("idle"), 8000);
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -42,17 +86,8 @@ export default function ContactForm() {
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      const subjectLabel =
-        formData.subject || "Portfolio inquiry";
-      const mailSubject = encodeURIComponent(
-        `${subjectLabel} — ${formData.name}`
-      );
-      const mailBody = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || "Not provided"}\nSubject: ${subjectLabel}\n\nMessage:\n${formData.message}`
-      );
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${mailSubject}&body=${mailBody}`;
-      setStatus("mailto");
-      setTimeout(() => setStatus("idle"), 6000);
+      if (useWhatsApp) sendWhatsApp();
+      else sendMailto();
       return;
     }
 
@@ -62,11 +97,14 @@ export default function ContactForm() {
 
     try {
       await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+      track("generate_lead", { method: "email_form" });
       setStatus("success");
       setFormData({
         name: "",
         email: "",
         phone: "",
+        company: "",
+        date: "",
         subject: "",
         message: "",
       });
@@ -140,6 +178,40 @@ export default function ContactForm() {
         />
       </div>
 
+      {!isDemo ? (
+        <>
+          <div>
+            <label htmlFor='company' className='block text-sm font-medium mb-2 text-zinc-300'>
+              Brand / company
+            </label>
+            <input
+              type='text'
+              id='company'
+              name='company'
+              value={formData.company}
+              onChange={handleChange}
+              className={fieldClass}
+              placeholder='Brand, agency or studio name'
+            />
+          </div>
+
+          <div>
+            <label htmlFor='date' className='block text-sm font-medium mb-2 text-zinc-300'>
+              Shoot date or timeline
+            </label>
+            <input
+              type='text'
+              id='date'
+              name='date'
+              value={formData.date}
+              onChange={handleChange}
+              className={fieldClass}
+              placeholder='e.g. 15 Nov, or "first week of December"'
+            />
+          </div>
+        </>
+      ) : null}
+
       <div>
         <label htmlFor='subject' className='block text-sm font-medium mb-2 text-zinc-300'>
           Subject *
@@ -175,7 +247,11 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           className={`${fieldClass} resize-none`}
-          placeholder='Tell me about your project...'
+          placeholder={
+            isDemo
+              ? "Tell me about your project..."
+              : "Brand or product, location, how long the shoot is, and where the content will be used (social, print, TV)."
+          }
         />
       </div>
 
@@ -211,14 +287,43 @@ export default function ContactForm() {
           </span>
         ) : isConfigured ? (
           "Send Message"
+        ) : useWhatsApp ? (
+          <span className='flex items-center justify-center gap-2'>
+            <FaWhatsapp aria-hidden />
+            Send on WhatsApp
+          </span>
         ) : (
           "Send via Email"
         )}
       </button>
 
+      {useWhatsApp ? (
+        <button
+          type='button'
+          onClick={() => {
+            if (formRef.current?.reportValidity()) sendMailto();
+          }}
+          className='w-full premium-button-secondary justify-center'
+        >
+          Email instead
+        </button>
+      ) : null}
+
+      {!isDemo ? (
+        <p className='text-center text-xs text-zinc-500'>
+          I reply within {BOOKING.replyWithin}. {BOOKING.ratesNote}.
+        </p>
+      ) : null}
+
       {status === "success" && (
         <div className='p-4 bg-green-500/10 border border-green-500/30 text-green-400 rounded-md text-center'>
           Thank you! Your message has been sent successfully.
+        </div>
+      )}
+
+      {status === "whatsapp" && (
+        <div className='p-4 bg-amber-500/10 border border-amber-500/30 text-amber-300 rounded-md text-center'>
+          Opening WhatsApp — tap send to deliver your message.
         </div>
       )}
 

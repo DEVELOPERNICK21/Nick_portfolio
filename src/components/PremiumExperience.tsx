@@ -95,19 +95,12 @@ const testimonials = isDemo
     ]
   : [
       {
-        quote:
-          "Nikhil blends editorial confidence with clean brand storytelling. Every shot felt premium.",
-        author: "Creative Director, FWD Studio",
+        quote: "Never creates confusion on set — clear on the brief and easy to work with.",
+        author: "Feedback from camera teams",
       },
       {
-        quote:
-          "Highly disciplined on set, fast with direction, and camera-ready in every frame.",
-        author: "Campaign Producer, Urban Fit",
-      },
-      {
-        quote:
-          "A rare model who understands both aesthetics and digital-first campaign goals.",
-        author: "Brand Lead, Luxe Street",
+        quote: "Patient on set and skilled with poses — quick to give the camera strong, usable frames.",
+        author: "Feedback from camera teams",
       },
     ];
 
@@ -534,7 +527,7 @@ export default function PremiumExperience() {
           className='rounded-2xl border border-amber-100/20 bg-black/35 p-8 md:p-10 min-h-[160px]'
         >
           <p className='text-xs uppercase tracking-[0.24em] text-amber-300/70'>
-            Testimonials
+            {isDemo ? "Testimonials" : "On-set feedback"}
           </p>
           <AnimatePresence mode='wait'>
             <motion.div
@@ -546,7 +539,9 @@ export default function PremiumExperience() {
               className='mt-4'
             >
               <p className='text-lg md:text-xl leading-relaxed'>
-                “{testimonials[testimonialIndex].quote}”
+                {isDemo
+                  ? `“${testimonials[testimonialIndex].quote}”`
+                  : testimonials[testimonialIndex].quote}
               </p>
               <p className='mt-4 text-amber-200/85 text-sm'>
                 {testimonials[testimonialIndex].author}

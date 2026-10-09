@@ -648,7 +648,7 @@ export default function GtaCinematicLanding() {
           </h2>
           <p className='mt-6 text-white/70 max-w-md mx-auto overflow-hidden'>
             <span className='cine-outro-line inline-block'>
-              Worldwide fashion, editorial, and commercial campaigns.
+              Fashion, editorial, and commercial campaigns across India.
             </span>
           </p>
           <div className='cine-outro-cta mt-10 flex flex-col sm:flex-row gap-4 justify-center'>

@@ -44,7 +44,7 @@ export function createHomeJsonLd() {
         "Brand Ambassador",
         "Photo Shoot Modeling",
       ],
-      areaServed: "Worldwide",
+      areaServed: "India",
       availableChannel: {
         "@type": "ServiceChannel",
         serviceUrl: `${site.siteUrl}/contact`,
