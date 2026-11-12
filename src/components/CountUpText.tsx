@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 /** Only numbers that are results ("459K views", "904 likes"), never dates like "30 days". */
-const RESULT_NUMBER = /(\d+(?:\.\d+)?)([KM]?)(?=\s+(?:reel\s+)?(?:views|likes|shares))/;
+const RESULT_NUMBER = /(\d+(?:\.\d+)?)([KM]?\+?)(?=\s+(?:reel\s+)?(?:views|likes|shares))/;
 
 type Piece =
   | { kind: "text"; value: string }
@@ -83,14 +83,15 @@ export default function CountUpText({ text }: { text: string }) {
             {piece.value}
           </span>
         ) : (
-          <span
-            key={index}
-            aria-hidden
-            className="inline-block text-left tabular-nums"
-            style={{ minWidth: `${piece.final.length}ch` }}
-          >
-            {(piece.value * progress).toFixed(piece.decimals)}
-            {piece.suffix}
+          <span key={index} aria-hidden className="relative inline-block">
+            <span
+              className="invisible before:content-[attr(data-final)]"
+              data-final={piece.final}
+            />
+            <span className="absolute left-0 top-0 whitespace-nowrap tabular-nums">
+              {(piece.value * progress).toFixed(piece.decimals)}
+              {piece.suffix}
+            </span>
           </span>
         )
       )}

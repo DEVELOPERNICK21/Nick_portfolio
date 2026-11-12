@@ -2,7 +2,7 @@ import type { PortfolioPhoto } from "@/data/media";
 import { photoAlt } from "@/config/site";
 import { DUO_PHOTOS } from "@/data/duoPhotos";
 
-export type PortfolioCategoryId = "all" | "formal" | "ethnic" | "casual";
+export type PortfolioCategoryId = "all" | "formal" | "ethnic" | "casual" | "onset";
 
 export type PortfolioCategory = {
   id: PortfolioCategoryId;
@@ -21,6 +21,9 @@ const ethnicImages: PortfolioPhoto[] = [
   { src: "/portfolio-5.jpg", alt: photoAlt("ethnic black kurta side pose"), category: "Ethnic", height: "tall" },
   { src: "/portfolio-6.jpg", alt: photoAlt("ethnic black kurta seated portrait"), category: "Ethnic", height: "tall" },
   { src: "/portfolio-7.jpg", alt: photoAlt("ethnic black kurta close portrait"), category: "Ethnic", height: "medium" },
+  { src: "/work/kurta-look-1.jpg", alt: photoAlt("black sequin kurta with gold embroidered dupatta and sunglasses"), category: "Ethnic", height: "tall" },
+  { src: "/work/kurta-look-2.jpg", alt: photoAlt("festive kurta and dupatta look, adjusting the sleeve"), category: "Ethnic", height: "tall" },
+  { src: "/work/kurta-look-3.jpg", alt: photoAlt("kurta and dupatta full-length look in a lantern-lit corridor"), category: "Ethnic", height: "tall" },
 ];
 
 const casualImages: PortfolioPhoto[] = [
@@ -37,10 +40,18 @@ const casualImages: PortfolioPhoto[] = [
   { ...DUO_PHOTOS[1], category: "Casual" },
 ];
 
+/** Behind the scenes of the Ram India Group Diwali short film */
+const onSetImages: PortfolioPhoto[] = [
+  { src: "/work/ram-india-bts-1.jpg", alt: photoAlt("on set of the Ram India Group short film, lighting sparklers"), category: "On set", height: "tall" },
+  { src: "/work/ram-india-bts-2.jpg", alt: photoAlt("behind the scenes of the Ram India Group short film"), category: "On set", height: "tall" },
+  { src: "/work/ram-india-bts-3.jpg", alt: photoAlt("on set of the Ram India Group short film with co-stars"), category: "On set", height: "tall" },
+];
+
 const allImages: PortfolioPhoto[] = [
   ...formalImages,
   ...ethnicImages,
   ...casualImages,
+  ...onSetImages,
 ];
 
 export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
@@ -63,5 +74,10 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     id: "casual",
     label: "Casual",
     images: casualImages,
+  },
+  {
+    id: "onset",
+    label: "On set",
+    images: onSetImages,
   },
 ];

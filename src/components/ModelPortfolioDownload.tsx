@@ -13,14 +13,14 @@ interface ModelPortfolioDownloadProps {
 }
 
 /**
- * Small page previews of the comp card PDF (cover, comp card, a runway page).
- * Regenerate these three images when the PDF changes:
+ * Small page previews of the comp card PDF (cover, comp card, short film page).
+ * Regenerate these three images when the PDF changes (v8 pages 1, 7 and 4):
  *   pdftoppm -r 80 -f <page> -l <page> -jpeg -jpegopt quality=78 <pdf> <out>
  */
 const PREVIEWS = [
   { src: "/downloads/comp-preview-1.jpg", alt: "Comp card cover — Nikhil Kubde", rotate: "-rotate-[5deg]", lift: "translate-y-3" },
   { src: "/downloads/comp-preview-2.jpg", alt: "Composite card with measurements and six casting poses", rotate: "", lift: "scale-105 z-10" },
-  { src: "/downloads/comp-preview-3.jpg", alt: "Selected work — Smart Bazaar runway", rotate: "rotate-[5deg]", lift: "translate-y-3" },
+  { src: "/downloads/comp-preview-3.jpg", alt: "Selected work — Ram India Group short film, behind the scenes", rotate: "rotate-[5deg]", lift: "translate-y-3" },
 ] as const;
 
 export default function ModelPortfolioDownload({

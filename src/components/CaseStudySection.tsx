@@ -11,7 +11,7 @@ export default function CaseStudySection() {
         <p className='premium-kicker'>Campaigns</p>
         <h2 className='premium-heading mt-4 mb-10'>Brand Case Studies</h2>
 
-        <div className='grid md:grid-cols-3 gap-6'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
           {caseStudies.map((study) => (
             <article
               key={study.brandName}
@@ -23,6 +23,7 @@ export default function CaseStudySection() {
                   alt={`${study.brandName} campaign`}
                   fill
                   className='object-cover group-hover:scale-105 transition-transform duration-500'
+                  style={study.imagePosition ? { objectPosition: study.imagePosition } : undefined}
                   sizes='(max-width: 768px) 100vw, 33vw'
                 />
               </div>

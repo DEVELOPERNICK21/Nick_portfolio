@@ -34,7 +34,7 @@ export default function CategorizedPortfolio() {
           <p className="ed-kicker">Portfolio</p>
           <h2 className="ed-heading mt-3">Selected work</h2>
           <p className="ed-body mt-4 max-w-2xl">
-            Browse by look — All, Formal, Ethnic, or Casual.
+            Browse by look — Formal, Ethnic, Casual, or behind the scenes on set.
           </p>
           <div className="ed-divider my-8 max-w-md" />
         </ScrollReveal>

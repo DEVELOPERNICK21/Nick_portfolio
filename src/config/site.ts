@@ -84,7 +84,7 @@ const productionProfile: SiteProfile = {
     path: "/downloads/nikhil_kubde_portfolio_final.pdf",
     filename: "Nikhil-Kubde-Portfolio.pdf",
   },
-  brands: ["WeWork", "LaundryTO", "Blue Buddha Store", "Smart Bazaar", "Dragon Hill"],
+  brands: ["Ram India Group", "WeWork", "LaundryTO", "Blue Buddha Store", "Smart Bazaar"],
   aboutIntro:
     "Fitness- and lifestyle-focused model with clean editorial range, strong on-camera energy, and a calm, professional presence on set.",
   aboutParagraphs: [

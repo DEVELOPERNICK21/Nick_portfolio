@@ -18,6 +18,10 @@ const AboutMeSection = dynamic(() => import("@/components/AboutMeSection"), {
   loading: () => sectionFallback,
 });
 
+const FeaturedFilm = dynamic(() => import("@/components/FeaturedFilm"), {
+  loading: () => sectionFallback,
+});
+
 const InstagramProofSection = dynamic(
   () => import("@/components/InstagramProofSection"),
   { loading: () => sectionFallback }
@@ -57,6 +61,7 @@ export default function Home() {
       <BookingStrip />
       <BrandMarquee />
       <AboutMeSection />
+      <FeaturedFilm />
       <InstagramProofSection />
       <OnSetFeedback />
       <DuoGallerySection />
