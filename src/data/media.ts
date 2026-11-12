@@ -7,7 +7,7 @@ export type PortfolioPhoto = {
   height?: "short" | "medium" | "tall";
 };
 
-export const HERO_IMAGE = "/main/hero.jpg";
+export const HERO_IMAGE = "/main/hero-leather.jpg";
 export const ABOUT_IMAGE = "/main/about.jpg";
 
 /** Intro / “Get to know me” video — shareable at /intro */
@@ -23,37 +23,37 @@ export const PRICING_PDF_FILENAME = "Model-Portfolio-Pricing.pdf";
 
 export const BRAND_COLLABORATIONS: readonly string[] = site.brands;
 
-/** Primary 5 photos — used across hero, featured sections, and portfolio highlights */
+/** Primary photos — used across featured sections and portfolio highlights */
 export const MAIN_PHOTOS: PortfolioPhoto[] = [
   {
-    src: "/main/main-1.jpg",
-    alt: photoAlt("editorial portrait"),
+    src: "/main/hero-leather.jpg",
+    alt: photoAlt("leather jacket editorial portrait"),
     category: "Editorial",
     height: "tall",
   },
   {
-    src: "/main/main-2.jpg",
-    alt: photoAlt("commercial fashion portrait"),
-    category: "Commercial",
-    height: "medium",
-  },
-  {
-    src: "/main/main-3.jpg",
-    alt: photoAlt("lifestyle brand photography"),
-    category: "Lifestyle",
-    height: "short",
-  },
-  {
-    src: "/main/main-4.jpg",
-    alt: photoAlt("fashion editorial close-up"),
-    category: "Fashion",
+    src: "/main/hero-kurta.jpg",
+    alt: photoAlt("ethnic kurta portrait with sunglasses"),
+    category: "Ethnic",
     height: "tall",
   },
   {
-    src: "/main/main-5.jpg",
-    alt: photoAlt("campaign portrait photography"),
-    category: "Campaign",
-    height: "medium",
+    src: "/work/kurta-look-1.jpg",
+    alt: photoAlt("black sequin kurta with gold embroidered dupatta"),
+    category: "Ethnic",
+    height: "tall",
+  },
+  {
+    src: "/nikhil-kubde-extra-05.jpg",
+    alt: photoAlt("lifestyle portrait on a lakeside swing"),
+    category: "Lifestyle",
+    height: "tall",
+  },
+  {
+    src: "/nikhil-kubde-extra-01.jpg",
+    alt: photoAlt("mountain overlook lifestyle frame"),
+    category: "Casual",
+    height: "tall",
   },
 ];
 

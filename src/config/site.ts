@@ -70,11 +70,11 @@ const productionProfile: SiteProfile = {
   siteUrl: resolveSiteUrl("https://nikhilkubde-model-portfolio.vercel.app"),
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "nikhilkubde21@gmail.com",
   agency: {
-    name: "CastYou Agency",
-    url: "https://castyou.in/nikhil-kubde/",
-    profileLabel: "CastYou Profile",
+    name: "Montelo Agency",
+    url: "https://www.instagram.com/themontelo",
+    profileLabel: "Montelo Agency",
   },
-  representationText: "Currently managed by Montelo Agency · Listed on CastYou",
+  representationText: "Currently managed by Montelo Agency",
   instagram: {
     label: "Instagram",
     href: "https://www.instagram.com/nikhil__kubde/",
@@ -88,7 +88,7 @@ const productionProfile: SiteProfile = {
   aboutIntro:
     "Fitness- and lifestyle-focused model with clean editorial range, strong on-camera energy, and a calm, professional presence on set.",
   aboutParagraphs: [
-    "I work across fashion, lifestyle, and commercial shoots with a polished look, reliable set etiquette, and a focus on creating clean, brand-ready frames. I am currently managed by Montelo Agency and also listed on CastYou for agency discovery.",
+    "I work across fashion, lifestyle, and commercial shoots with a polished look, reliable set etiquette, and a focus on creating clean, brand-ready frames. I am currently managed by Montelo Agency.",
     "With over 5 years of professional mobile app development experience, I understand digital-first campaigns, content workflows, and how brands evaluate presentation, consistency, and audience fit. That makes me especially useful for modern campaigns that need both visual presence and professionalism.",
     "I am most comfortable in fitness, lifestyle, and editorial-driven work, and I bring steady energy on camera, direction-friendly collaboration, and a disciplined approach to every booking.",
   ],
@@ -97,7 +97,7 @@ const productionProfile: SiteProfile = {
     title: "Nikhil Kubde - Professional Model Portfolio",
     titleTemplate: "%s | Nikhil Kubde",
     description:
-      "Nikhil Kubde is a fashion, lifestyle, editorial, and commercial model based in Pune, India. Currently managed by Montelo Agency and listed on CastYou, available for brand campaigns, photo shoots, BTS reels, and video production.",
+      "Nikhil Kubde is a fashion, lifestyle, editorial, and commercial model based in Pune, India. Currently managed by Montelo Agency, available for brand campaigns, photo shoots, BTS reels, and video production.",
     keywords: [
       "Nikhil Kubde",
       "model for hire",
@@ -110,7 +110,6 @@ const productionProfile: SiteProfile = {
       "modeling agency",
       "model portfolio",
       "Montelo Agency",
-      "CastYou agency",
       "Indian model",
       "male model in Pune",
       "Pune model for hire",

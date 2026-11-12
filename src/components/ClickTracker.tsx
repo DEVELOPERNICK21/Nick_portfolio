@@ -9,7 +9,6 @@ function classify(href: string): string | null {
   if (href.startsWith("mailto:")) return "click_email";
   if (href.toLowerCase().split("?")[0].endsWith(".pdf")) return "download_comp_card";
   if (href.includes("instagram.com/themontelo")) return "click_agency_montelo";
-  if (href.includes("castyou.in")) return "click_agency_castyou";
   return null;
 }
 

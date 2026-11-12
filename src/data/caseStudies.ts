@@ -23,7 +23,7 @@ export const caseStudies: CaseStudy[] = [
     tagline: "Commercial Campaign — Space & Lifestyle Brand",
     description:
       "Featured in a commercial campaign showcasing modern workspace culture and lifestyle branding for a global co-working brand.",
-    imageUrl: "/main/main-1.jpg",
+    imageUrl: "/proof/wework-08.png",
     category: "Commercial",
   },
   {
@@ -31,7 +31,7 @@ export const caseStudies: CaseStudy[] = [
     tagline: "Product Campaign — Premium Laundry Brand",
     description:
       "Product-focused campaign highlighting premium laundry services with clean, aspirational lifestyle imagery.",
-    imageUrl: "/main/main-2.jpg",
+    imageUrl: "/proof/laundryto-reel.png",
     category: "Product",
   },
   {
@@ -39,7 +39,7 @@ export const caseStudies: CaseStudy[] = [
     tagline: "Editorial Campaign — Fashion Retail",
     description:
       "Editorial fashion campaign for a contemporary retail brand, emphasizing style, attitude, and brand storytelling.",
-    imageUrl: "/main/main-3.jpg",
+    imageUrl: "/proof/blue-buddha-reel-a.png",
     category: "Editorial",
   },
 ];

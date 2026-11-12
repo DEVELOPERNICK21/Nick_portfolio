@@ -151,14 +151,14 @@ export default function ContactPage() {
                         >
                           {AGENCY_ROUTE.name}
                         </a>
-                        . Also listed on {site.agency.name}.
+                        .
                       </p>
                       <a
                         href={site.agency.url}
                         {...agencyLinkProps}
                         className='text-sm text-amber-400 hover:text-amber-300 transition-colors'
                       >
-                        View Profile on {site.agency.name} →
+                        Contact {site.agency.name} →
                       </a>
                     </div>
                   </>

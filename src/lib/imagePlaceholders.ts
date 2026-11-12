@@ -6,7 +6,7 @@ export const IMAGE_BLUR_DATA_URL =
 export const IMAGE_QUALITY_THUMB = 90;
 /** Mid-size editorial frames / proof */
 export const IMAGE_QUALITY_CARD = 92;
-/** Hero / LCP */
-export const IMAGE_QUALITY_HERO = 92;
+/** Hero / LCP — keep ≤90; q=92 + w=1920 can return empty for some JPEGs in next/image */
+export const IMAGE_QUALITY_HERO = 90;
 /** Fullscreen lightbox */
 export const IMAGE_QUALITY_LIGHTBOX = 95;

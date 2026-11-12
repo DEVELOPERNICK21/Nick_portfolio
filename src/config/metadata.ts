@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
 
-const heroImage = "/main/hero.jpg";
+const heroImage = "/main/hero-leather.jpg";
 
 export function createPageMetadata({
   title,

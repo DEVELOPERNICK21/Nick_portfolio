@@ -120,22 +120,13 @@ export default function ParallaxHero() {
           <p className="mt-3 text-xs uppercase tracking-wider text-gray-400">
             Represented by{" "}
             <a
-              href="https://www.instagram.com/themontelo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white underline underline-offset-4 transition-colors hover:text-accentGold"
-            >
-              Montelo
-            </a>{" "}
-            and{" "}
-            <a
               href={site.agency.url}
               {...(site.agency.url.startsWith("http")
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
               className="text-white underline underline-offset-4 transition-colors hover:text-accentGold"
             >
-              CastYou
+              Montelo
             </a>
           </p>
 
@@ -194,22 +185,13 @@ export default function ParallaxHero() {
         <p className="mt-6 text-xs uppercase tracking-[0.2em] text-[#5C5C5C]">
           Represented by{" "}
           <a
-            href="https://www.instagram.com/themontelo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-[#2B2B2B] underline underline-offset-4 transition-colors hover:text-[#886D20]"
-          >
-            Montelo
-          </a>{" "}
-          and{" "}
-          <a
             href={site.agency.url}
             {...(site.agency.url.startsWith("http")
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
             className="font-semibold text-[#2B2B2B] underline underline-offset-4 transition-colors hover:text-[#886D20]"
           >
-            CastYou
+            Montelo
           </a>
         </p>
 

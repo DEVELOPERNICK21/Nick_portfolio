@@ -10,34 +10,29 @@ export type PortfolioCategory = {
   images: PortfolioPhoto[];
 };
 
+/** Non-CastYou lifestyle / editorial frames */
 const formalImages: PortfolioPhoto[] = [
-  { src: "/portfolio-1.jpg", alt: photoAlt("formal studio portrait"), category: "Formal", height: "medium" },
-  { src: "/portfolio-2.jpg", alt: photoAlt("formal black look"), category: "Formal", height: "medium" },
+  { src: "/nikhil-kubde-extra-05.jpg", alt: photoAlt("lifestyle portrait on a lakeside swing"), category: "Lifestyle", height: "tall" },
+  { src: "/nikhil-kubde-extra-02.jpg", alt: photoAlt("editorial outdoor portrait"), category: "Lifestyle", height: "medium" },
+  { src: "/nikhil-kubde-extra-08.jpg", alt: photoAlt("campaign lifestyle frame"), category: "Lifestyle", height: "medium" },
 ];
 
 const ethnicImages: PortfolioPhoto[] = [
-  { src: "/portfolio-3.jpg", alt: photoAlt("ethnic black kurta full length"), category: "Ethnic", height: "tall" },
-  { src: "/portfolio-4.jpg", alt: photoAlt("ethnic black kurta greeting pose"), category: "Ethnic", height: "tall" },
-  { src: "/portfolio-5.jpg", alt: photoAlt("ethnic black kurta side pose"), category: "Ethnic", height: "tall" },
-  { src: "/portfolio-6.jpg", alt: photoAlt("ethnic black kurta seated portrait"), category: "Ethnic", height: "tall" },
-  { src: "/portfolio-7.jpg", alt: photoAlt("ethnic black kurta close portrait"), category: "Ethnic", height: "medium" },
+  { src: "/main/hero-kurta.jpg", alt: photoAlt("ethnic kurta portrait with sunglasses"), category: "Ethnic", height: "tall" },
   { src: "/work/kurta-look-1.jpg", alt: photoAlt("black sequin kurta with gold embroidered dupatta and sunglasses"), category: "Ethnic", height: "tall" },
   { src: "/work/kurta-look-2.jpg", alt: photoAlt("festive kurta and dupatta look, adjusting the sleeve"), category: "Ethnic", height: "tall" },
   { src: "/work/kurta-look-3.jpg", alt: photoAlt("kurta and dupatta full-length look in a lantern-lit corridor"), category: "Ethnic", height: "tall" },
 ];
 
 const casualImages: PortfolioPhoto[] = [
-  { src: "/portfolio-9.jpg", alt: photoAlt("casual striped shirt standing"), category: "Casual", height: "tall" },
-  { src: "/portfolio-10.jpg", alt: photoAlt("casual striped shirt relaxed pose"), category: "Casual", height: "tall" },
-  { src: "/portfolio-11.jpg", alt: photoAlt("casual striped shirt seated portrait"), category: "Casual", height: "tall" },
-  { src: "/portfolio-12.jpg", alt: photoAlt("casual chair pose"), category: "Casual", height: "tall" },
-  { src: "/main/main-1.jpg", alt: photoAlt("casual leather jacket portrait"), category: "Casual", height: "tall" },
-  { src: "/main/main-2.jpg", alt: photoAlt("casual smiling portrait"), category: "Casual", height: "medium" },
-  { src: "/main/main-3.jpg", alt: photoAlt("casual close portrait"), category: "Casual", height: "short" },
-  { src: "/main/main-4.jpg", alt: photoAlt("casual formal crossover portrait"), category: "Casual", height: "medium" },
-  { src: "/main/main-5.jpg", alt: photoAlt("casual mint shirt seated"), category: "Casual", height: "tall" },
+  { src: "/nikhil-kubde-extra-01.jpg", alt: photoAlt("mountain overlook lifestyle frame"), category: "Casual", height: "tall" },
+  { src: "/nikhil-kubde-extra-03.jpg", alt: photoAlt("casual outdoor portrait"), category: "Casual", height: "tall" },
+  { src: "/nikhil-kubde-extra-04.jpg", alt: photoAlt("travel lifestyle portrait"), category: "Casual", height: "medium" },
+  { src: "/nikhil-kubde-extra-06.jpg", alt: photoAlt("casual day look"), category: "Casual", height: "tall" },
+  { src: "/nikhil-kubde-extra-15.jpg", alt: photoAlt("black and white architectural lifestyle frame"), category: "Casual", height: "tall" },
   { ...DUO_PHOTOS[0], category: "Casual" },
   { ...DUO_PHOTOS[1], category: "Casual" },
+  { ...DUO_PHOTOS[2], category: "Casual" },
 ];
 
 /** Behind the scenes of the Ram India Group Diwali short film */
@@ -62,7 +57,7 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
   },
   {
     id: "formal",
-    label: "Formal",
+    label: "Lifestyle",
     images: formalImages,
   },
   {
